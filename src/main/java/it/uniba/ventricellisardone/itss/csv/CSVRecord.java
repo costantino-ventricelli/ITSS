@@ -2,6 +2,7 @@ package it.uniba.ventricellisardone.itss.csv;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -184,5 +185,57 @@ public class CSVRecord {
 
     public void setMacroCategoria(String macroCategoria) {
         this.macroCategoria = macroCategoria;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof CSVRecord){
+            CSVRecord record = (CSVRecord) obj;
+            String[] otherRecord = CSVRecord.reverseCSVRecord(record);
+            String[] thisRecord = CSVRecord.reverseCSVRecord(this);
+            boolean result = false;
+            for(int i = 0; i < thisRecord.length; i++)
+                result = otherRecord[i].equals(thisRecord[i]);
+            return result;
+        }else
+            return false;
+    }
+
+    public static String[] reverseCSVRecordForAnalysis(CSVRecord record){
+        String[] strings = new String[7];
+        strings[0] = record.getColore();
+        strings[1] = record.getCodiceStatoFattura();
+        strings[2] = record.getNomeBrand();
+        strings[3] = record.getCollezione();
+        strings[4] = record.getPagamentoOrdine();
+        strings[5] = record.getCategoria();
+        strings[6] = record.getMacroCategoria();
+        return strings;
+    }
+
+    public static String[] reverseCSVRecord(CSVRecord record){
+        String[] strings = new String[16];
+        strings[0] = Long.toString(record.getIdOrdine());
+        strings[1] = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(record.getDataOrdine());
+        strings[2] = record.getCodiceStatoFattura();
+        strings[3] = String.valueOf(record.getSessoAcquirente());
+        strings[4] = Integer.toString(record.getQuantita());
+        strings[5] = Double.toString(record.getPrezzoPagato());
+        strings[6] = Integer.toString(record.getSconto());
+        strings[7] = Boolean.toString(record.isOutlet());
+        strings[8] = record.getNomeBrand();
+        strings[9] = record.getCollezione();
+        strings[10] = record.getColore();
+        strings[11] = record.getSessoArticolo();
+        strings[12] = record.getPagamentoOrdine();
+        strings[13] = record.getTaglia();
+        strings[14] = record.getCategoria();
+        strings[15] = record.getMacroCategoria();
+        return strings;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(CSVRecord.reverseCSVRecord(this)) + "\n";
     }
 }

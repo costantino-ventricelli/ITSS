@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data type = "test">
-    <category value="Colore">
+<data type="test">
+    <category key="Colore">
         <entry key="Celeste" value="1"/>
         <entry key="Blu" value="7"/>
         <entry key="Bianco" value="2"/>
@@ -13,7 +13,7 @@
         <entry key="Beige" value="1"/>
         <entry key="Azzurro" value="1"/>
     </category>
-    <category value="CodStatoFattura">
+    <category key="CodStatoFattura">
         <entry key="IT" value="11"/>
         <entry key="FR" value="2"/>
         <entry key="GB" value="2"/>
@@ -22,7 +22,7 @@
         <entry key="ES" value="1"/>
         <entry key="LU" value="1"/>
     </category>
-    <category value="NomeBrand">
+    <category key="NomeBrand">
         <entry key="FRECCE TRICOLORI" value="2"/>
         <entry key="AREONAUTICA MILITARE" value="8"/>
         <entry key="FIX DESIGN" value="3"/>
@@ -31,18 +31,18 @@
         <entry key="HOGAN" value="2"/>
         <entry key="SANTONI" value="1"/>
     </category>
-    <category value="Collezione">
+    <category key="Collezione">
         <entry key="Primavera - Estate 2011" value="5"/>
         <entry key="Autunno - Inverno 2011" value="5"/>
         <entry key="Primavera - Estate 2012" value="5"/>
         <entry key="Autunno - Inverno 2012" value="5"/>
     </category>
-    <category value="PagamentoOrdine">
+    <category key="PagamentoOrdine">
         <entry key="PayPal" value="6"/>
         <entry key="Contrassegno" value="5"/>
         <entry key="Carta di Credito" value="9"/>
     </category>
-    <category value="NomeCategoria">
+    <category key="NomeCategoria">
         <entry key="Orologi" value="1"/>
         <entry key="Maglieria" value="10"/>
         <entry key="Shopper" value="4"/>
@@ -51,7 +51,7 @@
         <entry key="Polacco" value="1"/>
         <entry key="Cappelli" value="1"/>
     </category>
-    <category value="MacroCategoria">
+    <category key="MacroCategoria">
         <entry key="Gioielli Moda" value="1"/>
         <entry key="Abbigliamento" value="12"/>
         <entry key="Borse" value="4"/>
