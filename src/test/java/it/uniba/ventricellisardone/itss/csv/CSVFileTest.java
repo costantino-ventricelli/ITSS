@@ -25,29 +25,24 @@ public class CSVFileTest {
         assert (map.equals(StaticTestModel.getTestMap())) : "[ERROR] Incorrect data analysis";
         csvFile.logDataAnalysis(map, Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath(), "test_result_analysis.xml");
         Scanner testFile = new Scanner(new File(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("data_analysis_test.xml")).getPath()));
-        String resultPath = Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath() + "/result/test_result_analysis.xml";
+        String resultPath = Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath() + "/results/test_result_analysis.xml";
         Scanner resultFile = new Scanner(new File(resultPath));
         int i = 0;
         while (resultFile.hasNextLine()){
-            String resultLine = resultFile.nextLine();
-            String testLine = testFile.nextLine();
-            System.err.println("Result line: " + resultLine);
-            System.err.println("Test line: " + testLine);
-            assert (resultLine.equals(testLine)) : "[ERROR] Data analysis line " + i + " not match";
+            assert (resultFile.nextLine().equals(testFile.nextLine())) : "[ERROR] Data analysis line " + i + " not match";
             i++;
         }
     }
 
-    /*
     @Test
-    public void secondTest(){
+    public void secondTest() throws FileNotFoundException {
         CSVFile csvFile = new CSVFile(Objects.requireNonNull(
                 CSVFileTest.class.getClassLoader().getResource("missing_fields_data.csv")).getPath());
         assert (csvFile.getNullRecordList().equals(StaticTestModel.getNullFieldsList())) : "[ERROR] Null list record incorrect";
         csvFile.logNullRecord(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath(), "test_result_null_fields.csv");
-        Scanner testFile = new Scanner(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("null_data_fields_test.csv")).getPath());
-        String resultPath = Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath() + "/result/test_result_null_fields.csv";
-        Scanner resultFile = new Scanner(resultPath);
+        Scanner testFile = new Scanner(new File(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("null_data_fields_test.csv")).getPath()));
+        String resultPath = Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath() + "/results/test_result_null_fields.csv";
+        Scanner resultFile = new Scanner(new File(resultPath));
         int i = 0;
         while (resultFile.hasNextLine()){
             assert (resultFile.nextLine().equals(testFile.nextLine())) : "[ERROR] Null field line " + i + " not match";
@@ -56,7 +51,7 @@ public class CSVFileTest {
     }
 
     @Test
-    public void thirdTest(){
+    public void thirdTest() {
         CSVFile csvFile = new CSVFile(Objects.requireNonNull(
                 CSVFileTest.class.getClassLoader().getResource("parsing_error_data.csv")).getPath());
         assert (csvFile.getParseErrorList().equals(StaticTestModel.getParsingErrorList())) : "[ERROR] Parsing error list incorrect";
@@ -65,10 +60,9 @@ public class CSVFileTest {
         String resultPath = Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath() + "/result/test_result_parsing_error.csv";
         Scanner resultFile = new Scanner(resultPath);
         int i = 0;
-        while(resultFile.hasNextLine()){
+        while (resultFile.hasNextLine()) {
             assert (resultFile.nextLine().equals(testFile.nextLine())) : "[ERROR] Parsing error line " + i + " not match";
             i++;
         }
     }
-     */
 }
