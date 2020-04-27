@@ -51,14 +51,14 @@ public class CSVFileTest {
     }
 
     @Test
-    public void thirdTest() {
+    public void thirdTest() throws FileNotFoundException{
         CSVFile csvFile = new CSVFile(Objects.requireNonNull(
                 CSVFileTest.class.getClassLoader().getResource("parsing_error_data.csv")).getPath());
         assert (csvFile.getParseErrorList().equals(StaticTestModel.getParsingErrorList())) : "[ERROR] Parsing error list incorrect";
         csvFile.logParseErrorRecord(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath(), "parsing_error_result.csv");
-        Scanner testFile = new Scanner(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("parsing_error_test.csv")).getPath());
-        String resultPath = Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath() + "/result/test_result_parsing_error.csv";
-        Scanner resultFile = new Scanner(resultPath);
+        Scanner testFile = new Scanner(new File(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("parsing_error_test.csv")).getPath()));
+        String resultPath = Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath() + "/results/parsing_error_result.csv";
+        Scanner resultFile = new Scanner(new File(resultPath));
         int i = 0;
         while (resultFile.hasNextLine()) {
             assert (resultFile.nextLine().equals(testFile.nextLine())) : "[ERROR] Parsing error line " + i + " not match";
