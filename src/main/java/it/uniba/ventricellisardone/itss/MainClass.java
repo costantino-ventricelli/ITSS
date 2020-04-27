@@ -4,6 +4,9 @@ import it.uniba.ventricellisardone.itss.csv.CSVFile;
 import it.uniba.ventricellisardone.itss.csv.FileFormatException;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class MainClass {
 
@@ -25,9 +28,10 @@ public class MainClass {
 
     private static void checkFile(String data, String savingPath) throws FileFormatException{
         if(data.contains(".csv")){
-            File directory = new File(savingPath);
-            if(directory.mkdir())
-                System.out.println("Directory creata");
+            if(savingPath == null)
+                savingPath = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(Calendar.getInstance().getTime());
+            else
+                savingPath = savingPath.concat(" ");
             CSVFile csvFile = new CSVFile(data);
             csvFile.logParseErrorRecord(savingPath, "Parse error");
             csvFile.logNullRecord(savingPath, "Null field");

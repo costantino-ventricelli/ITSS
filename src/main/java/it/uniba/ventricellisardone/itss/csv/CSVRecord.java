@@ -25,38 +25,46 @@ public class CSVRecord {
     private String categoria;
     private String macroCategoria;
 
-    public CSVRecord(String[] strings) throws ParseException, CSVNullFieldsException, CSVParsingException {
-        if(strings.length == 16) {
-            this.idOrdine = Long.parseLong(strings[0]);
-            this.dataOrdine = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).parse(strings[1]);
-            this.codiceStatoFattura = strings[2];
-            if(strings[3].charAt(0) == 'M')
-                this.sessoAcquirente = 'M';
-            else if(strings[3].charAt(0) == 'F')
-                this.sessoAcquirente = 'F';
-            else
-                throw new CSVParsingException("Il sesso inserito non esiste");
-            this.quantita = Integer.parseInt(strings[4]);
-            this.prezzoPagato = Double.parseDouble(strings[5]);
-            if (this.prezzoPagato < 0)
-                throw new IllegalArgumentException("Il prezzo non può essere negativo");
-            this.sconto = Integer.parseInt(strings[6]);
-            if (strings[7].equals("0")) {
-                this.outlet = false;
-            } else if (strings[7].equals("1")) {
-                this.outlet = true;
-            } else
-                throw new CSVParsingException("Il valore non è un booleano");
-            this.nomeBrand = strings[8];
-            this.collezione = strings[9];
-            this.colore = strings[10];
-            this.sessoArticolo = strings[11];
-            this.pagamentoOrdine = strings[12];
-            this.taglia = strings[13];
-            this.categoria = strings[14];
-            this.macroCategoria = strings[15];
-        }else
+    public CSVRecord(String[] strings) throws ParseException, CSVNullFieldsException {
+        if (strings.length == 16) {
+            for (int i = 0; i < 16; i++) {
+                if(strings[i].isEmpty())
+                    throw new CSVParsingException("Valore non impostato correttamente", i);
+            }
+            init(strings);
+        } else
             throw new CSVNullFieldsException("Il numero dei campi non corrisponde a quanto stabilito: " + strings.length);
+    }
+
+    private void init(String[] strings) throws ParseException {
+        this.idOrdine = Long.parseLong(strings[0]);
+        this.dataOrdine = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).parse(strings[1]);
+        this.codiceStatoFattura = strings[2];
+        if (strings[3].charAt(0) == 'M')
+            this.sessoAcquirente = 'M';
+        else if (strings[3].charAt(0) == 'F')
+            this.sessoAcquirente = 'F';
+        else
+            throw new CSVParsingException("Il sesso inserito non esiste", 3);
+        this.quantita = Integer.parseInt(strings[4]);
+        this.prezzoPagato = Double.parseDouble(strings[5]);
+        if (this.prezzoPagato < 0)
+            throw new IllegalArgumentException("Il prezzo non può essere negativo");
+        this.sconto = Integer.parseInt(strings[6]);
+        if (strings[7].equals("0")) {
+            this.outlet = false;
+        } else if (strings[7].equals("1")) {
+            this.outlet = true;
+        } else
+            throw new CSVParsingException("Il valore non è un booleano", 7);
+        this.nomeBrand = strings[8];
+        this.collezione = strings[9];
+        this.colore = strings[10];
+        this.sessoArticolo = strings[11];
+        this.pagamentoOrdine = strings[12];
+        this.taglia = strings[13];
+        this.categoria = strings[14];
+        this.macroCategoria = strings[15];
     }
 
     public long getIdOrdine() {
@@ -189,19 +197,19 @@ public class CSVRecord {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof CSVRecord){
+        if (obj instanceof CSVRecord) {
             CSVRecord record = (CSVRecord) obj;
             String[] otherRecord = CSVRecord.reverseCSVRecord(record);
             String[] thisRecord = CSVRecord.reverseCSVRecord(this);
             boolean result = false;
-            for(int i = 0; i < thisRecord.length; i++)
+            for (int i = 0; i < thisRecord.length; i++)
                 result = otherRecord[i].equals(thisRecord[i]);
             return result;
-        }else
+        } else
             return false;
     }
 
-    public static String[] reverseCSVRecordForAnalysis(CSVRecord record){
+    public static String[] reverseCSVRecordForAnalysis(CSVRecord record) {
         String[] strings = new String[7];
         strings[0] = record.getColore();
         strings[1] = record.getCodiceStatoFattura();
@@ -213,7 +221,7 @@ public class CSVRecord {
         return strings;
     }
 
-    public static String[] reverseCSVRecord(CSVRecord record){
+    public static String[] reverseCSVRecord(CSVRecord record) {
         String[] strings = new String[16];
         strings[0] = Long.toString(record.getIdOrdine());
         strings[1] = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(record.getDataOrdine());

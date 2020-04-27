@@ -29,7 +29,7 @@ public class CSVFileTest {
         Scanner resultFile = new Scanner(new File(resultPath));
         int i = 0;
         while (resultFile.hasNextLine()){
-            assert (resultFile.nextLine().equals(testFile.nextLine())) : "[ERROR] Data analysis line " + i + " not match";
+            assert (resultFile.nextLine().trim().equals(testFile.nextLine().trim())) : "[ERROR] Data analysis line " + i + " not match";
             i++;
         }
     }

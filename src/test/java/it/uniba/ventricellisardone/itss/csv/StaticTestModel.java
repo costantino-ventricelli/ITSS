@@ -137,7 +137,7 @@ public class StaticTestModel {
             csvRecord = new CSVRecord(strings);
             list.add(csvRecord);
             return list;
-        } catch (ParseException | CSVNullFieldsException | CSVParsingException e) {
+        } catch (ParseException | CSVNullFieldsException e) {
             e.printStackTrace();
             return null;
         }

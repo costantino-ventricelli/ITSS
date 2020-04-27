@@ -93,7 +93,7 @@ public class CSVFile {
                 if(nullRecordList == null)
                     nullRecordList = new ArrayList<>();
                 nullRecordList.add(fileLine);
-            }catch (ParseException | CSVParsingException | NumberFormatException ex){
+            }catch (ParseException | NumberFormatException ex){
                 if(parseErrorList == null)
                     parseErrorList = new ArrayList<>();
                 parseErrorList.add(fileLine);
@@ -115,12 +115,8 @@ public class CSVFile {
             dataMap.put(entry.getKey(), new HashMap<>());
         }
         for(CSVRecord record : csvRecordList){
-            int i = 0;
             String[] stringsRecord = CSVRecord.reverseCSVRecordForAnalysis(record);
-            for(Map.Entry<String, Map<String, Integer>> entry : dataMap.entrySet()){
-                dataMap.put(entry.getKey(), checkField(stringsRecord[ANALYSIS_HEADER.get(entry.getKey())], entry.getValue()));
-                i++;
-            }
+            dataMap.replaceAll((k, v) -> checkField(stringsRecord[ANALYSIS_HEADER.get(k)], v));
         }
         Log.i(TAG, "Mappa creata");
         Log.i(TAG, dataMap.toString());
@@ -139,7 +135,10 @@ public class CSVFile {
         pathDirectory += "results";
         fileName = checkDirectoryAndFileName(pathDirectory, fileName, CSV_EXTENSION);
         try{
-            writeLog(pathDirectory, fileName, nullRecordList);
+            if(nullRecordList != null)
+                writeLog(pathDirectory, fileName, nullRecordList);
+            else
+                Log.i(TAG, "Nessun record da loggare");
         }catch (FileNotFoundException e){
             Log.e(TAG, "Exception log null record", e);
         }
@@ -149,7 +148,10 @@ public class CSVFile {
         pathDirectory += "results";
         fileName = checkDirectoryAndFileName(pathDirectory, fileName, CSV_EXTENSION);
         try{
-            writeLog(pathDirectory, fileName, parseErrorList);
+            if(parseErrorList != null)
+                writeLog(pathDirectory, fileName, parseErrorList);
+            else
+                Log.i(TAG, "Nessun record da loggare");
         }catch (FileNotFoundException e){
             Log.e(TAG, "Exception log null record", e);
         }
