@@ -3505,3 +3505,159 @@ CSVFile.class [INFO LOG] 29/04/20, 17:02
 CSVFile.class [INFO LOG] 29/04/20, 17:02
 	Added .xml file extension
 
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Data path: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/parsing_error_data.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Directory: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	File name: parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	List size: 7
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Data path: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/right_data.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Mappa creata
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+CSVFileTest.class [INFO LOG] 30/04/20, 20:27
+	Mappa di test
+
+CSVFileTest.class [INFO LOG] 30/04/20, 20:27
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Directory: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	File name: test_result_analysis.xml
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Data path: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/missing_fields_data.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Directory: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	File name: test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	List size: 4
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Data path: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/parsing_error_data.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Directory: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	File name: parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	List size: 7
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Data path: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/right_data.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Mappa creata
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+CSVFileTest.class [INFO LOG] 30/04/20, 20:27
+	Mappa di test
+
+CSVFileTest.class [INFO LOG] 30/04/20, 20:27
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Directory: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	File name: test_result_analysis.xml
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Data path: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/missing_fields_data.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Directory: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	File name: test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	List size: 4
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 30/04/20, 20:27
+	Writing log in: /Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/target/test-classes/results/test_result_null_fields.csv
+
