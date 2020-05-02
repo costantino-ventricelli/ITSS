@@ -109,20 +109,6 @@ public class CSVFile {
         return parseErrorList;
     }
 
-    public Map<String, Map<String, Integer>> performDataAnalysis(){
-        Map<String, Map<String, Integer>> dataMap = new HashMap<>();
-        for(Map.Entry<String, Integer> entry : ANALYSIS_HEADER.entrySet()){
-            dataMap.put(entry.getKey(), new HashMap<>());
-        }
-        for(CSVRecord record : csvRecordList){
-            String[] stringsRecord = CSVRecord.reverseCSVRecordForAnalysis(record);
-            dataMap.replaceAll((k, v) -> checkField(stringsRecord[ANALYSIS_HEADER.get(k)], v));
-        }
-        Log.i(TAG, "Mappa creata");
-        Log.i(TAG, dataMap.toString());
-        return dataMap;
-    }
-
     private Map<String, Integer> checkField(String fieldValue, Map<String, Integer> fieldMap){
         if(fieldMap.containsKey(fieldValue))
             fieldMap.put(fieldValue, fieldMap.get(fieldValue) + 1);
@@ -154,29 +140,6 @@ public class CSVFile {
                 Log.i(TAG, "Nessun record da loggare");
         }catch (FileNotFoundException e){
             Log.e(TAG, "Exception log null record", e);
-        }
-    }
-
-    public void logDataAnalysis(Map<String, Map<String, Integer>> analysisReport, String pathDirectory, String fileName){
-        pathDirectory += "results";
-        fileName = checkDirectoryAndFileName(pathDirectory, fileName, XML_EXTENSION);
-        try {
-            PrintWriter writer = new PrintWriter(new FileOutputStream(pathDirectory + "/" + fileName, false));
-            writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-            if(fileName.contains("test"))
-                writer.println("<data type=\"test\">");
-            else
-                writer.println("<data type=\"execution\">");
-            for(Map.Entry<String, Map<String, Integer>> category : analysisReport.entrySet()){
-                writer.println("\t<category key=\"" + category.getKey() + "\">");
-                for(Map.Entry<String, Integer> entry : category.getValue().entrySet())
-                    writer.println("\t\t<entry key=\"" + entry.getKey() + "\" value=\"" + entry.getValue() + "\"/>");
-                writer.println("\t</category>");
-            }
-            writer.println("</data>");
-            writer.close();
-        } catch (FileNotFoundException e) {
-            Log.e(TAG, "Log data analysis", e);
         }
     }
 

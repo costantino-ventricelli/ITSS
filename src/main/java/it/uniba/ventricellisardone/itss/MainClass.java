@@ -1,6 +1,7 @@
 package it.uniba.ventricellisardone.itss;
 
 import it.uniba.ventricellisardone.itss.csv.CSVFile;
+import it.uniba.ventricellisardone.itss.csv.DataAnalisys;
 import it.uniba.ventricellisardone.itss.csv.FileFormatException;
 
 import java.text.SimpleDateFormat;
@@ -34,7 +35,8 @@ public class MainClass {
             CSVFile csvFile = new CSVFile(data);
             csvFile.logParseErrorRecord(savingPath, "Parse error");
             csvFile.logNullRecord(savingPath, "Null field");
-            csvFile.logDataAnalysis(csvFile.performDataAnalysis(), savingPath, "Data analysis");
+            DataAnalisys dataAnalisys = new DataAnalisys(csvFile.getCsvRecordList());
+            dataAnalisys.logDataAnalysis(dataAnalisys.performDataAnalysis(), savingPath, "Data analysis");
         }else {
             throw new FileFormatException("Serve un file in formato .csv");
         }
