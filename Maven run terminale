@@ -1,0 +1,1 @@
+mvn exec:java Dexec.mainClass="it.uniba.itss.ventricellisardone.MainClass" Dexec.args="arguments" Dexec.cleanUpDaemonThreads=false

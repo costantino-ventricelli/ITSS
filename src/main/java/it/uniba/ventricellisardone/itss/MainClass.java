@@ -3,7 +3,6 @@ package it.uniba.ventricellisardone.itss;
 import it.uniba.ventricellisardone.itss.csv.CSVFile;
 import it.uniba.ventricellisardone.itss.csv.FileFormatException;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
