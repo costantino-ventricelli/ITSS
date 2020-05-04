@@ -27,7 +27,7 @@ public class DataAnalisys {
         ANALYSIS_HEADER = Collections.unmodifiableMap(headerMap);
     }
 
-      public DataAnalisys(List<CSVRecord> csvRecordList) {
+    public DataAnalisys(List<CSVRecord> csvRecordList) {
         this.csvRecordList = csvRecordList;
     }
 

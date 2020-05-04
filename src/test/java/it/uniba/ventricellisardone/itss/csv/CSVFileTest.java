@@ -15,29 +15,14 @@ public class CSVFileTest {
 
     @Test
     public void firstTest() throws FileNotFoundException {
-        CSVFile csvFile = new CSVFile(Objects.requireNonNull(
-                CSVFileTest.class.getClassLoader().getResource("right_data.csv")).getPath());
+        CSVFile csvFile = new CSVFile(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("right_data.csv")).getPath());
         assert (csvFile.getHeaderFile().equals(CSVFile.HEADER_FILE)) : "[ERROR] Incorrect header file";
         assert (csvFile.getCsvRecordList().equals(StaticTestModel.getTestList())) : "[ERROR] Incorrect list of record";
-        Map<String, Map<String, Integer>> map = csvFile.performDataAnalysis();
-        Log.i(TAG, "Mappa di test");
-        Log.i(TAG, StaticTestModel.getTestMap().toString());
-        assert (map.equals(StaticTestModel.getTestMap())) : "[ERROR] Incorrect data analysis";
-        csvFile.logDataAnalysis(map, Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath(), "test_result_analysis.xml");
-        Scanner testFile = new Scanner(new File(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("data_analysis_test.xml")).getPath()));
-        String resultPath = Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath() + "/results/test_result_analysis.xml";
-        Scanner resultFile = new Scanner(new File(resultPath));
-        int i = 0;
-        while (resultFile.hasNextLine()){
-            assert (resultFile.nextLine().trim().equals(testFile.nextLine().trim())) : "[ERROR] Data analysis line " + i + " not match";
-            i++;
-        }
     }
 
     @Test
     public void secondTest() throws FileNotFoundException {
-        CSVFile csvFile = new CSVFile(Objects.requireNonNull(
-                CSVFileTest.class.getClassLoader().getResource("missing_fields_data.csv")).getPath());
+        CSVFile csvFile = new CSVFile(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("missing_fields_data.csv")).getPath());
         assert (csvFile.getNullRecordList().equals(StaticTestModel.getNullFieldsList())) : "[ERROR] Null list record incorrect";
         csvFile.logNullRecord(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath(), "test_result_null_fields.csv");
         Scanner testFile = new Scanner(new File(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("null_data_fields_test.csv")).getPath()));

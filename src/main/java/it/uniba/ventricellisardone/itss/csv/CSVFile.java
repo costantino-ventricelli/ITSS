@@ -13,9 +13,7 @@ public class CSVFile {
 
     public static final Map<String, Integer> HEADER_FILE;
     private static final String TAG = "CSVFile.class";
-    private static final Map<String, Integer> ANALYSIS_HEADER;
     private static final String CSV_EXTENSION = ".csv";
-    private static final String XML_EXTENSION = ".xml";
 
     static {
         Map<String, Integer> map = new HashMap<>();
@@ -37,15 +35,6 @@ public class CSVFile {
         map.put("MacroCategoria", 15);
         HEADER_FILE = Collections.unmodifiableMap(map);
 
-        Map<String, Integer> headerMap = new HashMap<>();
-        headerMap.put("Colore", 0);
-        headerMap.put("CodStatoFattura", 1);
-        headerMap.put("NomeBrand", 2);
-        headerMap.put("Collezione", 3);
-        headerMap.put("PagamentoOrdine", 4);
-        headerMap.put("NomeCategoria", 5);
-        headerMap.put("MacroCategoria", 6);
-        ANALYSIS_HEADER = Collections.unmodifiableMap(headerMap);
     }
 
     private Map<String, Integer> headerFile;
@@ -107,14 +96,6 @@ public class CSVFile {
 
     public List<String> getParseErrorList(){
         return parseErrorList;
-    }
-
-    private Map<String, Integer> checkField(String fieldValue, Map<String, Integer> fieldMap){
-        if(fieldMap.containsKey(fieldValue))
-            fieldMap.put(fieldValue, fieldMap.get(fieldValue) + 1);
-        else
-            fieldMap.put(fieldValue, 1);
-        return fieldMap;
     }
 
     public void logNullRecord(String pathDirectory, String fileName){
