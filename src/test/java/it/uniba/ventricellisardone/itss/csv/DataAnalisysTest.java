@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class DataAnalisysTest {
     private static final String TAG = "DataAnalisysTest.class";

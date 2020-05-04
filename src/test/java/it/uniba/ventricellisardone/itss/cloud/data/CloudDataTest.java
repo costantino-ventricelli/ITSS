@@ -1,7 +1,6 @@
-package cloud.data;
+package it.uniba.ventricellisardone.itss.cloud.data;
 
 import com.google.cloud.Date;
-import it.uniba.ventricellisardone.itss.cloud.data.CloudData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
