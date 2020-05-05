@@ -7,8 +7,9 @@ import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class LoadDataTest {
@@ -49,7 +50,7 @@ public class LoadDataTest {
 
     @Test
     public void rightConstructorTest() throws IOException {
-        new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("load_data_0.csv")).getPath(), "test_tabella");
+        new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("data_load_0.csv")).getPath(), "test_tabella");
     }
 
     @Test
@@ -60,12 +61,18 @@ public class LoadDataTest {
     @Test
     public void completeLoadDataOnDWH() throws IOException, InterruptedException {
         System.out.println("[EXECUTING] Test completo");
-        LoadData loadData = new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).getPath(), "test_tabella");
-        loadData.startLoad(0, 1);
+        System.out.println("[EXECUTING] CANCELLO DATI PRECEDENTI");
         BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
-        QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("SELECT * FROM `biproject-itss.dataset.test_tabella`;").build();
+        QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("DELETE FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
         JobId jobId = JobId.of(UUID.randomUUID().toString());
         Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
+        job.waitFor();
+        System.out.println("[EXECUTING] CANCELLAZIONE ESEGUITA");
+        LoadData loadData = new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).getPath(), "test_tabella");
+        loadData.startLoad(0, 2);
+        jobConfiguration = QueryJobConfiguration.newBuilder("SELECT * FROM `biproject-itss.dataset.test_tabella` ORDER BY(ordine_id_carrello);").build();
+        jobId = JobId.of(UUID.randomUUID().toString());
+        job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
         job = job.waitFor();
         if(job == null)
             throw new RuntimeException("Job no longer exist");
@@ -73,9 +80,9 @@ public class LoadDataTest {
             throw new RuntimeException(job.getStatus().getError().toString());
 
         TableResult result = job.getQueryResults();
-        assert (result.getTotalRows() == 8) : "NUMERO RIGHE RESTITUITO NON CORRETTO";
-        Scanner scanner = new Scanner(new File(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("data_result.json")).getPath()));
-        String fileJSON = scanner.nextLine();
+        //QUI IL TEST DEVE ESSERE MENO FISCALE, IN QUANTO PER IL MULTI THREADING QUESTO TEST POTREBBE ESSERE RICHIAMATO PRIMA CHE L'UPLOAD SIA ULTIMATO
+        assert (result.getTotalRows() == 8 || result.getTotalRows() == 4) : "NUMERO RIGHE RESTITUITO NON CORRETTO: " + result.getTotalRows();
+        String fileJSON = new String(Files.readAllBytes(Paths.get(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("data_result.json")).getPath())));
         JsonParser jsonParser = new JsonParser();
         JsonObject object = (JsonObject) jsonParser.parse(fileJSON);
         JsonArray array = (JsonArray) object.get("result");
@@ -89,18 +96,20 @@ public class LoadDataTest {
             }
             i++;
         }
-
-        jobConfiguration = QueryJobConfiguration.newBuilder("DELETE * FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
-        job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
-        job.waitFor();
     }
 
-    /*
     @Test
     public void interruptedLoadDataOnDWH() throws IOException, InterruptedException {
         System.out.println("[EXECUTING] Test interrotto");
-        LoadData loadData = new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).getPath(), "test_table");
-        loadData.startLoad(0, 0);
-        assert (loadData.getLastLoad(Calendar.getInstance().getTime()) == 3) : "ERRORE NEL SALVATAGGIO DEL JOB";
-    }*/
+        System.out.println("[EXECUTING] CANCELLO DATI PRECEDENTI");
+        BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
+        QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("DELETE FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
+        JobId jobId = JobId.of(UUID.randomUUID().toString());
+        Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
+        job.waitFor();
+        System.out.println("[EXECUTING] CANCELLAZIONE ESEGUITA");
+        LoadData loadData = new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).getPath(), "test_tabella");
+        loadData.startLoad(0, 1);
+        assert (loadData.getLastLoad(Calendar.getInstance().getTime()) == 0) : "ERRORE NEL SALVATAGGIO DEL JOB: " + loadData.getLastLoad(Calendar.getInstance().getTime());
+    }
 }
