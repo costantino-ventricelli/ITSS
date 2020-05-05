@@ -49,12 +49,12 @@ public class LoadDataTest {
 
     @Test
     public void rightConstructorTest() throws IOException {
-        new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("load_data.sql")).getPath(), "test_tabella");
+        new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("load_data_0.csv")).getPath(), "test_tabella");
     }
 
     @Test
     public void wrongConstructorTest(){
-        Assertions.assertThrows(IOException.class, () -> new LoadData("file_not_found.sql", "test_tabella"), "File trovato inspiegabilmente");
+        Assertions.assertThrows(IOException.class, () -> new LoadData("file_not_found.csv", "test_tabella"), "File trovato inspiegabilmente");
     }
 
     @Test
@@ -62,7 +62,7 @@ public class LoadDataTest {
         System.out.println("[EXECUTING] Test completo");
         LoadData loadData = new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).getPath(), "test_tabella");
         loadData.startLoad(0, 1);
-        /*BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
+        BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
         QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("SELECT * FROM `biproject-itss.dataset.test_tabella`;").build();
         JobId jobId = JobId.of(UUID.randomUUID().toString());
         Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
@@ -93,7 +93,6 @@ public class LoadDataTest {
         jobConfiguration = QueryJobConfiguration.newBuilder("DELETE * FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
         job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
         job.waitFor();
-         */
     }
 
     /*
