@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -20,6 +21,7 @@ import java.util.Locale;
 public class CloudData{
 
     private static final String TAG = "Cloud data";
+    private List<Object> listOfObject = new ArrayList<>();
 
     private final Date googleData;
 
@@ -56,6 +58,20 @@ public class CloudData{
         this.meseAnno = this.meseValore + "-" + this.annoValore;
         this.feriale = setFeriale();
         this.festivo = setFestivo();
+    }
+
+    public List<Object> getListOfObject() {
+        return null;
+    }
+
+    public void setListOfObject() {
+        listOfObject.add(getGoogleData());
+        listOfObject.add(getNomeGiorno());
+        listOfObject.add(getNumeroGiornoAnno());
+        listOfObject.add(getNomeMese());
+        listOfObject.add(getAnnoValore());
+        listOfObject.add(getMeseValore());
+        listOfObject.add(getTrimestre());
     }
 
     public String getDataString() {

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -85,7 +86,7 @@ public class LoadDataTest {
         TableResult result = job.getQueryResults();
         //QUI IL TEST DEVE ESSERE MENO FISCALE, IN QUANTO PER IL MULTI THREADING QUESTO TEST POTREBBE ESSERE RICHIAMATO PRIMA CHE L'UPLOAD SIA ULTIMATO
         assert (result.getTotalRows() == 8 || result.getTotalRows() == 4) : "NUMERO RIGHE RESTITUITO NON CORRETTO: " + result.getTotalRows();
-        String fileJSON = new String(Files.readAllBytes(Paths.get(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("data_result.json")).getPath())));
+        String fileJSON = new String(Files.readAllBytes(Paths.get(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("data_result.json")).toURI())), StandardCharsets.UTF_8);
         JsonParser jsonParser = new JsonParser();
         JsonObject object = (JsonObject) jsonParser.parse(fileJSON);
         JsonArray array = (JsonArray) object.get("result");
