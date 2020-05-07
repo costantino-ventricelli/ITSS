@@ -17,12 +17,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class CloudData {
+public class CloudData{
 
     private static final String TAG = "Cloud data";
 
-    private final String dataString;
     private final Date googleData;
+
+    private final String dataString;
     private final String nomeGiorno;
     private final int numeroGiornoAnno;
     private final String nomeMese;

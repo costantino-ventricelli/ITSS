@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -59,7 +61,7 @@ public class LoadDataTest {
     }
 
     @Test
-    public void completeLoadDataOnDWH() throws IOException, InterruptedException {
+    public void completeLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
         System.out.println("[EXECUTING] Test completo");
         System.out.println("[EXECUTING] CANCELLO DATI PRECEDENTI");
         BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
@@ -68,7 +70,8 @@ public class LoadDataTest {
         Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
         job.waitFor();
         System.out.println("[EXECUTING] CANCELLAZIONE ESEGUITA");
-        LoadData loadData = new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).getPath(), "test_tabella");
+
+        LoadData loadData = new LoadData(Paths.get(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).toURI()).toString(), "test_tabella");
         loadData.startLoad(0, 2);
         jobConfiguration = QueryJobConfiguration.newBuilder("SELECT * FROM `biproject-itss.dataset.test_tabella` ORDER BY(ordine_id_carrello);").build();
         jobId = JobId.of(UUID.randomUUID().toString());
@@ -99,7 +102,7 @@ public class LoadDataTest {
     }
 
     @Test
-    public void interruptedLoadDataOnDWH() throws IOException, InterruptedException {
+    public void interruptedLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
         System.out.println("[EXECUTING] Test interrotto");
         System.out.println("[EXECUTING] CANCELLO DATI PRECEDENTI");
         BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
@@ -108,7 +111,7 @@ public class LoadDataTest {
         Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
         job.waitFor();
         System.out.println("[EXECUTING] CANCELLAZIONE ESEGUITA");
-        LoadData loadData = new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).getPath(), "test_tabella");
+        LoadData loadData = new LoadData(Paths.get(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("")).toURI()).toString(), "test_tabella");
         loadData.startLoad(0, 1);
         assert (loadData.getLastLoad(Calendar.getInstance().getTime()) == 0) : "ERRORE NEL SALVATAGGIO DEL JOB: " + loadData.getLastLoad(Calendar.getInstance().getTime());
     }
