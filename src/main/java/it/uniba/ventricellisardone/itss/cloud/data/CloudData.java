@@ -25,7 +25,6 @@ public class CloudData{
 
     private final Date googleData;
 
-    private final String dataString;
     private final String nomeGiorno;
     private final int numeroGiornoAnno;
     private final String nomeMese;
@@ -38,11 +37,7 @@ public class CloudData{
     private final String feriale;
     private final String festivo;
 
-    public CloudData(String dataString) throws ParseException {
-        String[] dataStrings = dataString.split("/");
-        this.dataString = "20" + dataStrings[2] + "-" + dataStrings[1] + "-" + dataStrings[0];
-        java.util.Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                .parse(this.dataString);
+    public CloudData(java.util.Date date) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         this.googleData = Date.fromJavaUtilDate(date);
@@ -60,24 +55,11 @@ public class CloudData{
         this.festivo = setFestivo();
     }
 
-    public List<Object> getListOfObject() {
-        return null;
-    }
-
-    public void setListOfObject() {
-        listOfObject.add(getGoogleData());
-        listOfObject.add(getNomeGiorno());
-        listOfObject.add(getNumeroGiornoAnno());
-        listOfObject.add(getNomeMese());
-        listOfObject.add(getAnnoValore());
-        listOfObject.add(getMeseValore());
-        listOfObject.add(getTrimestre());
-    }
-
+/*
     public String getDataString() {
         return dataString;
     }
-
+*/
     public Date getGoogleData() {
         return googleData;
     }
