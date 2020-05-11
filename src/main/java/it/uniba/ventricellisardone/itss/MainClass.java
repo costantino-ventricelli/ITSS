@@ -1,16 +1,11 @@
 package it.uniba.ventricellisardone.itss;
 
-import it.uniba.ventricellisardone.itss.Transform.Transform;
+import it.uniba.ventricellisardone.itss.transform.Transform;
 import it.uniba.ventricellisardone.itss.csv.CSVFile;
 import it.uniba.ventricellisardone.itss.csv.DataAnalisys;
 import it.uniba.ventricellisardone.itss.csv.FileFormatException;
-import it.uniba.ventricellisardone.itss.log.Log;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -37,13 +32,7 @@ public class MainClass {
         if(data.contains(".csv")){
             if(savingPath == null)
                 savingPath = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(Calendar.getInstance().getTime());
-            else
-                savingPath = savingPath.concat(" ");
             CSVFile csvFile = new CSVFile(data);
-            csvFile.logParseErrorRecord(savingPath, "Parse error");
-            csvFile.logNullRecord(savingPath, "Null field");
-            DataAnalisys dataAnalisys = new DataAnalisys(csvFile.getCsvRecordList());
-            dataAnalisys.logDataAnalysis(dataAnalisys.performDataAnalysis(), savingPath, "Data analysis");
             //costruzione file della classe Transform
             Transform transform = new Transform(csvFile.getCsvRecordList(), savingPath, "TransformFile");
             try {

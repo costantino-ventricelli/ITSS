@@ -36,10 +36,12 @@ public class CloudData{
     private final String meseAnno;
     private final String feriale;
     private final String festivo;
+    private final String dataString;
 
     public CloudData(java.util.Date date) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
+        this.dataString = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(date);
         this.googleData = Date.fromJavaUtilDate(date);
         this.nomeGiorno = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()).toUpperCase();
         this.numeroGiornoAnno = calendar.get(Calendar.DAY_OF_YEAR);
@@ -55,11 +57,10 @@ public class CloudData{
         this.festivo = setFestivo();
     }
 
-/*
     public String getDataString() {
         return dataString;
     }
-*/
+
     public Date getGoogleData() {
         return googleData;
     }

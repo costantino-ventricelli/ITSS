@@ -1,4 +1,4 @@
-package it.uniba.ventricellisardone.itss.Transform;
+package it.uniba.ventricellisardone.itss.transform;
 
 import it.uniba.ventricellisardone.itss.cloud.data.CloudData;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
@@ -6,7 +6,6 @@ import it.uniba.ventricellisardone.itss.log.Log;
 
 import java.io.*;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -98,15 +97,16 @@ public class Transform {
         int j;
         if(i == 500 || i % 500 == 0) {
             j = i / 500;
-            this.fileName.concat("_"+j);
+            this.fileName = this.fileName.concat("_" + j);
         }
     }
 
     public void writeOnFile() throws FileNotFoundException{
-        writer = new PrintWriter(new FileOutputStream(savingPath + "/" + fileName, false));
+        writer = new PrintWriter(new FileOutputStream(savingPath + "/" + fileName, true));
         writer.print(idOrdine+","+dataOrdine+","+nomeGiorno+","+numeroGiornoAnno+","+nomeMese+","+annoValore+","+meseValore+","+trimestre+","+periodo+","+trimestreAnno+","+meseAnno+","+feriale+","+festivo+","+
                 codiceStatoFattura+","+sessoAcquirente+","+quantita+","+prezzoPagato+","+sconto+","+outlet+","+nomeBrand+","+collezione+","+
                 colore+","+sessoArticolo+","+pagamentoOrdine+","+taglia+","+categoria+","+macroCategoria);
+        writer.close();
     }
 
     public CloudData takeDataFromCloudData(Date date) {

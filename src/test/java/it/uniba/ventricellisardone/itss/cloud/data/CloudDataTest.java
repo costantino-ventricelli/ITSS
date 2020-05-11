@@ -5,12 +5,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class CloudDataTest {
 
     @Test
     public void festivo() throws ParseException {
-        CloudData cloudData = new CloudData("01/05/20");
+        CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("01/05/20"));
         assert (cloudData.getDataString().equals("2020-05-01")) : "Errore data string: " + cloudData.getDataString();
         assert (cloudData.getGoogleData().equals(
                 Date.fromYearMonthDay(2020, 5, 1))) : "Data errata: " + cloudData.getGoogleData().toString();
@@ -29,7 +30,7 @@ public class CloudDataTest {
 
     @Test
     public void nonFestivo() throws ParseException{
-        CloudData cloudData = new CloudData("02/05/20");
+        CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("02/05/20"));
         assert (cloudData.getDataString().equals("2020-05-02")) : "Errore data string: " + cloudData.getDataString();
         assert (cloudData.getGoogleData().equals(
                 Date.fromYearMonthDay(2020, 5, 2))) : "Data errata: " + cloudData.getGoogleData().toString();
@@ -48,7 +49,7 @@ public class CloudDataTest {
 
     @Test
     public void domenica() throws ParseException{
-        CloudData cloudData = new CloudData("03/05/20");
+        CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("03/05/20"));
         assert (cloudData.getDataString().equals("2020-05-03")) : "Errore data string: " + cloudData.getDataString();
         assert (cloudData.getGoogleData().equals(
                 Date.fromYearMonthDay(2020, 5, 3))) : "Data errata: " + cloudData.getGoogleData().toString();
@@ -67,6 +68,6 @@ public class CloudDataTest {
 
     @Test
     public void wrongConstructorTest(){
-        Assertions.assertThrows(ParseException.class, () -> new CloudData(" ciccio/05/20"));
+        Assertions.assertThrows(ParseException.class, () -> new CloudData(new SimpleDateFormat("dd/MM/yy").parse("ciccio/05/20")));
     }
 }
