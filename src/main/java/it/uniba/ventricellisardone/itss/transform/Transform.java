@@ -41,21 +41,16 @@ public class Transform {
     private String feriale;
     private String festivo;
 
+    private static final String CSV_EXTENSION = ".csv";
+
     private static String TAG = "Transform.class";
     private List<CSVRecord> csvRecordList;
-    private PrintWriter writer;
-    private String savingPath;
-    private String fileName;
 
-    public Transform(List<CSVRecord> csvRecordList, String savingPath, String fileName) {
+    public Transform(List<CSVRecord> csvRecordList) {
         this.csvRecordList = csvRecordList;
-        this.savingPath = savingPath;
-        this.fileName = fileName;
     }
 
-
-    public void buildFinalRecord() throws FileNotFoundException {
-            for (int i = 0; i < csvRecordList.size(); i++) {
+    public void buildFinalRecord(int i) {
                 this.idOrdine = csvRecordList.get(i).getIdOrdine();
                 this.dataOrdine = csvRecordList.get(i).getDataOrdine();
                 this.codiceStatoFattura = csvRecordList.get(i).getCodiceStatoFattura();
@@ -85,28 +80,28 @@ public class Transform {
                 this.trimestreAnno = cloudData.getTrimestreAnno();
                 this.meseAnno = cloudData.getMeseAnno();
                 this.feriale = cloudData.getFeriale();
-                this.feriale = cloudData.getFeriale();
+                this.festivo = cloudData.getFestivo();
 
-               setNumberFileName(i);
-               writeOnFile();
-            }
     }
 
-
-    public void setNumberFileName(int i) {
-        int j;
-        if(i == 500 || i % 500 == 0) {
-            j = i / 500;
-            this.fileName = this.fileName.concat("_" + j);
-        }
-    }
-
-    public void writeOnFile() throws FileNotFoundException{
+    public void writeOnFile(String savingPath, int i, String fileName) throws FileNotFoundException{
+        PrintWriter writer;
+        fileName = setNumberFileName(i, fileName);
+        fileName.concat(CSV_EXTENSION);
         writer = new PrintWriter(new FileOutputStream(savingPath + "/" + fileName, true));
-        writer.print(idOrdine+","+dataOrdine+","+nomeGiorno+","+numeroGiornoAnno+","+nomeMese+","+annoValore+","+meseValore+","+trimestre+","+periodo+","+trimestreAnno+","+meseAnno+","+feriale+","+festivo+","+
+        writer.println(idOrdine+","+dataOrdine+","+nomeGiorno+","+numeroGiornoAnno+","+nomeMese+","+annoValore+","+meseValore+","+trimestre+","+periodo+","+trimestreAnno+","+meseAnno+","+feriale+","+festivo+","+
                 codiceStatoFattura+","+sessoAcquirente+","+quantita+","+prezzoPagato+","+sconto+","+outlet+","+nomeBrand+","+collezione+","+
                 colore+","+sessoArticolo+","+pagamentoOrdine+","+taglia+","+categoria+","+macroCategoria);
         writer.close();
+    }
+
+    public String setNumberFileName(int i, String fileName) {
+        int j;
+        if(i % 500 == 0) {
+            j = i / 500;
+            fileName = fileName.concat("_" + j);
+        }
+        return fileName;
     }
 
     public CloudData takeDataFromCloudData(Date date) {
@@ -118,4 +113,5 @@ public class Transform {
         }
         return cloudData;
     }
+
 } //end class

@@ -5,6 +5,7 @@ import it.uniba.ventricellisardone.itss.csv.CSVFile;
 import it.uniba.ventricellisardone.itss.csv.DataAnalisys;
 import it.uniba.ventricellisardone.itss.csv.FileFormatException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,12 +35,16 @@ public class MainClass {
                 savingPath = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(Calendar.getInstance().getTime());
             CSVFile csvFile = new CSVFile(data);
             //costruzione file della classe Transform
-            Transform transform = new Transform(csvFile.getCsvRecordList(), savingPath, "TransformFile");
-            try {
-                transform.buildFinalRecord();
-            } catch (FileNotFoundException ex) {
-                System.err.println(ex.getMessage());
+            Transform transform = new Transform(csvFile.getCsvRecordList());
+            for(int i = 0; i < csvFile.getCsvRecordList().size(); i++) {
+                transform.buildFinalRecord(i);
+                try {
+                    transform.writeOnFile(savingPath, i, "load_data");
+                } catch (FileNotFoundException ex) {
+                    System.err.println(ex.getMessage());
+                }
             }
+
         }else {
             throw new FileFormatException("Serve un file in formato .csv");
         }
