@@ -15,10 +15,11 @@ public class TransformTest {
 
     @Test
     public void firstTest() throws FileNotFoundException {
-        CSVFile csvFile = new CSVFile(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("data_transform_record_fonte.csv")).getPath());
+        CSVFile csvFile = new CSVFile(Objects.requireNonNull(TransformTest.class.getClassLoader().getResource("data_transform_record_fonte.csv")).getPath());
         Transform transform = new Transform(csvFile.getCsvRecordList());
 
         List<List<Object>> list = transform.getFinalList();
+        assert (list != null) : "La lista è nulla";
             for(int i = 0; i < list.size(); i++) {
                 transform.setFinalRecord(i);
                 transform.writeOnFile(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath(), i, "test_result_transform_record.csv");
