@@ -35,8 +35,7 @@ public class CSVFileTest {
 
     @Test
     public void thirdTest() throws FileNotFoundException{
-        CSVFile csvFile = new CSVFile(Objects.requireNonNull(
-                CSVFileTest.class.getClassLoader().getResource("parsing_error_data.csv")).getPath());
+        CSVFile csvFile = new CSVFile(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("parsing_error_data.csv")).getPath());
         assert (csvFile.getParseErrorList().equals(StaticTestModel.getParsingErrorList())) : "[ERROR] Parsing error list incorrect";
         csvFile.logParseErrorRecord(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("")).getPath(), "parsing_error_result.csv");
         Scanner testFile = new Scanner(new File(Objects.requireNonNull(CSVFileTest.class.getClassLoader().getResource("parsing_error_test.csv")).getPath()));

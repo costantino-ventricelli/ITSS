@@ -1,10 +1,8 @@
 package it.uniba.ventricellisardone.itss.csv;
 
+import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StaticTestModel {
 
@@ -174,4 +172,5 @@ public class StaticTestModel {
         list.add(string);
         return list;
     }
+
 }

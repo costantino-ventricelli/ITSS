@@ -37,7 +37,7 @@ public class MainClass {
             //costruzione file della classe Transform
             Transform transform = new Transform(csvFile.getCsvRecordList());
             for(int i = 0; i < csvFile.getCsvRecordList().size(); i++) {
-                transform.buildFinalRecord(i);
+                transform.setFinalRecord(i);
                 try {
                     transform.writeOnFile(savingPath, i, "load_data");
                 } catch (FileNotFoundException ex) {
