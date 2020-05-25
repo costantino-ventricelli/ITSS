@@ -10,6 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<mainClass>it.uniba.ventricellisardone.itss.MainClass</mainClass>
     </properties>
 
     <build>

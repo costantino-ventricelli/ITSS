@@ -3681,3 +3681,1254 @@ DataAnalisys.class [INFO LOG] 13/05/20, 17:13
 DataAnalisys.class [INFO LOG] 13/05/20, 17:13
 	Added .xml file extension
 
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:27
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/parsing_error_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	File name: parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	List size: 7
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/missing_fields_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	File name: test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	List size: 4
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:27
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:27
+	Mappa creata
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:27
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisysTest.class [INFO LOG] 21/05/20, 11:27
+	Mappa di test
+
+DataAnalisysTest.class [INFO LOG] 21/05/20, 11:27
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:27
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:27
+	File name: test_result_analysis.xml
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:29
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/parsing_error_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	File name: parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	List size: 7
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/missing_fields_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	File name: test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	List size: 4
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:29
+	Mappa creata
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:29
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisysTest.class [INFO LOG] 21/05/20, 11:29
+	Mappa di test
+
+DataAnalisysTest.class [INFO LOG] 21/05/20, 11:29
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:29
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:29
+	File name: test_result_analysis.xml
+
+CSVFile.class [INFO LOG] 21/05/20, 11:29
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/data_transform_record_fonte.csv
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 11:53
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/parsing_error_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	File name: parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	List size: 7
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/missing_fields_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	File name: test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	List size: 4
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:53
+	Mappa creata
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:53
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisysTest.class [INFO LOG] 21/05/20, 11:53
+	Mappa di test
+
+DataAnalisysTest.class [INFO LOG] 21/05/20, 11:53
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:53
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+DataAnalisys.class [INFO LOG] 21/05/20, 11:53
+	File name: test_result_analysis.xml
+
+CSVFile.class [INFO LOG] 21/05/20, 11:53
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/data_transform_record_fonte.csv
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 21/05/20, 12:00
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/parsing_error_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	File name: parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	List size: 7
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/missing_fields_data.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	File name: test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	List size: 4
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+DataAnalisys.class [INFO LOG] 21/05/20, 12:00
+	Mappa creata
+
+DataAnalisys.class [INFO LOG] 21/05/20, 12:00
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisysTest.class [INFO LOG] 21/05/20, 12:00
+	Mappa di test
+
+DataAnalisysTest.class [INFO LOG] 21/05/20, 12:00
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisys.class [INFO LOG] 21/05/20, 12:00
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+DataAnalisys.class [INFO LOG] 21/05/20, 12:00
+	File name: test_result_analysis.xml
+
+CSVFile.class [INFO LOG] 21/05/20, 12:00
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/data_transform_record_fonte.csv
+
+CSVFile.class [INFO LOG] 21/05/20, 12:02
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:41
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:43
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:44
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:44
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:45
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:46
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:49
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 22/05/20, 16:58
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/parsing_error_data.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	File name: parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	List size: 7
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/missing_fields_data.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	File name: test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	List size: 4
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+DataAnalisys.class [INFO LOG] 22/05/20, 16:58
+	Mappa creata
+
+DataAnalisys.class [INFO LOG] 22/05/20, 16:58
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisysTest.class [INFO LOG] 22/05/20, 16:58
+	Mappa di test
+
+DataAnalisysTest.class [INFO LOG] 22/05/20, 16:58
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisys.class [INFO LOG] 22/05/20, 16:58
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+DataAnalisys.class [INFO LOG] 22/05/20, 16:58
+	File name: test_result_analysis.xml
+
+CSVFile.class [INFO LOG] 22/05/20, 16:58
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/data_transform_record_fonte.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 16:59
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Fri Jan 01 00:00:00 CET 2010: Capodanno
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Wed Jan 06 00:00:00 CET 2010: Epifania
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Sun Apr 04 00:00:00 CEST 2010: Pasqua
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Mon Apr 05 00:00:00 CEST 2010: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Sun Apr 25 00:00:00 CEST 2010: Festa della Liberazione
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Sat May 01 00:00:00 CEST 2010: Festa del Lavoro
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Wed Jun 02 00:00:00 CEST 2010: Festa della Repubblica
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Sun Aug 15 00:00:00 CEST 2010: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Mon Nov 01 00:00:00 CET 2010: Tutti i santi
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Wed Dec 08 00:00:00 CET 2010: Immacolata Concezione
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Sat Dec 25 00:00:00 CET 2010: Natale
+
+Cloud data [INFO LOG] 22/05/20, 16:59
+	Holiday: Sun Dec 26 00:00:00 CET 2010: Santo Stefano
+
+CSVFile.class [INFO LOG] 22/05/20, 17:00
+	Data path: C:\Users\sardo\OneDrive\Desktop\File_progetto_ITSS\Dati_originali\DatixOLAP.csv
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Fri Jan 01 00:00:00 CET 2010: Capodanno
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Wed Jan 06 00:00:00 CET 2010: Epifania
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Sun Apr 04 00:00:00 CEST 2010: Pasqua
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Mon Apr 05 00:00:00 CEST 2010: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Sun Apr 25 00:00:00 CEST 2010: Festa della Liberazione
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Sat May 01 00:00:00 CEST 2010: Festa del Lavoro
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Wed Jun 02 00:00:00 CEST 2010: Festa della Repubblica
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Sun Aug 15 00:00:00 CEST 2010: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Mon Nov 01 00:00:00 CET 2010: Tutti i santi
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Wed Dec 08 00:00:00 CET 2010: Immacolata Concezione
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Sat Dec 25 00:00:00 CET 2010: Natale
+
+Cloud data [INFO LOG] 22/05/20, 17:00
+	Holiday: Sun Dec 26 00:00:00 CET 2010: Santo Stefano
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Wed Jan 01 00:00:00 CET 2020: Capodanno
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Mon Jan 06 00:00:00 CET 2020: Epifania
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sun Apr 12 00:00:00 CEST 2020: Pasqua
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Mon Apr 13 00:00:00 CEST 2020: Lunedì dell'Angelo
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Apr 25 00:00:00 CEST 2020: Festa della Liberazione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Fri May 01 00:00:00 CEST 2020: Festa del Lavoro
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Tue Jun 02 00:00:00 CEST 2020: Festa della Repubblica
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Aug 15 00:00:00 CEST 2020: Ferragosto o Assunzione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sun Nov 01 00:00:00 CET 2020: Tutti i santi
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Tue Dec 08 00:00:00 CET 2020: Immacolata Concezione
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Fri Dec 25 00:00:00 CET 2020: Natale
+
+Cloud data [INFO LOG] 22/05/20, 17:19
+	Holiday: Sat Dec 26 00:00:00 CET 2020: Santo Stefano
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/parsing_error_data.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	File name: parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	List size: 7
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/parsing_error_result.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/missing_fields_data.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	File name: test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	List size: 4
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Writing log in: /D:/Progetto_ITSS/ITSS/target/test-classes/results/test_result_null_fields.csv
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/right_data.csv
+
+DataAnalisys.class [INFO LOG] 22/05/20, 17:19
+	Mappa creata
+
+DataAnalisys.class [INFO LOG] 22/05/20, 17:19
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisysTest.class [INFO LOG] 22/05/20, 17:19
+	Mappa di test
+
+DataAnalisysTest.class [INFO LOG] 22/05/20, 17:19
+	{Colore={Verde muschio=1, Verde acido=1, Panna=1, Azzurro=1, Blu=2, Bluette=1, Testa di moro=2, Celeste=1, Bianco=2, Beige=1, Blu notte=1, Blu scuro=2, Blu medio=4}, MacroCategoria={Abbigliamento=12, Borse=4, Calzature=2, Accessori=1, Gioielli Moda=1}, PagamentoOrdine={PayPal=6, Carta di Credito=9, Contrassegno=5}, Collezione={Primavera - Estate 2011=5, Primavera - Estate 2012=5, Autunno - Inverno 2012=5, Autunno - Inverno 2011=5}, NomeCategoria={Polacco=1, Cappelli=1, Orologi=1, Sneakers=1, Shopper=4, Capispalla=2, Maglieria=10}, NomeBrand={AERONAUTICA MILITARE=8, SANTONI=1, HOGAN=2, FRECCE TRICOLORI=2, DIADORA=1, FIX DESIGN=3, FAY=3}, CodStatoFattura={DE=2, RU=1, LU=1, IT=11, GB=2, FR=2, ES=1}}
+
+DataAnalisys.class [INFO LOG] 22/05/20, 17:19
+	Directory: /D:/Progetto_ITSS/ITSS/target/test-classes/results
+
+DataAnalisys.class [INFO LOG] 22/05/20, 17:19
+	File name: test_result_analysis.xml
+
+CSVFile.class [INFO LOG] 22/05/20, 17:19
+	Data path: /D:/Progetto_ITSS/ITSS/target/test-classes/data_transform_record_fonte.csv
+

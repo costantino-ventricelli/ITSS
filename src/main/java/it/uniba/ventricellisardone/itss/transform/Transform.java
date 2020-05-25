@@ -6,6 +6,7 @@ import it.uniba.ventricellisardone.itss.log.Log;
 
 import java.io.*;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,10 +48,9 @@ public class Transform {
     private static final String CSV_EXTENSION = ".csv";
 
     private static String TAG = "Transform.class";
-    private List<CSVRecord> csvRecordList;
-    private List<Object> list;
-    private List<List<Object>> finalList;
+    private final List<CSVRecord> csvRecordList;
 
+    private final List<List<Object>> finalList = new ArrayList<>();
     public Transform(List<CSVRecord> csvRecordList) {
         this.csvRecordList = csvRecordList;
     }
@@ -60,36 +60,64 @@ public class Transform {
     public List<List<Object>> getFinalList() {return finalList;};
 
     public void setFinalRecord(int i) {
-        list.add(this.idOrdine = csvRecordList.get(i).getIdOrdine());
-        list.add(this.dataOrdine = csvRecordList.get(i).getDataOrdine());
-        list.add(this.codiceStatoFattura = csvRecordList.get(i).getCodiceStatoFattura());
-        list.add(this.sessoAcquirente = csvRecordList.get(i).getSessoAcquirente());
-        list.add(this.quantita = csvRecordList.get(i).getQuantita());
-        list.add(this.prezzoPagato = csvRecordList.get(i).getPrezzoPagato());
-        list.add(this.sconto = csvRecordList.get(i).getSconto());
-        list.add(this.outlet = csvRecordList.get(i).isOutlet());
-        list.add(this.nomeBrand = csvRecordList.get(i).getNomeBrand());
-        list.add(this.collezione = csvRecordList.get(i).getCollezione());
-        list.add(this.colore = csvRecordList.get(i).getColore());
-        list.add(this.sessoArticolo = csvRecordList.get(i).getSessoArticolo());
-        list.add(this.pagamentoOrdine = csvRecordList.get(i).getPagamentoOrdine());
-        list.add(this.taglia = csvRecordList.get(i).getTaglia());
-        list.add(this.categoria = csvRecordList.get(i).getCategoria());
-        list.add(this.macroCategoria = csvRecordList.get(i).getMacroCategoria());
+        List<Object> list = new ArrayList<>();
+        this.idOrdine = csvRecordList.get(i).getIdOrdine();
+        list.add(idOrdine);
+        this.dataOrdine = csvRecordList.get(i).getDataOrdine();
+        list.add(dataOrdine);
+        this.codiceStatoFattura = csvRecordList.get(i).getCodiceStatoFattura();
+        list.add(codiceStatoFattura);
+        this.sessoAcquirente = csvRecordList.get(i).getSessoAcquirente();
+        list.add(sessoAcquirente);
+        this.quantita = csvRecordList.get(i).getQuantita();
+        list.add(quantita);
+        this.prezzoPagato = csvRecordList.get(i).getPrezzoPagato();
+        list.add(prezzoPagato);
+        this.sconto = csvRecordList.get(i).getSconto();
+        list.add(sconto);
+        this.outlet = csvRecordList.get(i).isOutlet();
+        list.add(outlet);
+        this.nomeBrand = csvRecordList.get(i).getNomeBrand();
+        list.add(nomeBrand);
+        this.collezione = csvRecordList.get(i).getCollezione();
+        list.add(collezione);
+        this.colore = csvRecordList.get(i).getColore();
+        list.add(colore);
+        this.sessoArticolo = csvRecordList.get(i).getSessoArticolo();
+        list.add(sessoArticolo);
+        this.pagamentoOrdine = csvRecordList.get(i).getPagamentoOrdine();
+        list.add(pagamentoOrdine);
+        this.taglia = csvRecordList.get(i).getTaglia();
+        list.add(taglia);
+        this.categoria = csvRecordList.get(i).getCategoria();
+        list.add(categoria);
+        this.macroCategoria = csvRecordList.get(i).getMacroCategoria();
+        list.add(macroCategoria);
 
         CloudData cloudData = takeDataFromCloudData(dataOrdine);
 
-        list.add(this.nomeGiorno = cloudData.getNomeGiorno());
-        list.add(this.numeroGiornoAnno = cloudData.getNumeroGiornoAnno());
-        list.add(this.nomeMese = cloudData.getNomeMese());
-        list.add(this.annoValore = cloudData.getAnnoValore());
-        list.add(this.meseValore = cloudData.getMeseValore());
-        list.add(this.trimestre = cloudData.getTrimestre());
-        list.add(this.periodo = cloudData.getPeriodo());
-        list.add(this.trimestreAnno = cloudData.getTrimestreAnno());
-        list.add(this.meseAnno = cloudData.getMeseAnno());
-        list.add(this.feriale = cloudData.getFeriale());
-        list.add(this.festivo = cloudData.getFestivo());
+        this.nomeGiorno = cloudData.getNomeGiorno();
+        list.add(nomeGiorno);
+        this.numeroGiornoAnno = cloudData.getNumeroGiornoAnno();
+        list.add(numeroGiornoAnno);
+        this.nomeMese = cloudData.getNomeMese();
+        list.add(nomeMese);
+        this.annoValore = cloudData.getAnnoValore();
+        list.add(annoValore);
+        this.meseValore = cloudData.getMeseValore();
+        list.add(meseValore);
+        this.trimestre = cloudData.getTrimestre();
+        list.add(trimestre);
+        this.periodo = cloudData.getPeriodo();
+        list.add(periodo);
+        this.trimestreAnno = cloudData.getTrimestreAnno();
+        list.add(trimestreAnno);
+        this.meseAnno = cloudData.getMeseAnno();
+        list.add(meseAnno);
+        this.feriale = cloudData.getFeriale();
+        list.add(feriale);
+        this.festivo = cloudData.getFestivo();
+        list.add(festivo);
 
         finalList.add(list);
 

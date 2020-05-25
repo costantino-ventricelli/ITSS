@@ -35,16 +35,19 @@ public class MainClass {
                 savingPath = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(Calendar.getInstance().getTime());
             CSVFile csvFile = new CSVFile(data);
             //costruzione file della classe Transform
-            Transform transform = new Transform(csvFile.getCsvRecordList());
-            for(int i = 0; i < csvFile.getCsvRecordList().size(); i++) {
-                transform.setFinalRecord(i);
-                try {
-                    transform.writeOnFile(savingPath, i, "load_data");
-                } catch (FileNotFoundException ex) {
-                    System.err.println(ex.getMessage());
+            if(csvFile.getCsvRecordList() != null) {
+                Transform transform = new Transform(csvFile.getCsvRecordList());
+                for (int i = 0; i < csvFile.getCsvRecordList().size(); i++) {
+                    transform.setFinalRecord(i);
+                    try {
+                        transform.writeOnFile(savingPath, i, "load_data");
+                    } catch (FileNotFoundException ex) {
+                        System.err.println(ex.getMessage());
+                    }
                 }
+            } else {
+                System.err.println("La lista di csvFile è vuota");
             }
-
         }else {
             throw new FileFormatException("Serve un file in formato .csv");
         }
