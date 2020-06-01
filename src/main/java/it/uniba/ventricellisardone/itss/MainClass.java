@@ -1,5 +1,6 @@
 package it.uniba.ventricellisardone.itss;
 
+import it.uniba.ventricellisardone.itss.csv.CSVTransformRecord;
 import it.uniba.ventricellisardone.itss.transform.Transform;
 import it.uniba.ventricellisardone.itss.csv.CSVFile;
 import it.uniba.ventricellisardone.itss.csv.DataAnalisys;
@@ -36,14 +37,13 @@ public class MainClass {
             CSVFile csvFile = new CSVFile(data);
             //costruzione file della classe Transform
             if(csvFile.getCsvRecordList() != null) {
-                Transform transform = new Transform(csvFile.getCsvRecordList());
-                for (int i = 0; i < csvFile.getCsvRecordList().size(); i++) {
-                    transform.setFinalRecord(i);
-                    try {
-                        transform.writeOnFile(savingPath, i, "load_data");
-                    } catch (FileNotFoundException ex) {
-                        System.err.println(ex.getMessage());
-                    }
+                CSVTransformRecord csvTransformRecord = new CSVTransformRecord(csvFile.getCsvRecordList());
+                csvTransformRecord.setRecord();
+                Transform transform = new Transform(savingPath, "load_data", csvTransformRecord.getBuildString());
+                try {
+                    transform.writeOnFile();
+                } catch (FileNotFoundException e) {
+                    System.out.println(e.getMessage());
                 }
             } else {
                 System.err.println("La lista di csvFile è vuota");
