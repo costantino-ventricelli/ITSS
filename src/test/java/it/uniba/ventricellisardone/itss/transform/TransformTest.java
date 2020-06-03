@@ -1,16 +1,5 @@
 package it.uniba.ventricellisardone.itss.transform;
 
-import it.uniba.ventricellisardone.itss.csv.CSVFile;
-import it.uniba.ventricellisardone.itss.csv.CSVFileTest;
-import it.uniba.ventricellisardone.itss.csv.StaticTestModel;
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
-
 public class TransformTest {
  /*
     @Test

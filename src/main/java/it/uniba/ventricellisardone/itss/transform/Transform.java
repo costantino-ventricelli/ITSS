@@ -1,14 +1,8 @@
 package it.uniba.ventricellisardone.itss.transform;
 
-import it.uniba.ventricellisardone.itss.cloud.data.CloudData;
-import it.uniba.ventricellisardone.itss.csv.CSVRecord;
-import it.uniba.ventricellisardone.itss.csv.CSVTransformRecord;
-import it.uniba.ventricellisardone.itss.log.Log;
-
-import java.io.*;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class Transform {

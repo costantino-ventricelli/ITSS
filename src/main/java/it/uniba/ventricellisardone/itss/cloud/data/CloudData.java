@@ -1,15 +1,19 @@
 package it.uniba.ventricellisardone.itss.cloud.data;
 
 import com.google.cloud.Date;
+import com.google.common.io.CharStreams;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
 import it.uniba.ventricellisardone.itss.log.Log;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,7 +25,7 @@ import java.util.Locale;
 public class CloudData{
 
     private static final String TAG = "Cloud data";
-    private List<Object> listOfObject = new ArrayList<>();
+    private final List<Object> listOfObject = new ArrayList<>();
 
     private final Date googleData;
 
@@ -121,31 +125,33 @@ public class CloudData{
     }
 
     private String setPeriodo(java.util.Date date) {
-        OkHttpClient client = new OkHttpClient();
-        String returnValue = "NESSUNO";
-        Request request = new Request.Builder()
-                .url("https://public-holiday.p.rapidapi.com/" + this.annoValore + "/IT")
-                .get()
-                .addHeader("x-rapidapi-host", "public-holiday.p.rapidapi.com")
-                .addHeader("x-rapidapi-key", "2ffe94d15fmsh77f096ee6ae83e2p1e6163jsn8d8d6c79a2c2")
-                .build();
+        String stringResponse = "NESSUNO";
         try {
-            Response response = client.newCall(request).execute();
-            ResponseBody body = response.body();
+            System.out.println("Richiesta api");
+            CloseableHttpClient client = HttpClients.custom().build();
+            HttpUriRequest request = RequestBuilder.get()
+                    .setUri("https://public-holiday.p.rapidapi.com/" + this.annoValore + "/IT")
+                    .addHeader("x-rapidapi-host", "public-holiday.p.rapidapi.com")
+                    .addHeader("x-rapidapi-key", "2ffe94d15fmsh77f096ee6ae83e2p1e6163jsn8d8d6c79a2c2")
+                    .build();
+            CloseableHttpResponse response = client.execute(request);
+            Reader reader = new InputStreamReader(response.getEntity().getContent());
+            stringResponse = CharStreams.toString(reader);
             Gson gson = new Gson();
-            Type listType = new TypeToken<List<HolidaysDate>>() {
-            }.getType();
-            List<HolidaysDate> holidaysDateList = gson.fromJson(body.string(), listType);
+            Type listType = new TypeToken<List<HolidaysDate>>() {}.getType();
+            List<HolidaysDate> holidaysDateList = gson.fromJson(stringResponse, listType);
+            stringResponse = "NESSUNO";
             for (HolidaysDate holidaysDate : holidaysDateList) {
                 Log.i(TAG, "Holiday: " + holidaysDate.getDate().toString() + ": " + holidaysDate.getLocalName());
                 if (holidaysDate.getDate().equals(date))
-                    returnValue = holidaysDate.getLocalName().toUpperCase();
+                    stringResponse = holidaysDate.getLocalName().toUpperCase();
             }
-            client.getDispatcher().getExecutorService().shutdown();
+            response.close();
+            request.abort();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return returnValue;
+        return stringResponse;
     }
 
     private String setFeriale() {

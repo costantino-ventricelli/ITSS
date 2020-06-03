@@ -71,6 +71,7 @@ public class CSVTransformRecord {
 
 
     public CloudData takeDataFromCloudData(Date date) {
+        System.out.println("Taking date");
         CloudData cloudData = null;
         try {
             cloudData = new CloudData(date);
