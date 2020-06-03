@@ -17,7 +17,6 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -25,7 +24,6 @@ import java.util.Locale;
 public class CloudData{
 
     private static final String TAG = "Cloud data";
-    private final List<Object> listOfObject = new ArrayList<>();
 
     private final Date googleData;
 

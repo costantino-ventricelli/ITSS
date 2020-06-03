@@ -1,62 +1,107 @@
 package it.uniba.ventricellisardone.itss.transform;
 
+import it.uniba.ventricellisardone.itss.cloud.data.CloudData;
+import it.uniba.ventricellisardone.itss.csv.CSVRecord;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 
 public class Transform {
     private static final String CSV_EXTENSION = ".csv";
-    private static String TAG = "Transform.class";
+    private static final String header = "ordine_id_carrello,ordine_data,ordine_giorno_nome,ordine_giorno_dell_anno," +
+            "ordine_mese_nome,ordine_anno_valore,ordine_mese_valore,ordine_trimestre,ordine_periodo," +
+            "ordine_trimestre_anno,ordine_mese_anno,ordine_feriale_non,ordine_festivo_non,ordine_codice_stato," +
+            "ordine_stato_nome,ordine_sesso_acquirente,ordine_quantita,ordine_prezzo_pagato,ordine_sconto," +
+            "ordine_outlet,ordine_brand,ordine_collezione,ordine_colore,ordine_sesso_articolo," +
+            "ordine_metodo_pagamento,ordine_taglia,ordine_categoria,ordine_macro_categoria";
+    private static final String TAG = "Transform.class";
 
-    private String savingPath;
-    private String fileName;
-    List<String> list;
+    private final String savingPath;
+    private int lastFileCreated;
 
-    private String header = "ordine_id_carrello,ordine_data,ordine_giorno_nome,ordine_giorno_dell_anno,ordine_mese_nome,ordine_anno_valore,ordine_mese_valore,ordine_trimestre,ordine_periodo,ordine_trimestre_anno,ordine_mese_anno,ordine_feriale_non,ordine_festivo_non,ordine_codice_stato,ordine_stato_nome,ordine_sesso_acquirente,ordine_quantita,ordine_prezzo_pagato,ordine_sconto,ordine_outlet,ordine_brand,ordine_collezione,ordine_colore,ordine_sesso_articolo,ordine_metodo_pagamento,ordine_taglia,ordine_categoria,ordine_macro_categoria";
-
-    public Transform(String savingPath, String fileName, List<String> list) {
+    public Transform(String savingPath) {
         this.savingPath = savingPath;
-        this.fileName = fileName;
-        this.list = list;
+        File file = new File(savingPath);
+        if(file.mkdir())
+            System.out.println("Directory  Created");
+        this.lastFileCreated = 0;
     }
 
-
-    public void writeOnFile() throws FileNotFoundException{
-        PrintWriter writer;
-        savingPath += "results";
-
-        fileName.concat(CSV_EXTENSION);
-
-        for(int i = 0; i < list.size(); i++) {
-            if(i % 500 == 0 && i != 0) {
-                fileName = setNumberFileName(i, fileName);
-                for(int j = 0; j <= i; j++) {
-                    writer = new PrintWriter(new FileOutputStream(savingPath + "/" + fileName, false));
-                    writer.println(header);
-                    writer.println(list);
-                    writer.close();
-                }
-           } else {
-                for(int j = 0; j <= i; j++) {
-                    writer = new PrintWriter(new FileOutputStream(savingPath + "/" + fileName, false));
-                    writer.println(header);
-                    writer.println(list);
-                    writer.close();
-                }
-           }
-
+    public void transformData(List<CSVRecord> CSVRecordList) throws ParseException, FileNotFoundException {
+        PrintWriter csvFile = new PrintWriter(savingPath + "/load_data_" + lastFileCreated + CSV_EXTENSION);
+        csvFile.println(header);
+        for(CSVRecord record : CSVRecordList){
+            CloudData cloudData = new CloudData(record.getDataOrdine());
+            StringBuilder bigQueryRecord = new StringBuilder();
+            bigQueryRecord.append(record.getIdOrdine());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getDataString());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getNomeGiorno().toUpperCase());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getNumeroGiornoAnno());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getNomeMese().toUpperCase());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getAnnoValore());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getMeseValore());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getTrimestre());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getPeriodo().toUpperCase());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getTrimestreAnno());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getMeseAnno());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getFeriale());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(cloudData.getFestivo());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getCodiceStatoFattura());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(new Locale("IT", record.getCodiceStatoFattura()).getDisplayCountry().toUpperCase());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getSessoAcquirente());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getQuantita());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getPrezzoPagato());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getSconto());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.isOutlet() ? "OUTLET" : "NON OUTLET");
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getNomeBrand().toUpperCase());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getCollezione().toUpperCase());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getColore().toUpperCase());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getSessoArticolo());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getPagamentoOrdine());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getTaglia());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getCategoria());
+            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getMacroCategoria());
+            bigQueryRecord.append(",");
+            csvFile.println(bigQueryRecord.toString());
         }
+        csvFile.close();
+        lastFileCreated++;
+        PrintWriter logTransform = new PrintWriter(savingPath+"/log_transform.log");
+        logTransform.println(lastFileCreated);
+        logTransform.close();
     }
-
-
-    public String setNumberFileName(int i, String fileName) {
-        int j = i / 500;
-        String fileName1;
-        fileName1 = fileName.concat("_" + j);
-        return fileName1;
-    }
-
-
 
 } //end class
