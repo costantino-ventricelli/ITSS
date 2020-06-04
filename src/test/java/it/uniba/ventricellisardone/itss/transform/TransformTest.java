@@ -1,32 +1,11 @@
 package it.uniba.ventricellisardone.itss.transform;
 
+import org.junit.jupiter.api.Test;
+
 public class TransformTest {
- /*
-    @Test
-    public void firstTest() throws FileNotFoundException {
-        CSVFile csvFile = new CSVFile(Objects.requireNonNull(TransformTest.class.getClassLoader().getResource("data_transform_record_fonte.csv")).getPath());
-        Transform transform = new Transform(csvFile.getCsvRecordList());
-
-        List<List<Object>> list = transform.getFinalList();
-        assert (list != null) : "La lista è nulla";
-            for(int i = 0; i < list.size(); i++) {
-                transform.setFinalRecord(i);
-                transform.writeOnFile(Objects.requireNonNull(TransformTest.class.getClassLoader().getResource("")).getPath(), i, "test_result_transform_record.csv");
-            }
-        Scanner testFile = new Scanner(new File(Objects.requireNonNull(TransformTest.class.getClassLoader().getResource("data_transform_final_record.csv")).getPath()));
-        String resultPath = Objects.requireNonNull(TransformTest.class.getClassLoader().getResource("")).getPath() + "/results/test_result_transform_record_1.csv";
-        Scanner resultFile = new Scanner(new File(resultPath));
-        int i = 0;
-        while (resultFile.hasNextLine()){
-            assert (resultFile.nextLine().equals(testFile.nextLine())) : "[ERROR] Incorrect record line " + i + " not match";
-            i++;
-        }
-    }
 
     @Test
-    public void secondTest() {
+    public void firstTest(){
 
     }
-
-  */
 }
