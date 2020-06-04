@@ -42,7 +42,7 @@ public class LoadData {
         saveOperation();
         Thread thread = null;
         for (int i = startFrom; i < endTo; i++) {
-            String file = dataDirectory + "/data_load_" + i + ".csv";
+            String file = dataDirectory + "/load_data_" + i + ".csv";
             System.out.println("[EXECUTING] File directory: " + file);
             System.out.println("[EXECUTING] CARICO IL FILE CSV N°: " + i);
             TableDataWriteChannel writer = bigQuery.writer(jobId, writeChannelConfiguration);

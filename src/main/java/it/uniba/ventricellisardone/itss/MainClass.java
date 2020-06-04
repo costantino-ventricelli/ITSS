@@ -12,28 +12,9 @@ import java.util.*;
 
 public class MainClass {
 
-    public static void main(String[] args){
-        CSVFile csvFile = new CSVFile("/Users/costantinoventricelli/Desktop/dev/JAVA/ITSS/src/main/resources/right_data.csv");
-        Transform transform = new Transform("/Users/costantinoventricelli/Desktop/2020-06-03/");
-        List<CSVRecord> csvRecordList = csvFile.getCsvRecordList();
-        ArrayList<CSVRecord> transformList = new ArrayList<>();
-        for(CSVRecord record : csvRecordList){
-            System.out.println("Leggo record");
-            if(transformList.size() <= 1000){
-                transformList.add(record);
-            }else{
-                transform(transform, transformList);
-                break;
-            }
-        }
-        transform(transform, transformList);
-    }
+    public static void main(String[] args) {
+        String string = "ordine_id_carrello,ordine_data,ordine_giorno_nome,ordine_giorno_dell_anno,ordine_mese_nome,ordine_anno_valore,ordine_mese_valore,ordine_trimestre,ordine_periodo,ordine_trimestre_anno,ordine_mese_anno,ordine_feriale_non,ordine_festivo_non,ordine_codice_stato,ordine_stato_nome,ordine_sesso_acquirente,ordine_quantita,ordine_prezzo_pagato,ordine_sconto,ordine_outlet,ordine_brand,ordine_collezione,ordine_colore,ordine_sesso_articolo,ordine_metodo_pagamento,ordine_taglia,ordine_categoria,ordine_macro_categoria";
 
-    private static void transform(Transform transform, ArrayList<CSVRecord> transformList) {
-        try {
-            transform.transformData(transformList);
-        } catch (ParseException | FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        String string2 = "ordine_id_carrello,ordine_data,ordine_giorno_nome,ordine_giorno_dell_anno,ordine_mese_nome,ordine_anno_valore,ordine_mese_valore,ordine_trimestre,ordine_periodo,ordine_trimestre_anno,ordine_mese_anno,ordine_feriale_non,ordine_festivo_non,ordine_codice_stato,ordine_stato_nome,ordine_sesso_acquirente,ordine_quantita,ordine_prezzo_pagato,ordine_sconto,ordine_outlet,ordine_brand,ordine_collezione,ordine_colore,ordine_sesso_articolo,ordine_metodo_pagamento,ordine_taglia,ordine_categoria,ordine_macro_categoria";
     }
 }

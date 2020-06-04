@@ -2,11 +2,10 @@ package it.uniba.ventricellisardone.itss.transform;
 
 import it.uniba.ventricellisardone.itss.cloud.data.CloudData;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
+import it.uniba.ventricellisardone.itss.log.Log;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.text.ParseException;
 import java.util.List;
@@ -26,15 +25,17 @@ public class Transform {
     private int lastFileCreated;
 
     public Transform(String savingPath) {
-        this.savingPath = savingPath;
-        File file = new File(savingPath);
-        if(file.mkdir())
+        this.savingPath = "/Users/costantinoventricelli/Desktop/2020-06-03/";
+        Log.i(TAG, "Directory salvataggio:" + this.savingPath);
+        File file = new File("/Users/costantinoventricelli/Desktop/2020-06-03/");
+        if(file.mkdir()) {
             System.out.println("Directory  Created");
+        }
         this.lastFileCreated = 0;
     }
 
-    public void transformData(List<CSVRecord> CSVRecordList) throws ParseException, FileNotFoundException {
-        PrintWriter csvFile = new PrintWriter(savingPath + "/load_data_" + lastFileCreated + CSV_EXTENSION);
+    public void transformData(List<CSVRecord> CSVRecordList) throws ParseException, IOException {
+        PrintWriter csvFile = new PrintWriter(savingPath + "/load_data_" + lastFileCreated + CSV_EXTENSION, StandardCharsets.UTF_8);
         csvFile.println(header);
         for(CSVRecord record : CSVRecordList){
             CloudData cloudData = new CloudData(record.getDataOrdine());
@@ -85,16 +86,15 @@ public class Transform {
             bigQueryRecord.append(",");
             bigQueryRecord.append(record.getColore().toUpperCase());
             bigQueryRecord.append(",");
-            bigQueryRecord.append(record.getSessoArticolo());
+            bigQueryRecord.append(record.getSessoArticolo().toUpperCase());
             bigQueryRecord.append(",");
-            bigQueryRecord.append(record.getPagamentoOrdine());
+            bigQueryRecord.append(record.getPagamentoOrdine().toUpperCase());
             bigQueryRecord.append(",");
-            bigQueryRecord.append(record.getTaglia());
+            bigQueryRecord.append(record.getTaglia().toUpperCase());
             bigQueryRecord.append(",");
-            bigQueryRecord.append(record.getCategoria());
+            bigQueryRecord.append(record.getCategoria().toUpperCase());
             bigQueryRecord.append(",");
-            bigQueryRecord.append(record.getMacroCategoria());
-            bigQueryRecord.append(",");
+            bigQueryRecord.append(record.getMacroCategoria().toUpperCase());
             csvFile.println(bigQueryRecord.toString());
         }
         csvFile.close();

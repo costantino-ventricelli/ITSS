@@ -52,7 +52,7 @@ public class LoadDataTest {
 
     @Test
     public void rightConstructorTest() throws IOException {
-        new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("data_load_0.csv")).getPath(), "test_tabella");
+        new LoadData(Objects.requireNonNull(LoadDataTest.class.getClassLoader().getResource("load_data_0.csv")).getPath(), "test_tabella");
     }
 
     @Test
