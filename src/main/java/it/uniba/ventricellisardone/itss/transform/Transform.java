@@ -25,9 +25,9 @@ public class Transform {
     private int lastFileCreated;
 
     public Transform(String savingPath) {
-        this.savingPath = "/Users/costantinoventricelli/Desktop/2020-06-03/";
+        this.savingPath = savingPath;
         Log.i(TAG, "Directory salvataggio:" + this.savingPath);
-        File file = new File("/Users/costantinoventricelli/Desktop/2020-06-03/");
+        File file = new File(savingPath);
         if(file.mkdir()) {
             System.out.println("Directory  Created");
         }
