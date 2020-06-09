@@ -1,13 +1,11 @@
 package it.uniba.ventricellisardone.itss.etl;
 
-import it.uniba.ventricellisardone.itss.csv.ecxception.CSVNullFieldsException;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVNullFieldsException;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ETLStaticTestModel {
 

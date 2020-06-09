@@ -1,7 +1,7 @@
 package it.uniba.ventricellisardone.itss.etl;
 
-import it.uniba.ventricellisardone.itss.csv.ecxception.CSVNullFieldsException;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVNullFieldsException;
 import it.uniba.ventricellisardone.itss.log.Log;
 
 import java.io.File;
@@ -20,24 +20,22 @@ public class Extraction {
     private static final String RESULTS_DIR = "/Results/";
 
     static {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("IdOrdine", 0);
-        map.put("DataOrdine", 1);
-        map.put("CodStatoFattura", 2);
-        map.put("SexAcquirente", 3);
-        map.put("Quantita", 4);
-        map.put("PrezzoPagato", 5);
-        map.put("Sconto", 6);
-        map.put("Outlet", 7);
-        map.put("NomeBrand", 8);
-        map.put("Collezione", 9);
-        map.put("Colore", 10);
-        map.put("SexArticolo", 11);
-        map.put("PagamentoOrdine", 12);
-        map.put("ValoreTagliaEffettivo", 13);
-        map.put("NomeCategoria", 14);
-        map.put("MacroCategoria", 15);
-        HEADER_FILE = Collections.unmodifiableMap(map);
+        HEADER_FILE = Map.ofEntries(Map.entry("IdOrdine", 0),
+                Map.entry("DataOrdine", 1),
+                Map.entry("CodStatoFattura", 2),
+                Map.entry("SexAcquirente", 3),
+                Map.entry("Quantita", 4),
+                Map.entry("PrezzoPagato", 5),
+                Map.entry("Sconto", 6),
+                Map.entry("Outlet", 7),
+                Map.entry("NomeBrand", 8),
+                Map.entry("Collezione", 9),
+                Map.entry("Colore", 10),
+                Map.entry("SexArticolo", 11),
+                Map.entry("PagamentoOrdine", 12),
+                Map.entry("ValoreTagliaEffettivo", 13),
+                Map.entry("NomeCategoria", 14),
+                Map.entry("MacroCategoria", 15));
 
     }
 

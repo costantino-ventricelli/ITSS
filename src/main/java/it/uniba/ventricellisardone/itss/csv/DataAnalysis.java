@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.net.URI;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
@@ -21,15 +20,13 @@ public class DataAnalysis {
     private static final String XML_EXTENSION = ".xml";
 
     static {
-        Map<String, Integer> headerMap = new HashMap<>();
-        headerMap.put("Colore", 0);
-        headerMap.put("CodStatoFattura", 1);
-        headerMap.put("NomeBrand", 2);
-        headerMap.put("Collezione", 3);
-        headerMap.put("PagamentoOrdine", 4);
-        headerMap.put("NomeCategoria", 5);
-        headerMap.put("MacroCategoria", 6);
-        ANALYSIS_HEADER = Collections.unmodifiableMap(headerMap);
+        ANALYSIS_HEADER = Map.of("Colore", 0,
+                "CodStatoFattura", 1,
+                "NomeBrand", 2,
+                "Collezione", 3,
+                "PagamentoOrdine", 4,
+                "NomeCategoria", 5,
+                "MacroCategoria", 6);
     }
 
     public DataAnalysis(List<CSVRecord> csvRecordList) {

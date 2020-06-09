@@ -1,7 +1,7 @@
 package it.uniba.ventricellisardone.itss;
 
-import it.uniba.ventricellisardone.itss.etl.Extraction;
 import it.uniba.ventricellisardone.itss.csv.DataAnalysis;
+import it.uniba.ventricellisardone.itss.etl.Extraction;
 
 public class MainClass {
 
