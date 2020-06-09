@@ -2,7 +2,7 @@ package it.uniba.ventricellisardone.itss.etl;
 
 import it.uniba.ventricellisardone.itss.cloud.data.CloudData;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
-import it.uniba.ventricellisardone.itss.log.Log;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,11 +29,9 @@ public class Transforming {
     private final String savingPath;
     private int lastFileCreated;
 
-    public Transforming(String savingPath) {
+    public Transforming(String savingPath) throws IOException {
         this.savingPath = savingPath;
-        File file = new File(savingPath);
-        if(file.mkdir())
-            Log.i(TAG, "Directory: " + this.savingPath + " created");
+        FileUtils.forceMkdir(new File(savingPath));
         this.lastFileCreated = 0;
     }
 

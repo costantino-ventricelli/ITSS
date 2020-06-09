@@ -3,11 +3,9 @@ package it.uniba.ventricellisardone.itss.etl;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
 import it.uniba.ventricellisardone.itss.csv.ecxception.CSVNullFieldsException;
 import it.uniba.ventricellisardone.itss.log.Log;
+import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.*;
@@ -101,7 +99,7 @@ public class Extraction {
         return parseErrorList;
     }
 
-    public void logNullRecord(String pathDirectory, String fileName){
+    public void logNullRecord(String pathDirectory, String fileName) throws IOException {
         pathDirectory += RESULTS_DIR;
         pathDirectory = Paths.get(pathDirectory).toString();
         fileName = checkDirectoryAndFileName(pathDirectory, fileName, CSV_EXTENSION);
@@ -115,7 +113,7 @@ public class Extraction {
         }
     }
 
-    public void logParseErrorRecord(String pathDirectory, String fileName){
+    public void logParseErrorRecord(String pathDirectory, String fileName) throws IOException {
         pathDirectory += RESULTS_DIR;
         pathDirectory = Paths.get(pathDirectory).toString();
         fileName = checkDirectoryAndFileName(pathDirectory, fileName, CSV_EXTENSION);
@@ -129,13 +127,10 @@ public class Extraction {
         }
     }
 
-    private String checkDirectoryAndFileName(String pathDirectory , String fileName, String extension) {
+    private String checkDirectoryAndFileName(String pathDirectory , String fileName, String extension) throws IOException {
         Log.i(TAG, "Directory: " + pathDirectory);
         Log.i(TAG, "File name: " + fileName);
-        File directory = new File(pathDirectory);
-        if (directory.mkdir()) {
-            System.out.println("[INFO] Created directory: " + pathDirectory);
-        }
+        FileUtils.forceMkdir(new File(pathDirectory));
         if (!fileName.contains(extension)) {
             fileName = fileName.concat(extension);
             System.out.println("[INFO] Added "+ extension + " file extension");

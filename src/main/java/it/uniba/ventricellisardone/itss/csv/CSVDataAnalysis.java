@@ -1,18 +1,15 @@
 package it.uniba.ventricellisardone.itss.csv;
 
 import it.uniba.ventricellisardone.itss.log.Log;
+import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DataAnalysis {
+public class CSVDataAnalysis {
 
     private static final Map<String, Integer> ANALYSIS_HEADER;
     private final List<CSVRecord> csvRecordList;
@@ -29,7 +26,7 @@ public class DataAnalysis {
                 "MacroCategoria", 6);
     }
 
-    public DataAnalysis(List<CSVRecord> csvRecordList) {
+    public CSVDataAnalysis(List<CSVRecord> csvRecordList) {
         this.csvRecordList = csvRecordList;
     }
 
@@ -55,7 +52,7 @@ public class DataAnalysis {
         return fieldMap;
     }
 
-    public void logDataAnalysis(Map<String, Map<String, Integer>> analysisReport, String pathDirectory, String fileName){
+    public void logDataAnalysis(Map<String, Map<String, Integer>> analysisReport, String pathDirectory, String fileName) throws IOException {
         pathDirectory += "/Analysis/";
         pathDirectory = Paths.get(pathDirectory).toString();
         fileName = checkDirectoryAndFileName(pathDirectory, fileName);
@@ -79,17 +76,14 @@ public class DataAnalysis {
         }
     }
 
-    private String checkDirectoryAndFileName(String pathDirectory, String fileName) {
+    private String checkDirectoryAndFileName(String pathDirectory, String fileName) throws IOException {
         Log.i(TAG, "Directory: " + pathDirectory);
         Log.i(TAG, "File name: " + fileName);
-        File directory = new File(pathDirectory);
-        if (directory.mkdir()) {
-            System.out.println("[INFO] Created directory: " + pathDirectory);
-        }
-        if (!fileName.contains(DataAnalysis.XML_EXTENSION)) {
-            fileName = fileName.concat(DataAnalysis.XML_EXTENSION);
-            System.out.println("[INFO] Added "+ DataAnalysis.XML_EXTENSION + " file extension");
-            Log.i(TAG, "Added " + DataAnalysis.XML_EXTENSION + " file extension");
+        FileUtils.forceMkdir(new File(pathDirectory));
+        if (!fileName.contains(CSVDataAnalysis.XML_EXTENSION)) {
+            fileName = fileName.concat(CSVDataAnalysis.XML_EXTENSION);
+            System.out.println("[INFO] Added "+ CSVDataAnalysis.XML_EXTENSION + " file extension");
+            Log.i(TAG, "Added " + CSVDataAnalysis.XML_EXTENSION + " file extension");
         }
         return fileName;
     }

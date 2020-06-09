@@ -34,7 +34,7 @@ public class TransformingTest {
     }
 
     @Test
-    public void secondTest(){
+    public void secondTest() throws IOException {
         Extraction extraction = new Extraction(Objects.requireNonNull(TransformingTest.class.getClassLoader().getResource("etl/transforming/transform_data_error.csv")).getPath());
         Transforming transforming = new Transforming("/Users/costantinoventricelli/Desktop/TEST");
         Assertions.assertThrows(ParseException.class, () -> transforming.transformData(extraction.getCsvRecordList()), "Eccezione non sollevata");
