@@ -11,12 +11,13 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Map;
 
-public class DataAnalysis {
-    private JPanel dataAnalysis;
+public class DataAnalysisForm {
+
     private JButton chooseButton;
     private JTextArea console;
+    private JPanel dataAnalysisPanel;
 
-    public DataAnalysis(){
+    public DataAnalysisForm(){
         
         JTextAreaOutputStream out = new JTextAreaOutputStream (console);
         System.setOut (new PrintStream(out));
@@ -26,7 +27,7 @@ public class DataAnalysis {
             console.setText("");
             JFileChooser chooser = new JFileChooser();
             chooser.setDialogTitle("Seleziona file da analizzare");
-            int filePath = chooser.showOpenDialog(dataAnalysis);
+            int filePath = chooser.showOpenDialog(dataAnalysisPanel);
             if(filePath == JFileChooser.APPROVE_OPTION) {
                 approvedOption(chooser);
             }else{
@@ -55,7 +56,7 @@ public class DataAnalysis {
         chooser.setDialogTitle("Seleziona cartella salvataggio");
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int savingPath = chooser.showOpenDialog(dataAnalysis);
+        int savingPath = chooser.showOpenDialog(dataAnalysisPanel);
         if (savingPath == JFileChooser.APPROVE_OPTION) {
             String pathDirectory = chooser.getSelectedFile().getPath() + "/" + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime());
             System.out.println("Cartella selezionata: " + pathDirectory);
@@ -67,7 +68,7 @@ public class DataAnalysis {
         }
     }
 
-    public JPanel getDataAnalysis() {
-        return dataAnalysis;
+    public JPanel getDataAnalysisPanel() {
+        return dataAnalysisPanel;
     }
 }

@@ -2,16 +2,24 @@ package it.uniba.ventricellisardone.itss.ui;
 
 import javax.swing.*;
 
-public class MainPanel {
+public class MainForm {
     private JPanel MainPanel;
     private JButton AnalysisButton;
     private JButton ETLButton;
 
 
-    public MainPanel() {
+    public MainForm() {
         AnalysisButton.addActionListener(e -> {
             JFrame frame = new JFrame("Data analysis");
-            frame.setContentPane(new DataAnalysis().getDataAnalysis());
+            frame.setContentPane(new DataAnalysisForm().getDataAnalysisPanel());
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setSize(800, 600);
+            frame.setVisible(true);
+        });
+        ETLButton.addActionListener(e -> {
+            JFrame frame = new JFrame("Etl tool");
+            frame.setContentPane(new ETLForm().getEtlPanel());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
             frame.setSize(800, 600);
@@ -21,7 +29,7 @@ public class MainPanel {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("ETL tool");
-        frame.setContentPane(new MainPanel().MainPanel);
+        frame.setContentPane(new MainForm().MainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

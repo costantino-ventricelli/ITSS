@@ -38,8 +38,9 @@ public class Transforming {
     public void transformData(List<CSVRecord> CSVRecordList) throws ParseException, IOException {
         PrintWriter csvFile = new PrintWriter(savingPath + "/load_data_" + lastFileCreated + CSV_EXTENSION, StandardCharsets.UTF_8);
         csvFile.println(header);
-        for(CSVRecord record : CSVRecordList){
-            writeOnFile(csvFile, record);
+        for (int i = 0; i < CSVRecordList.size(); i++) {
+            System.out.println("Scrivo su file record: " + i);
+            writeOnFile(csvFile, CSVRecordList.get(i));
         }
         csvFile.close();
         lastFileCreated++;

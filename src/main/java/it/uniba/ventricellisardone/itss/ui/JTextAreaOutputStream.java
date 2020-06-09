@@ -7,8 +7,7 @@ import java.io.OutputStream;
 public class JTextAreaOutputStream extends OutputStream {
     private final JTextArea destination;
 
-    public JTextAreaOutputStream (JTextArea destination)
-    {
+    public JTextAreaOutputStream (JTextArea destination) {
         if (destination == null)
             throw new IllegalArgumentException ("Destination is null");
 
@@ -16,15 +15,13 @@ public class JTextAreaOutputStream extends OutputStream {
     }
 
     @Override
-    public void write(byte[] buffer, int offset, int length) throws IOException
-    {
+    public void write(byte[] buffer, int offset, int length) throws IOException {
         final String text = new String (buffer, offset, length);
         SwingUtilities.invokeLater(() -> destination.append (text));
     }
 
     @Override
-    public void write(int b) throws IOException
-    {
+    public void write(int b) throws IOException {
         write (new byte [] {(byte)b}, 0, 1);
     }
 }
