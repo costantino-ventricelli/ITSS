@@ -43,8 +43,6 @@ public class LoadData {
         Thread thread = null;
         for (int i = startFrom; i < endTo; i++) {
             String file = dataDirectory + "/load_data_" + i + ".csv";
-            System.out.println("[EXECUTING] File directory: " + file);
-            System.out.println("[EXECUTING] CARICO IL FILE CSV N°: " + i);
             TableDataWriteChannel writer = bigQuery.writer(jobId, writeChannelConfiguration);
             try (OutputStream stream = Channels.newOutputStream(writer)) {
                 Files.copy(Paths.get(file), stream);
@@ -56,7 +54,6 @@ public class LoadData {
                 thread.join();
             thread = new Thread(new UploadCSVFile(writer));
             thread.start();
-            System.out.println("[EXECUTING] ESEGUO UPLOAD");
             this.actualLoad = i;
             saveOperation();
         }

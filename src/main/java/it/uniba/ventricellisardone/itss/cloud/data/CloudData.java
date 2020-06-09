@@ -125,7 +125,6 @@ public class CloudData{
     private String setPeriodo(java.util.Date date) {
         String stringResponse = "NESSUNO";
         try {
-            System.out.println("Richiesta api");
             CloseableHttpClient client = HttpClients.custom().build();
             HttpUriRequest request = RequestBuilder.get()
                     .setUri("https://public-holiday.p.rapidapi.com/" + this.annoValore + "/IT")

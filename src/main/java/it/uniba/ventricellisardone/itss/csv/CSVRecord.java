@@ -2,9 +2,7 @@ package it.uniba.ventricellisardone.itss.csv;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class CSVRecord {
 
@@ -152,7 +150,7 @@ public class CSVRecord {
     }
 
     public void setColore(String colore) {
-        this.colore = colore;
+
     }
 
     public String getSessoArticolo() {
