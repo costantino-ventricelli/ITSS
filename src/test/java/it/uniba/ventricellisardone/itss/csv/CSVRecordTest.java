@@ -1,5 +1,7 @@
 package it.uniba.ventricellisardone.itss.csv;
 
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVNullFieldsException;
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVParsingException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

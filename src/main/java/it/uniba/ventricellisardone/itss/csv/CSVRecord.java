@@ -1,5 +1,8 @@
 package it.uniba.ventricellisardone.itss.csv;
 
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVNullFieldsException;
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVParsingException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
