@@ -28,8 +28,9 @@ public class MainForm {
     }
 
     public static void main(String[] args) {
+        MainForm mainForm = new MainForm();
         JFrame frame = new JFrame("ETL tool");
-        frame.setContentPane(new MainForm().MainPanel);
+        frame.setContentPane(mainForm.MainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

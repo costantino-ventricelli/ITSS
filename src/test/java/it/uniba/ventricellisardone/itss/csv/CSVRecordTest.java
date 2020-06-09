@@ -12,7 +12,7 @@ import java.util.Locale;
 public class CSVRecordTest {
 
     @Test
-    public void firstTestConstructor() throws ParseException, CSVNullFieldsException, CSVParsingException {
+    public void firstTestConstructor() throws ParseException, CSVNullFieldsException {
         String[] strings = {"11", "07/09/10", "IT", "M", "1", "89", "0", "0","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi", "Gioielli Moda"};
         CSVRecord csvRecord = new CSVRecord(strings);

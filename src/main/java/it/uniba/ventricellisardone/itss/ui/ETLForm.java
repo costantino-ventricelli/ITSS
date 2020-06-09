@@ -7,8 +7,6 @@ import it.uniba.ventricellisardone.itss.etl.Transforming;
 import javax.swing.*;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.Inet4Address;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,6 +52,7 @@ public class ETLForm {
     }
 
     private void transformMethod(JFileChooser destinationChooser, JFileChooser sourceChooser) {
+        System.out.println();
         System.out.println("Hai selezionato il file: " + sourceChooser.getSelectedFile().getPath());
         String destinationPath = destinationChooser.getSelectedFile().getPath() + "/"
                 + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime())
@@ -63,17 +62,14 @@ public class ETLForm {
         List<CSVRecord> csvRecordList = extraction.getCsvRecordList();
         ExecuteTransform executeTransform = new ExecuteTransform(csvRecordList, destinationPath);
         executeTransform.execute();
-        if(!executeTransform.isDone()){
-            uploadProgress.setValue(executeTransform.getProgress());
-            progressValue.setText((executeTransform.getProgress() / 100 * csvRecordList.size() + 1) + "/" + csvRecordList.size() / 1000);
-        }
+
     }
 
     public JPanel getEtlPanel() {
         return etlPanel;
     }
 
-    private static class ExecuteTransform extends SwingWorker<Boolean, Void>{
+    private class ExecuteTransform extends SwingWorker<Boolean, Integer>{
 
         private final List<CSVRecord> csvRecordList;
         private final String destinationPath;
@@ -86,16 +82,15 @@ public class ETLForm {
 
         @Override
         protected Boolean doInBackground() throws Exception {
-            float transformedBlock;
-            float transformBlock = csvRecordList.size() / 1000.00F;
+            int transformedBlock = 0;
             ArrayList<CSVRecord> subList = new ArrayList<>();
             try {
                 Transforming transforming = new Transforming(destinationPath);
                 for (int i = 0; i < csvRecordList.size(); i++) {
                     subList.add(csvRecordList.get(i));
                     if ((i % 1000) == 0 && (i != 0)) {
-                        transformedBlock = (i % 1000 + 1);
-                        setProgress((int) Math.round(transformedBlock / transformBlock * 100.00));
+                        transformedBlock++;
+                        publish(transformedBlock);
                         transforming.transformData(subList);
                         subList = new ArrayList<>();
                     }
@@ -104,6 +99,14 @@ public class ETLForm {
                 System.err.println("Errore: " + e.getMessage());
             }
             return true;
+        }
+
+        @Override
+        protected void process(List<Integer> chunks) {
+            System.out.println("Aggiorno GUI");
+            System.out.println("Progress: " + chunks.get(chunks.size() - 1));
+            uploadProgress.setValue(chunks.get(chunks.size() - 1));
+            progressValue.setText((chunks.get(chunks.size() - 1) + "/" + csvRecordList.size() / 1000));
         }
 
         @Override
