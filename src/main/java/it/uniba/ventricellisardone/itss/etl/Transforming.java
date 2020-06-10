@@ -45,7 +45,7 @@ public class Transforming {
         csvFile.close();
         lastFileCreated++;
         PrintWriter logTransform = new PrintWriter(savingPath+"/log_transform.log");
-        logTransform.println(lastFileCreated);
+        logTransform.append(lastFileCreated);
         logTransform.close();
     }
 

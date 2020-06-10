@@ -103,8 +103,6 @@ public class ETLForm {
 
         @Override
         protected void process(List<Integer> chunks) {
-            System.out.println("Aggiorno GUI");
-            System.out.println("Progress: " + chunks.get(chunks.size() - 1));
             uploadProgress.setValue(chunks.get(chunks.size() - 1));
             progressValue.setText((chunks.get(chunks.size() - 1) + "/" + csvRecordList.size() / 1000));
         }
