@@ -1,7 +1,11 @@
 package it.uniba.ventricellisardone.itss.etl;
 
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.bigquery.*;
+import com.google.common.collect.Lists;
 import it.uniba.ventricellisardone.itss.log.Log;
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
 
 import java.io.*;
 import java.nio.channels.Channels;
@@ -10,6 +14,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Loading {
@@ -30,7 +35,9 @@ public class Loading {
             throw new IOException("Directory not found");
         else {
             this.dataDirectory = dataDirectory;
-            bigQuery = BigQueryOptions.getDefaultInstance().getService();
+            GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream("/Users/costantinoventricelli/Documents/BIProject-ITSS-2c2456d23367.json"))
+                    .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
+            bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
             TableId tableId = TableId.of(DATASET, tableName);
             writeChannelConfiguration = WriteChannelConfiguration.newBuilder(tableId).setFormatOptions(FormatOptions.csv()).setAutodetect(true).build();
             jobId = JobId.newBuilder().setLocation(LOCATION).setProject("biproject-itss").build();

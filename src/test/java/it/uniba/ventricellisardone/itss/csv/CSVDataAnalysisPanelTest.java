@@ -20,8 +20,6 @@ public class CSVDataAnalysisPanelTest {
         CSVDataAnalysis CSVDataAnalysis = new CSVDataAnalysis(extraction.getCsvRecordList());
 
         Map<String, Map<String, Integer>> map = CSVDataAnalysis.performDataAnalysis();
-        Log.i(TAG, "Mappa di test");
-        Log.i(TAG, CSVStaticTestModel.getTestMap().toString());
         assert (map.equals(CSVStaticTestModel.getTestMap())) : "[ERROR] Incorrect data analysis";
         CSVDataAnalysis.logDataAnalysis(map, javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/TEST", "test_result_analysis.xml");
 

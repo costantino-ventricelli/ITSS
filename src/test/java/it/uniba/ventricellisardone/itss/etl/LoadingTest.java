@@ -1,12 +1,15 @@
 package it.uniba.ventricellisardone.itss.etl;
 
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.bigquery.*;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -62,7 +65,9 @@ public class LoadingTest {
 
     @Test
     public void completeLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
-        BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream("/Users/costantinoventricelli/Documents/BIProject-ITSS-2c2456d23367.json"))
+                .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
+        BigQuery bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
         QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("DELETE FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
         JobId jobId = JobId.of(UUID.randomUUID().toString());
         Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
@@ -100,7 +105,9 @@ public class LoadingTest {
 
     @Test
     public void interruptedLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
-        BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream("/Users/costantinoventricelli/Documents/BIProject-ITSS-2c2456d23367.json"))
+                .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
+        BigQuery bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
         QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("DELETE FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
         JobId jobId = JobId.of(UUID.randomUUID().toString());
         Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());

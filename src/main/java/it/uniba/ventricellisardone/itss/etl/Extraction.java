@@ -44,7 +44,6 @@ public class Extraction {
     private List<String> parseErrorList;
 
     public Extraction(String dataPath){
-        Log.i(TAG, "Data path: " + dataPath);
         try {
             dataPath = Paths.get(dataPath).toString();
             fileScanner = new Scanner(new File(dataPath));
@@ -106,8 +105,6 @@ public class Extraction {
         try{
             if(nullRecordList != null)
                 writeLog(pathDirectory, fileName, nullRecordList);
-            else
-                Log.i(TAG, "Nessun record da loggare");
         }catch (FileNotFoundException e){
             Log.e(TAG, "Exception log null record", e);
         }
@@ -120,8 +117,6 @@ public class Extraction {
         try{
             if(parseErrorList != null)
                 writeLog(pathDirectory, fileName, parseErrorList);
-            else
-                Log.i(TAG, "Nessun record da loggare");
         }catch (FileNotFoundException e){
             Log.e(TAG, "Exception log null record", e);
         }
@@ -134,7 +129,6 @@ public class Extraction {
         if (!fileName.contains(extension)) {
             fileName = fileName.concat(extension);
             System.out.println("[INFO] Added "+ extension + " file extension");
-            Log.i(TAG, "Added " + extension + " file extension");
         }
         return fileName;
     }
@@ -144,7 +138,6 @@ public class Extraction {
         Log.i(TAG, "List size: " + recordList.size());
         for (String string : recordList) {
             writer.println(string);
-            Log.i(TAG, "Writing log in: " + pathDirectory + "/" + fileName);
         }
         writer.close();
     }

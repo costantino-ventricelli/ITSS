@@ -5,6 +5,7 @@ import it.uniba.ventricellisardone.itss.csv.CSVRecord;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
@@ -20,14 +21,17 @@ public class Transforming {
             "ordine_stato_nome,ordine_sesso_acquirente,ordine_quantita,ordine_prezzo_pagato,ordine_sconto," +
             "ordine_outlet,ordine_brand,ordine_collezione,ordine_colore,ordine_sesso_articolo," +
             "ordine_metodo_pagamento,ordine_taglia,ordine_categoria,ordine_macro_categoria";
+
     private static final String TAG = "Transform.class";
     private static final List<String> COLOR;
     static {
-        COLOR = List.of("Rosso", "Multicolor", "Blu", "No Color", "Giallo", "Rosa", "Verde", "Nero", "Grigio", "Marrone", "Neutro", "Bianco", "Viola", "Arancione", "Fantasia");
+        COLOR = List.of("Rosso", "Multicolor", "Blu", "No Color", "Giallo", "Rosa",
+                "Verde", "Nero", "Grigio", "Marrone", "Neutro", "Bianco", "Viola",
+                "Arancione", "Fantasia");
     }
 
     private final String savingPath;
-    private int lastFileCreated;
+    private Integer lastFileCreated;
 
     public Transforming(String savingPath) throws IOException {
         this.savingPath = savingPath;
@@ -36,16 +40,23 @@ public class Transforming {
     }
 
     public void transformData(List<CSVRecord> CSVRecordList) throws ParseException, IOException {
-        PrintWriter csvFile = new PrintWriter(savingPath + "/load_data_" + lastFileCreated + CSV_EXTENSION, StandardCharsets.UTF_8);
+        PrintWriter csvFile = new PrintWriter(new FileOutputStream(savingPath + "/load_data_" + lastFileCreated
+                + CSV_EXTENSION), true, StandardCharsets.UTF_8);
         csvFile.println(header);
         for (int i = 0; i < CSVRecordList.size(); i++) {
-            System.out.println("Scrivo su file record: " + i);
-            writeOnFile(csvFile, CSVRecordList.get(i));
+            try {
+                System.out.println("Scrivo su file record: " + i + " ne rimangono: " + (CSVRecordList.size() - (i + 1)));
+                writeOnFile(csvFile, CSVRecordList.get(i));
+            }catch (NullPointerException ex){
+                ex.printStackTrace();
+                System.err.println("Riprovo richiesta per record: " + i);
+                i--;
+            }
         }
         csvFile.close();
         lastFileCreated++;
         PrintWriter logTransform = new PrintWriter(savingPath+"/log_transform.log");
-        logTransform.append(lastFileCreated);
+        logTransform.append(lastFileCreated.toString());
         logTransform.close();
     }
 
@@ -86,7 +97,7 @@ public class Transforming {
         bigQueryRecord.append(",");
         bigQueryRecord.append(record.getQuantita());
         bigQueryRecord.append(",");
-        bigQueryRecord.append(record.getPrezzoPagato());
+        bigQueryRecord.append(String.format(Locale.ROOT, "%.2f", record.getPrezzoPagato()));
         bigQueryRecord.append(",");
         bigQueryRecord.append(record.getSconto());
         bigQueryRecord.append(",");

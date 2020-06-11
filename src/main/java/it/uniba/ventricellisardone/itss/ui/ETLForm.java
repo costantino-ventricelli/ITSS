@@ -2,9 +2,14 @@ package it.uniba.ventricellisardone.itss.ui;
 
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
 import it.uniba.ventricellisardone.itss.etl.Extraction;
+import it.uniba.ventricellisardone.itss.etl.Loading;
 import it.uniba.ventricellisardone.itss.etl.Transforming;
+import it.uniba.ventricellisardone.itss.log.Log;
+import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
@@ -22,6 +27,8 @@ public class ETLForm {
 
     public ETLForm() {
         JTextAreaOutputStream outputStream = new JTextAreaOutputStream(console);
+        DefaultCaret caret = (DefaultCaret)console.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         System.setOut(new PrintStream(outputStream));
         System.setErr(new PrintStream(outputStream));
 
@@ -31,14 +38,18 @@ public class ETLForm {
             chooser.setDialogTitle("Seleziona file da analizzare");
             int filePath = chooser.showOpenDialog(etlPanel);
             if (filePath == JFileChooser.APPROVE_OPTION) {
-                approvedOption(chooser);
+                try {
+                    approvedOption(chooser);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             } else {
                 System.out.println("Non è stato selezionato alcun file");
             }
         });
     }
 
-    private void approvedOption(JFileChooser fileSource) {
+    private void approvedOption(JFileChooser fileSource) throws IOException {
         JFileChooser destinationChooser = new JFileChooser();
         destinationChooser.setDialogTitle("Seleziona cartella di destinazione");
         destinationChooser.setAcceptAllFileFilterUsed(false);
@@ -51,18 +62,22 @@ public class ETLForm {
         }
     }
 
-    private void transformMethod(JFileChooser destinationChooser, JFileChooser sourceChooser) {
+    private void transformMethod(JFileChooser destinationChooser, JFileChooser sourceChooser) throws IOException {
         System.out.println();
         System.out.println("Hai selezionato il file: " + sourceChooser.getSelectedFile().getPath());
         String destinationPath = destinationChooser.getSelectedFile().getPath() + "/"
                 + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime())
                 + "/Transformed";
         System.out.println("Carico i dati in: " + destinationPath);
+        File destinationFile = new File(destinationPath);
+        if(!destinationFile.exists())
+            FileUtils.forceMkdir(destinationFile);
         Extraction extraction = new Extraction(sourceChooser.getSelectedFile().getPath());
         List<CSVRecord> csvRecordList = extraction.getCsvRecordList();
+        extraction.logParseErrorRecord(destinationPath, "parsing_error.csv");
+        extraction.logNullRecord(destinationPath, "field_error.csv");
         ExecuteTransform executeTransform = new ExecuteTransform(csvRecordList, destinationPath);
         executeTransform.execute();
-
     }
 
     public JPanel getEtlPanel() {
@@ -71,6 +86,7 @@ public class ETLForm {
 
     private class ExecuteTransform extends SwingWorker<Boolean, Integer>{
 
+        private static final String TABLE_NAME = "datawarehouse";
         private final List<CSVRecord> csvRecordList;
         private final String destinationPath;
 
@@ -85,17 +101,25 @@ public class ETLForm {
             int transformedBlock = 0;
             ArrayList<CSVRecord> subList = new ArrayList<>();
             try {
+                Loading loading = new Loading(this.destinationPath, TABLE_NAME);
+                LoadData loadData = new LoadData(loading);
+                Thread threadLoadData = new Thread(loadData);
                 Transforming transforming = new Transforming(destinationPath);
                 for (int i = 0; i < csvRecordList.size(); i++) {
                     subList.add(csvRecordList.get(i));
                     if ((i % 1000) == 0 && (i != 0)) {
+                        transforming.transformData(subList);
+                        if(threadLoadData.isAlive())
+                            threadLoadData.join();
+                        loadData.setFileToLoad(transformedBlock);
+                        threadLoadData = new Thread(loadData);
+                        threadLoadData.start();
                         transformedBlock++;
                         publish(transformedBlock);
-                        transforming.transformData(subList);
                         subList = new ArrayList<>();
                     }
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 System.err.println("Errore: " + e.getMessage());
             }
             return true;
@@ -110,6 +134,35 @@ public class ETLForm {
         @Override
         protected void done() {
             super.done();
+            System.out.println("Primo file generato");
+        }
+    }
+
+    private static class LoadData implements Runnable{
+
+        private int fileToLoad;
+        private final Loading loadingInstance;
+        private static final String TAG = "LoadDataRunnable";
+
+        public LoadData(Loading loadingInstance) {
+            fileToLoad = -1;
+            this.loadingInstance = loadingInstance;
+        }
+
+        public void setFileToLoad(int fileToLoad) {
+            this.fileToLoad = fileToLoad;
+        }
+
+        @Override
+        public void run() {
+            if(fileToLoad != -1) {
+                try {
+                    loadingInstance.startLoad(fileToLoad, (fileToLoad + 1));
+                } catch (IOException | InterruptedException e) {
+                    Log.e(TAG, "Eccezione nel thread di caricamento", e);
+                    System.err.println("Eccezione nel caricamento, verifica file di log");
+                }
+            }
         }
     }
 }

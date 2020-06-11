@@ -138,10 +138,15 @@ public class CloudData{
             Type listType = new TypeToken<List<HolidaysDate>>() {}.getType();
             List<HolidaysDate> holidaysDateList = gson.fromJson(stringResponse, listType);
             stringResponse = "NESSUNO";
-            for (HolidaysDate holidaysDate : holidaysDateList) {
-                Log.i(TAG, "Holiday: " + holidaysDate.getDate().toString() + ": " + holidaysDate.getLocalName());
-                if (holidaysDate.getDate().equals(date))
-                    stringResponse = holidaysDate.getLocalName().toUpperCase();
+            try {
+                for (HolidaysDate holidaysDate : holidaysDateList) {
+                    if (holidaysDate.getDate().equals(date))
+                        stringResponse = holidaysDate.getLocalName().toUpperCase();
+                }
+            }catch (NullPointerException ex) {
+                System.err.println("Eccezione in CloudDate, vedi log file");
+                Log.e(TAG, "Eccezione in CloudDate, richesta API: " + this.annoValore, ex);
+                throw ex;
             }
             response.close();
             request.abort();

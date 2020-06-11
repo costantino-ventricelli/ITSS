@@ -39,8 +39,6 @@ public class CSVDataAnalysis {
             String[] stringsRecord = CSVRecord.reverseCSVRecordForAnalysis(record);
             dataMap.replaceAll((k, v) -> checkField(stringsRecord[ANALYSIS_HEADER.get(k)], v));
         }
-        Log.i(TAG, "Mappa creata");
-        Log.i(TAG, dataMap.toString());
         return dataMap;
     }
 
@@ -77,13 +75,10 @@ public class CSVDataAnalysis {
     }
 
     private String checkDirectoryAndFileName(String pathDirectory, String fileName) throws IOException {
-        Log.i(TAG, "Directory: " + pathDirectory);
-        Log.i(TAG, "File name: " + fileName);
         FileUtils.forceMkdir(new File(pathDirectory));
         if (!fileName.contains(CSVDataAnalysis.XML_EXTENSION)) {
             fileName = fileName.concat(CSVDataAnalysis.XML_EXTENSION);
             System.out.println("[INFO] Added "+ CSVDataAnalysis.XML_EXTENSION + " file extension");
-            Log.i(TAG, "Added " + CSVDataAnalysis.XML_EXTENSION + " file extension");
         }
         return fileName;
     }

@@ -14,7 +14,7 @@ public class ExtractionTest {
 
     @Test
     public void firstTest() throws FileNotFoundException {
-        Extraction extraction = new Extraction(Objects.requireNonNull(ExtractionTest.class.getClassLoader().getResource("right_data.csv")).getPath());
+        Extraction extraction = new Extraction(Objects.requireNonNull(ExtractionTest.class.getClassLoader().getResource("etl/extraction/right_data.csv")).getPath());
         assert (extraction.getHeaderFile().equals(Extraction.HEADER_FILE)) : "[ERROR] Incorrect header file";
         assert (extraction.getCsvRecordList().equals(ETLStaticTestModel.getTestList())) : "[ERROR] Incorrect list of record";
     }
