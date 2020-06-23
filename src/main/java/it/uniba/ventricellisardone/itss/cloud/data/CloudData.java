@@ -151,7 +151,7 @@ public class CloudData{
             response.close();
             request.abort();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Eccezione in CloudDate, richesta API: ", e);
         }
         return stringResponse;
     }

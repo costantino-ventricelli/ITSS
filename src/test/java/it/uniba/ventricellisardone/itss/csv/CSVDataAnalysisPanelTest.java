@@ -2,7 +2,6 @@ package it.uniba.ventricellisardone.itss.csv;
 
 import it.uniba.ventricellisardone.itss.etl.Extraction;
 import it.uniba.ventricellisardone.itss.etl.ExtractionTest;
-import it.uniba.ventricellisardone.itss.log.Log;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -21,10 +20,10 @@ public class CSVDataAnalysisPanelTest {
 
         Map<String, Map<String, Integer>> map = CSVDataAnalysis.performDataAnalysis();
         assert (map.equals(CSVStaticTestModel.getTestMap())) : "[ERROR] Incorrect data analysis";
-        CSVDataAnalysis.logDataAnalysis(map, javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/TEST", "test_result_analysis.xml");
+        CSVDataAnalysis.logDataAnalysis(map, javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Desktop/TEST", "test_result_analysis.xml");
 
         Scanner testFile = new Scanner(new File(Objects.requireNonNull(ExtractionTest.class.getClassLoader().getResource("data_analysis/data_analysis_test.xml")).getPath()));
-        String resultPath =  javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/TEST/Analysis/test_result_analysis.xml";
+        String resultPath =  javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Desktop/TEST/Analysis/test_result_analysis.xml";
         Scanner resultFile = new Scanner(new File(resultPath));
         int i = 0;
         while (resultFile.hasNextLine()){

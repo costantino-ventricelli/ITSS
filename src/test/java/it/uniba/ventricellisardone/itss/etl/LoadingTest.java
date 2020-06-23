@@ -65,7 +65,7 @@ public class LoadingTest {
 
     @Test
     public void completeLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
-        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream("/Users/costantinoventricelli/Documents/BIProject-ITSS-2c2456d23367.json"))
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Documents/etl-authentication.json"))
                 .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
         BigQuery bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
         QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("DELETE FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
@@ -105,7 +105,7 @@ public class LoadingTest {
 
     @Test
     public void interruptedLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
-        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream("/Users/costantinoventricelli/Documents/BIProject-ITSS-2c2456d23367.json"))
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Documents/etl-authentication.json"))
                 .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
         BigQuery bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
         QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("DELETE FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();

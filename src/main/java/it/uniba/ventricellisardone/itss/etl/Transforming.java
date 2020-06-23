@@ -2,6 +2,7 @@ package it.uniba.ventricellisardone.itss.etl;
 
 import it.uniba.ventricellisardone.itss.cloud.data.CloudData;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
+import it.uniba.ventricellisardone.itss.log.Log;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -48,7 +49,7 @@ public class Transforming {
                 System.out.println("Scrivo su file record: " + i + " ne rimangono: " + (CSVRecordList.size() - (i + 1)));
                 writeOnFile(csvFile, CSVRecordList.get(i));
             }catch (NullPointerException ex){
-                ex.printStackTrace();
+                Log.e(TAG, "Eccezione in transforming", ex);
                 System.err.println("Riprovo richiesta per record: " + i);
                 i--;
             }
@@ -107,7 +108,7 @@ public class Transforming {
         bigQueryRecord.append(",");
         bigQueryRecord.append(record.getCollezione().toUpperCase());
         bigQueryRecord.append(",");
-        bigQueryRecord.append(checkColore(record.getColore()));
+        bigQueryRecord.append(checkColor(record.getColore()));
         bigQueryRecord.append(",");
         bigQueryRecord.append(record.getSessoArticolo().toUpperCase());
         bigQueryRecord.append(",");
@@ -121,11 +122,11 @@ public class Transforming {
         csvFile.println(bigQueryRecord.toString());
     }
 
-    private String checkColore(String colore) throws ParseException {
-        if(COLOR.contains(colore))
-            return colore.toUpperCase();
+    private String checkColor(String color) throws ParseException {
+        if(COLOR.contains(color))
+            return color.toUpperCase();
         else
-            throw new ParseException("Colore " + colore + " non ammesso", colore.length());
+            throw new ParseException("Colore " + color + " non ammesso", color.length());
     }
 
 } //end class
