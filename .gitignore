@@ -1,8 +1,8 @@
 # Compiled class file
 *.class
 
-# Log file
-*.it.uniba.ventricellisardone.itss.csv.log
+# file
+*/*.txt
 
 # BlueJ files
 *.ctxt
