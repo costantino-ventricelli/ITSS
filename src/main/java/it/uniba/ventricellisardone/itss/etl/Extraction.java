@@ -38,8 +38,8 @@ public class Extraction {
     }
 
     private Map<String, Integer> headerFile;
-    private List<CSVRecord> csvRecordList;
     private Scanner fileScanner;
+    private List<CSVRecord> csvRecordList;
     private List<String> nullRecordList;
     private List<String> parseErrorList;
 

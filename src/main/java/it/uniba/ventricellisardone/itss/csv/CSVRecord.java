@@ -74,32 +74,17 @@ public class CSVRecord {
         return idOrdine;
     }
 
-    public void setIdOrdine(long idOrdine) {
-        this.idOrdine = idOrdine;
-    }
-
     public Date getDataOrdine() {
         return dataOrdine;
-    }
-
-    public void setDataOrdine(Date dataOrdine) {
-        this.dataOrdine = dataOrdine;
     }
 
     public String getCodiceStatoFattura() {
         return codiceStatoFattura;
     }
 
-    public void setCodiceStatoFattura(String codiceStatoFattura) {
-        this.codiceStatoFattura = codiceStatoFattura;
-    }
 
     public char getSessoAcquirente() {
         return sessoAcquirente;
-    }
-
-    public void setSessoAcquirente(char sessoAcquirente) {
-        this.sessoAcquirente = sessoAcquirente;
     }
 
     public int getQuantita() {
@@ -112,10 +97,6 @@ public class CSVRecord {
 
     public double getPrezzoPagato() {
         return prezzoPagato;
-    }
-
-    public void setPrezzoPagato(double prezzoPagato) {
-        this.prezzoPagato = prezzoPagato;
     }
 
     public int getSconto() {
@@ -138,10 +119,6 @@ public class CSVRecord {
         return nomeBrand;
     }
 
-    public void setNomeBrand(String nomeBrand) {
-        this.nomeBrand = nomeBrand;
-    }
-
     public String getCollezione() {
         return collezione;
     }
@@ -154,48 +131,24 @@ public class CSVRecord {
         return colore;
     }
 
-    public void setColore(String colore) {
-
-    }
-
     public String getSessoArticolo() {
         return sessoArticolo;
-    }
-
-    public void setSessoArticolo(String sessoArticolo) {
-        this.sessoArticolo = sessoArticolo;
     }
 
     public String getPagamentoOrdine() {
         return pagamentoOrdine;
     }
 
-    public void setPagamentoOrdine(String pagamentoOrdine) {
-        this.pagamentoOrdine = pagamentoOrdine;
-    }
-
     public String getTaglia() {
         return taglia;
-    }
-
-    public void setTaglia(String taglia) {
-        this.taglia = taglia;
     }
 
     public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
     public String getMacroCategoria() {
         return macroCategoria;
-    }
-
-    public void setMacroCategoria(String macroCategoria) {
-        this.macroCategoria = macroCategoria;
     }
 
     @Override

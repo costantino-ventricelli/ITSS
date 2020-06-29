@@ -3,6 +3,7 @@ package it.uniba.ventricellisardone.itss.ui;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
 import it.uniba.ventricellisardone.itss.etl.Extraction;
 import it.uniba.ventricellisardone.itss.etl.Loading;
+import it.uniba.ventricellisardone.itss.etl.MatchBigQueryData;
 import it.uniba.ventricellisardone.itss.etl.Transforming;
 import it.uniba.ventricellisardone.itss.log.Log;
 import org.apache.commons.io.FileUtils;
@@ -12,6 +13,7 @@ import javax.swing.text.DefaultCaret;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -63,7 +65,6 @@ public class ETLForm {
     }
 
     private void transformMethod(JFileChooser destinationChooser, JFileChooser sourceChooser) throws IOException {
-        System.out.println();
         System.out.println("Hai selezionato il file: " + sourceChooser.getSelectedFile().getPath());
         String destinationPath = destinationChooser.getSelectedFile().getPath() + "/"
                 + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime())
@@ -76,8 +77,21 @@ public class ETLForm {
         List<CSVRecord> csvRecordList = extraction.getCsvRecordList();
         extraction.logParseErrorRecord(destinationPath, "parsing_error.csv");
         extraction.logNullRecord(destinationPath, "field_error.csv");
-        ExecuteTransform executeTransform = new ExecuteTransform(csvRecordList, destinationPath);
-        executeTransform.execute();
+        MatchBigQueryData matchBigQueryData = null;
+        try {
+            System.out.println("Verifico eventuali duplicati");
+            matchBigQueryData = new MatchBigQueryData(csvRecordList, "datawarehouse");
+            if(matchBigQueryData.isMatching()) {
+                System.out.println("Non ho trovato possibili duplicati");
+                ExecuteTransform executeTransform = new ExecuteTransform(csvRecordList, destinationPath);
+                executeTransform.execute();
+            }else
+                System.out.println("Contattare responsabile estrazione dati DB\n" +
+                        "Si stanno cercando di caricare dati già inseriti nel Data ware house\n" +
+                        "Il processo termina senza apportare modifiche.");
+        } catch (InterruptedException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public JPanel getEtlPanel() {

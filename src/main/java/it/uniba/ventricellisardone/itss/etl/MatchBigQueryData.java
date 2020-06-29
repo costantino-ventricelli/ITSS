@@ -1,7 +1,10 @@
 package it.uniba.ventricellisardone.itss.etl;
 
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.bigquery.*;
+import com.google.cloud.bigquery.BigQuery;
+import com.google.cloud.bigquery.BigQueryOptions;
+import com.google.cloud.bigquery.FieldValueList;
+import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.common.collect.Lists;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
 import it.uniba.ventricellisardone.itss.log.Log;
@@ -11,18 +14,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class MatchBigQueryData {
 
+    private static final BigQuery BIG_QUERY;
+    private static final String TAG = "MatchingBigQueryData";
+
     private String bigQueryDate;
     private final List<CSVRecord> recordList;
     private final String targetTable;
-
-    private static final GoogleCredentials GOOGLE_CREDENTIALS;
-    private static final BigQuery BIG_QUERY;
-    private static final String TAG = "MatchingBigQueryData";
 
     static {
         GoogleCredentials googleCredentials;
@@ -32,11 +35,9 @@ public class MatchBigQueryData {
                     .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
             bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(googleCredentials).build().getService();
         } catch (IOException e) {
-            googleCredentials = null;
             Log.e(TAG, "Eccezione caricamento credenziali", e);
         }
         BIG_QUERY = bigQuery;
-        GOOGLE_CREDENTIALS = googleCredentials;
     }
 
     public MatchBigQueryData(List<CSVRecord> recordList, String targetTable) throws InterruptedException, SQLException {
@@ -54,9 +55,15 @@ public class MatchBigQueryData {
     }
 
     public boolean isMatching() {
-        String firstDate =  new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                .format(this.recordList.get(0).getDataOrdine());
-        return firstDate.equals(this.bigQueryDate);
+        try {
+            Date bigQueryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    .parse(this.bigQueryDate);
+            Date recordDate = recordList.get(0).getDataOrdine();
+            return bigQueryDate.before(recordDate) || bigQueryDate.equals(recordDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return true;
+        }
     }
 
     public int getConflictRowNumber() throws ParseException, InterruptedException {
