@@ -16,23 +16,23 @@ public class CSVRecordTest {
         String[] strings = {"11", "07/09/10", "IT", "M", "1", "89", "0", "0","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi", "Gioielli Moda"};
         CSVRecord csvRecord = new CSVRecord(strings);
-        assert (csvRecord.getIdOrdine() == 11);
-        assert (csvRecord.getDataOrdine().equals(new SimpleDateFormat("dd/MM/yy",
+        assert (csvRecord.getIdOrder() == 11);
+        assert (csvRecord.getOrderDate().equals(new SimpleDateFormat("dd/MM/yy",
                 Locale.getDefault()).parse("07/09/10")));
-        assert (csvRecord.getCodiceStatoFattura().equals("IT"));
-        assert (csvRecord.getSessoAcquirente() == 'M');
-        assert (csvRecord.getQuantita() == 1);
-        assert (csvRecord.getPrezzoPagato() == 89);
-        assert (csvRecord.getSconto() == 0);
+        assert (csvRecord.getCountryCode().equals("IT"));
+        assert (csvRecord.getCustomerGender() == 'M');
+        assert (csvRecord.getQuantity() == 1);
+        assert (csvRecord.getPayedPrice() == 89);
+        assert (csvRecord.getDiscount() == 0);
         assert (!csvRecord.isOutlet());
         assert (csvRecord.getNomeBrand().equals("FRECCE TRICOLORI"));
-        assert (csvRecord.getCollezione().equals("Primavera - Estate 2011"));
-        assert (csvRecord.getColore().equals("Celeste"));
-        assert (csvRecord.getSessoArticolo().equals("Uomo"));
-        assert (csvRecord.getPagamentoOrdine().equals("PayPal"));
-        assert (csvRecord.getTaglia().equals("UNICA"));
-        assert (csvRecord.getCategoria().equals("Orologi"));
-        assert (csvRecord.getMacroCategoria().equals("Gioielli Moda"));
+        assert (csvRecord.getCollection().equals("Primavera - Estate 2011"));
+        assert (csvRecord.getColor().equals("Celeste"));
+        assert (csvRecord.getItemGender().equals("Uomo"));
+        assert (csvRecord.getPaymentMethod().equals("PayPal"));
+        assert (csvRecord.getSize().equals("UNICA"));
+        assert (csvRecord.getCategory().equals("Orologi"));
+        assert (csvRecord.getMacroCategory().equals("Gioielli Moda"));
     }
 
     @Test

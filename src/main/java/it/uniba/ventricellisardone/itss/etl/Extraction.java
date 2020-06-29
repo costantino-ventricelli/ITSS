@@ -1,7 +1,14 @@
+/**
+ * Questa classe avvia permette la lettura dei file .csv in ingresso formando la lista di record contenuta nel file e scartando
+ * i record non idonei, permettendo poi il savlataggio degli stessi per individuare le cause dello scarto e poter eventualmente
+ * intervenire per "aggiustare" i record non aderenti al protocollo di comunicazione accordato.
+ */
+
 package it.uniba.ventricellisardone.itss.etl;
 
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
 import it.uniba.ventricellisardone.itss.csv.ecxception.CSVNullFieldsException;
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVParsingException;
 import it.uniba.ventricellisardone.itss.log.Log;
 import org.apache.commons.io.FileUtils;
 
@@ -17,6 +24,7 @@ public class Extraction {
     private static final String CSV_EXTENSION = ".csv";
     private static final String RESULTS_DIR = "/Results/";
 
+    //  L'header file che i file in input devono avere per essere ritenuti idonei.
     static {
         HEADER_FILE = Map.ofEntries(Map.entry("IdOrdine", 0),
                 Map.entry("DataOrdine", 1),
@@ -43,12 +51,15 @@ public class Extraction {
     private List<String> nullRecordList;
     private List<String> parseErrorList;
 
-    public Extraction(String dataPath){
+    public Extraction(String dataPath) throws CSVParsingException{
         try {
             dataPath = Paths.get(dataPath).toString();
             fileScanner = new Scanner(new File(dataPath));
             setHeaderFile();
-            setCsvRecordList();
+            if(!this.headerFile.equals(HEADER_FILE))
+                throw new CSVParsingException("Gli header dei file non coincidono", 0);
+            else
+                setCsvRecordList();
         } catch (FileNotFoundException e) {
             Log.e(TAG, "Constructor exception: ", e);
             e.printStackTrace();
@@ -59,6 +70,10 @@ public class Extraction {
         return headerFile;
     }
 
+    /**
+     * Questo metodo genera una mappa che contiene l'header del file in lettura per consentire il confronto con l'header
+     * file standard
+     */
     private void setHeaderFile() {
         String[] headerString = fileScanner.nextLine().split(";");
         headerFile = new HashMap<>();
@@ -70,6 +85,10 @@ public class Extraction {
         return csvRecordList;
     }
 
+    /**
+     * Questo metodo permette di intercettare i record che persentano difetti strutturali e memorizzarli in liste differenti,
+     * mentre crea la lista dei record principale.
+     */
     private void setCsvRecordList() {
         csvRecordList = new ArrayList<>();
         while(fileScanner.hasNextLine()){
@@ -98,6 +117,13 @@ public class Extraction {
         return parseErrorList;
     }
 
+    /**
+     * Questo metodo permette di salvare su di un file apparte tutti i record che hanno presentato buchi nella loro lista
+     * di attributi e che quindi non possono essere caricati nel datawarehouse.
+     * @param pathDirectory contiene il percorso in cui si desidera salvare il file di log
+     * @param fileName contiene il nome che si vuole dare al file di log
+     * @throws IOException viene sollevata se non viene individuato il file o non si riesce a scriverci all'interno.
+     */
     public void logNullRecord(String pathDirectory, String fileName) throws IOException {
         pathDirectory += RESULTS_DIR;
         pathDirectory = Paths.get(pathDirectory).toString();
@@ -110,6 +136,13 @@ public class Extraction {
         }
     }
 
+    /**
+     * Questo metodo permette di salvare su di un file apparte tutti i record che hanno presentato degli errori nei valori
+     * dei loro campi
+     * @param pathDirectory contiene il percorso in cui si desidera salvare il file di log
+     * @param fileName contiene il nome che si vuole dare al file di log
+     * @throws IOException viene sollevata se non viene individuato il file o non si riesce a scriverci all'interno.
+     */
     public void logParseErrorRecord(String pathDirectory, String fileName) throws IOException {
         pathDirectory += RESULTS_DIR;
         pathDirectory = Paths.get(pathDirectory).toString();
@@ -122,6 +155,15 @@ public class Extraction {
         }
     }
 
+    /**
+     * Questo metodo verifica che nei nomi dei file indicati siano presenti le estensioni csv e xml senza le quali il file
+     * potrebbe subire delle alterazioni durante il salvataggio.
+     * @param pathDirectory contiene il percorso in cui si desidera salvare il file di log
+     * @param fileName contiene il nome che si vuole dare al file di log
+     * @param extension contiene l'estensione che sto verificando: .csv o .xml
+     * @return ritorna il nome eventualmente modificato per aggiungere le estensioni dei file.
+     * @throws IOException può sollevare un eccezione di IO nel caso il percorso non conduca a nessuna directory.
+     */
     private String checkDirectoryAndFileName(String pathDirectory , String fileName, String extension) throws IOException {
         Log.i(TAG, "Directory: " + pathDirectory);
         Log.i(TAG, "File name: " + fileName);
@@ -133,6 +175,13 @@ public class Extraction {
         return fileName;
     }
 
+    /**
+     * Questo metodo è quello che accede direttamente ai file in scrittura durante le operazioni di log.
+     * @param pathDirectory contiene il percorso in cui si desidera salvare il file di log
+     * @param fileName contiene il nome che si vuole dare al file di log
+     * @param recordList contiene la lista di record di cui si vuole fare il log: nullRecordList o parseErrorList
+     * @throws FileNotFoundException solleva questa eccezione quando ci sono problemi ad accedere alla memoria dell'elaboratore.
+     */
     private static void writeLog(String pathDirectory, String fileName, List<String> recordList) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter(new FileOutputStream(pathDirectory + "/" + fileName, false));
         Log.i(TAG, "List size: " + recordList.size());

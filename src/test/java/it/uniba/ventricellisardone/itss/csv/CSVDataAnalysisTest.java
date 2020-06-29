@@ -1,5 +1,6 @@
 package it.uniba.ventricellisardone.itss.csv;
 
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVParsingException;
 import it.uniba.ventricellisardone.itss.etl.Extraction;
 import it.uniba.ventricellisardone.itss.etl.ExtractionTest;
 import org.junit.jupiter.api.Test;
@@ -11,10 +12,9 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class CSVDataAnalysisTest {
-    private static final String TAG = "DataAnalysisTest.class";
 
     @Test
-    public void firstTest() throws IOException {
+    public void analysisTest() throws IOException, CSVParsingException {
         Extraction extraction = new Extraction(Objects.requireNonNull(CSVDataAnalysisTest.class.getClassLoader().getResource("data_analysis/right_data.csv")).getPath());
         CSVDataAnalysis CSVDataAnalysis = new CSVDataAnalysis(extraction.getCsvRecordList());
 

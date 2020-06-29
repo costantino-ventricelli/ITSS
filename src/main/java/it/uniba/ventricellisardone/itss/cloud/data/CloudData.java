@@ -1,3 +1,11 @@
+/**
+ * Questa classe permette di trasformare le ordinarie date prelevate dal DB OLTP nel formato gg/mm/aa e trasformarle in
+ * modo tale da ottenere informazioni su: nome del giorno di riferimento, trimestre, periodo dell'anno, la presenza o la
+ * assenza di festività nella data selezionata.
+ * Per far ciò la classe fa riferimento a delle API online che fornito un anno restituisce la lista delle festività per
+ * quell'anno così da riconoscere se una data cade in una festività
+ */
+
 package it.uniba.ventricellisardone.itss.cloud.data;
 
 import com.google.cloud.Date;
@@ -27,107 +35,114 @@ public class CloudData{
 
     private final Date googleData;
 
-    private final String nomeGiorno;
-    private final int numeroGiornoAnno;
-    private final String nomeMese;
-    private final int annoValore;
-    private final int meseValore;
-    private final String trimestre;
-    private final String periodo;
-    private final String trimestreAnno;
-    private final String meseAnno;
-    private final String feriale;
-    private final String festivo;
-    private final String dataString;
+    private final String dayName;
+    private final int dayNumber;
+    private final String monthName;
+    private final int yearValue;
+    private final int monthValue;
+    private final String quarter;
+    private final String season;
+    private final String seasonYear;
+    private final String monthYear;
+    private final String weekday;
+    private final String holiday;
+    private final String dateString;
 
     public CloudData(java.util.Date date) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        this.dataString = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(date);
+        this.dateString = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(date);
         this.googleData = Date.fromJavaUtilDate(date);
-        this.nomeGiorno = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()).toUpperCase();
-        this.numeroGiornoAnno = calendar.get(Calendar.DAY_OF_YEAR);
-        this.nomeMese = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()).toUpperCase();
-        this.annoValore = calendar.get(Calendar.YEAR);
+        this.dayName = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()).toUpperCase();
+        this.dayNumber = calendar.get(Calendar.DAY_OF_YEAR);
+        this.monthName = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()).toUpperCase();
+        this.yearValue = calendar.get(Calendar.YEAR);
         //calendar numera i mesi da 0, aggiungo 1 per evitare ambiguità
-        this.meseValore = calendar.get(Calendar.MONTH) + 1;
-        this.trimestre = setTrimestre();
-        this.periodo = setPeriodo(date);
-        this.trimestreAnno = setTrimestre() + "-" + this.annoValore;
-        this.meseAnno = this.meseValore + "-" + this.annoValore;
-        this.feriale = setFeriale();
-        this.festivo = setFestivo();
+        this.monthValue = calendar.get(Calendar.MONTH) + 1;
+        this.quarter = setTrimestre();
+        this.season = setSeason(date);
+        this.seasonYear = setTrimestre() + "-" + this.yearValue;
+        this.monthYear = this.monthValue + "-" + this.yearValue;
+        this.weekday = setWeekday();
+        this.holiday = setHoliday();
     }
 
-    public String getDataString() {
-        return dataString;
+    public String getDateString() {
+        return dateString;
     }
 
     public Date getGoogleData() {
         return googleData;
     }
 
-    public String getNomeGiorno() {
-        return nomeGiorno;
+    public String getDayName() {
+        return dayName;
     }
 
-    public int getNumeroGiornoAnno() {
-        return numeroGiornoAnno;
+    public int getDayNumber() {
+        return dayNumber;
     }
 
-    public String getNomeMese() {
-        return nomeMese;
+    public String getMonthName() {
+        return monthName;
     }
 
-    public int getAnnoValore() {
-        return annoValore;
+    public int getYearValue() {
+        return yearValue;
     }
 
-    public int getMeseValore() {
-        return meseValore;
+    public int getMonthValue() {
+        return monthValue;
     }
 
-    public String getTrimestre() {
-        return trimestre;
+    public String getQuarter() {
+        return quarter;
     }
 
-    public String getPeriodo() {
-        return periodo;
+    public String getSeason() {
+        return season;
     }
 
-    public String getTrimestreAnno() {
-        return trimestreAnno;
+    public String getSeasonYear() {
+        return seasonYear;
     }
 
-    public String getMeseAnno() {
-        return meseAnno;
+    public String getMonthYear() {
+        return monthYear;
     }
 
-    public String getFeriale() {
-        return feriale;
+    public String getWeekday() {
+        return weekday;
     }
 
-    public String getFestivo() {
-        return festivo;
+    public String getHoliday() {
+        return holiday;
     }
 
     private String setTrimestre() {
-        if (this.meseValore >= 1 && this.meseValore <= 3)
+        if (this.monthValue >= 1 && this.monthValue <= 3)
             return "T1";
-        else if (this.meseValore >= 4 && this.meseValore <= 6)
+        else if (this.monthValue >= 4 && this.monthValue <= 6)
             return "T2";
-        else if (this.meseValore >= 7 && this.meseValore <= 9)
+        else if (this.monthValue >= 7 && this.monthValue <= 9)
             return "T3";
         else
             return "T4";
     }
 
-    private String setPeriodo(java.util.Date date) {
+    /**
+     * Questo metodo avvia una richiesta http all'API su rapidAPI che restituisce la lista di festività e gestisce le
+     * eccezioni di IO e di parsing della data
+     * @param date contiene la data di cui necessitiamo le informazioni
+     * @return restituisce NESSUNO: se la data non ricade in nessuna festività;
+     *                     NOME_FESTIVITA: se la data ricade in una festività;
+     */
+    private String setSeason(java.util.Date date) {
         String stringResponse = "NESSUNO";
         try {
             CloseableHttpClient client = HttpClients.custom().build();
             HttpUriRequest request = RequestBuilder.get()
-                    .setUri("https://public-holiday.p.rapidapi.com/" + this.annoValore + "/IT")
+                    .setUri("https://public-holiday.p.rapidapi.com/" + this.yearValue + "/IT")
                     .addHeader("x-rapidapi-host", "public-holiday.p.rapidapi.com")
                     .addHeader("x-rapidapi-key", "2ffe94d15fmsh77f096ee6ae83e2p1e6163jsn8d8d6c79a2c2")
                     .build();
@@ -145,7 +160,7 @@ public class CloudData{
                 }
             }catch (NullPointerException ex) {
                 System.err.println("Eccezione in CloudDate, vedi log file");
-                Log.e(TAG, "Eccezione in CloudDate, richesta API: " + this.annoValore, ex);
+                Log.e(TAG, "Eccezione in CloudDate, richesta API: " + this.yearValue, ex);
                 throw ex;
             }
             response.close();
@@ -156,15 +171,15 @@ public class CloudData{
         return stringResponse;
     }
 
-    private String setFeriale() {
-        if (this.periodo.equals("NESSUNO") && !this.nomeGiorno.equals("DOMENICA"))
+    private String setWeekday() {
+        if (this.season.equals("NESSUNO") && !this.dayName.equals("DOMENICA"))
             return "FERIALE";
         else
             return "NON FERIALE";
     }
 
-    private String setFestivo() {
-        if (this.periodo.equals("NESSUNO"))
+    private String setHoliday() {
+        if (this.season.equals("NESSUNO"))
             return "NON FESTIVO";
         else
             return "FESTIVO";

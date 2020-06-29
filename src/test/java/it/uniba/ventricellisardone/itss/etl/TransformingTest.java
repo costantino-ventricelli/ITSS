@@ -1,5 +1,6 @@
 package it.uniba.ventricellisardone.itss.etl;
 
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVParsingException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +27,7 @@ public class TransformingTest {
     }
 
     @Test
-    public void secondTest() throws IOException {
+    public void secondTest() throws IOException, CSVParsingException {
         Extraction extraction = new Extraction(Objects.requireNonNull(TransformingTest.class.getClassLoader().getResource("etl/transforming/transform_data_error.csv")).getPath());
         Transforming transforming = new Transforming(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Desktop/TEST");
         Assertions.assertThrows(ParseException.class, () -> transforming.transformData(extraction.getCsvRecordList()), "Eccezione non sollevata");

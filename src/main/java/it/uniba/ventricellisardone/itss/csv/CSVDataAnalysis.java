@@ -1,3 +1,9 @@
+/**
+ * Questa classe genera dei report su i campi che sono stati individuati come i più dinamici nella fase di ricognizione
+ * degli archivi, fornendo le liste dei valori che i campi assumono, più il numero di occorrenze dei valori negli archivi.
+ * Questo tool è stato creato per agevolare il miglioramento degli archivi iniziali e individuare i cambiamenti da apportare
+ * nel DB OLTP.
+ */
 package it.uniba.ventricellisardone.itss.csv;
 
 import it.uniba.ventricellisardone.itss.log.Log;
@@ -13,7 +19,7 @@ public class CSVDataAnalysis {
 
     private static final Map<String, Integer> ANALYSIS_HEADER;
     private final List<CSVRecord> csvRecordList;
-    private static final String TAG = "DataAnalisys.class";
+    private static final String TAG = "DataAnalysis.class";
     private static final String XML_EXTENSION = ".xml";
 
     static {

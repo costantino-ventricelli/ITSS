@@ -1,3 +1,8 @@
+/**
+ * Questa classe permette di effettuare un confronto approfondito tra i dati già presenti nel cloud e gli eventuali dati
+ * di refresh, infatti dopo aver prelevato la data con valore più elevato dal cloud si può verificare la presenza di quella data
+ * nei nuovi dati di refresh e, se presente, controllare che i dati di refresh non collidano con quelli già presenti in remoto.
+ */
 package it.uniba.ventricellisardone.itss.etl;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -40,6 +45,14 @@ public class MatchBigQueryData {
         BIG_QUERY = bigQuery;
     }
 
+    /**
+     * Il costruttore ha il compito di prelevare la data di valore più elevato presente nel cloud e impostarla come variabile
+     * d'istanza assieme alle altre.
+     * @param recordList contiene la lista dei record da controllare.
+     * @param targetTable contiene la tabella su cui effettuare le query.
+     * @throws InterruptedException viene sollevata quando il thread che esegue la query subisce un iterruzione non prevista
+     * @throws SQLException viene sollevata quando il risultato della query non è quello atteso
+     */
     public MatchBigQueryData(List<CSVRecord> recordList, String targetTable) throws InterruptedException, SQLException {
         this.recordList = recordList;
         this.targetTable = targetTable;
@@ -54,11 +67,15 @@ public class MatchBigQueryData {
         }
     }
 
+    /**
+     * Questo metodo verifica che le date del cloud e dei dati di refresh coincidano.
+     * @return true quando coincidono, false altrimenti.
+     */
     public boolean isMatching() {
         try {
             Date bigQueryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                     .parse(this.bigQueryDate);
-            Date recordDate = recordList.get(0).getDataOrdine();
+            Date recordDate = recordList.get(0).getOrderDate();
             return bigQueryDate.before(recordDate) || bigQueryDate.equals(recordDate);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -66,6 +83,14 @@ public class MatchBigQueryData {
         }
     }
 
+    /**
+     * Questo metodo basandosi sul risultato di isMatching() verifica che i record con la data incriminata siano almeno
+     * differenti da quelli già presenti nel cloud
+     * @return ritorna il numero di record che hanno colliso con i dati del cloud.
+     * @throws ParseException viene sollevata quando si cerca di trasformare un record che non può essere trasformato
+     * @throws InterruptedException viene sollevato quando il thread di esecuzione della query viene interrotto in maniera
+     *                              non prevista.
+     */
     public int getConflictRowNumber() throws ParseException, InterruptedException {
         int rowCounter = 0;
         if(isMatching()){

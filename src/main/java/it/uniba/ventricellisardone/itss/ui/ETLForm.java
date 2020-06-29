@@ -1,6 +1,7 @@
 package it.uniba.ventricellisardone.itss.ui;
 
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVParsingException;
 import it.uniba.ventricellisardone.itss.etl.Extraction;
 import it.uniba.ventricellisardone.itss.etl.Loading;
 import it.uniba.ventricellisardone.itss.etl.MatchBigQueryData;
@@ -42,7 +43,7 @@ public class ETLForm {
             if (filePath == JFileChooser.APPROVE_OPTION) {
                 try {
                     approvedOption(chooser);
-                } catch (IOException ioException) {
+                } catch (IOException | CSVParsingException ioException) {
                     ioException.printStackTrace();
                 }
             } else {
@@ -51,7 +52,7 @@ public class ETLForm {
         });
     }
 
-    private void approvedOption(JFileChooser fileSource) throws IOException {
+    private void approvedOption(JFileChooser fileSource) throws IOException, CSVParsingException {
         JFileChooser destinationChooser = new JFileChooser();
         destinationChooser.setDialogTitle("Seleziona cartella di destinazione");
         destinationChooser.setAcceptAllFileFilterUsed(false);
@@ -64,7 +65,7 @@ public class ETLForm {
         }
     }
 
-    private void transformMethod(JFileChooser destinationChooser, JFileChooser sourceChooser) throws IOException {
+    private void transformMethod(JFileChooser destinationChooser, JFileChooser sourceChooser) throws IOException, CSVParsingException {
         System.out.println("Hai selezionato il file: " + sourceChooser.getSelectedFile().getPath());
         String destinationPath = destinationChooser.getSelectedFile().getPath() + "/"
                 + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime())

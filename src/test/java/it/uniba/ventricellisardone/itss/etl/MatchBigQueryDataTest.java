@@ -1,6 +1,7 @@
 package it.uniba.ventricellisardone.itss.etl;
 
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
+import it.uniba.ventricellisardone.itss.csv.ecxception.CSVParsingException;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -13,12 +14,12 @@ import java.util.Objects;
 public class MatchBigQueryDataTest {
 
     @Test
-    public void initTest() throws SQLException, InterruptedException {
+    public void initTest() throws SQLException, InterruptedException, CSVParsingException {
         List<CSVRecord> csvRecord = new Extraction(Objects.requireNonNull(MatchBigQueryDataTest.class.getClassLoader()
                 .getResource("etl/matching/matching_data.csv")).getPath()).getCsvRecordList();
         MatchBigQueryData matchBigQueryData = new MatchBigQueryData(csvRecord, "test_tabella");
         assert (matchBigQueryData.getBigQueryDate().equals(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                .format(csvRecord.get(0).getDataOrdine()))) : "Le date non coincidono";
+                .format(csvRecord.get(0).getOrderDate()))) : "Le date non coincidono";
     }
 
     @Test
