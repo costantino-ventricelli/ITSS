@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,9 +27,9 @@ public class Transforming {
     private static final String TAG = "Transform.class";
     private static final List<String> COLOR;
     static {
-        COLOR = List.of("Rosso", "Multicolor", "Blu", "No Color", "Giallo", "Rosa",
-                "Verde", "Nero", "Grigio", "Marrone", "Neutro", "Bianco", "Viola",
-                "Arancione", "Fantasia");
+        COLOR = List.of("ROSSO", "MULTICOLOR", "BLU", "NO COLOR", "GIALLO", "ROSA",
+                "VERDE", "NERO", "GRIGIO", "MARRONE", "NEUTRO", "BIANCO", "VIOLA",
+                "ARANCIONE", "FANTASIA");
     }
 
     private final String savingPath;
@@ -61,8 +62,24 @@ public class Transforming {
         logTransform.close();
     }
 
+
+
     private void writeOnFile(PrintWriter csvFile, CSVRecord record) throws ParseException {
         CloudData cloudData = new CloudData(record.getDataOrdine());
+        StringBuilder bigQueryRecord = buildCloudRecord(record, cloudData);
+        csvFile.println(bigQueryRecord.toString());
+    }
+
+    public static List<String> getTransformedRecord(List<CSVRecord> recordList) throws ParseException {
+        ArrayList<String> stringRecordList = new ArrayList<>();
+        for(CSVRecord csvRecord : recordList) {
+            CloudData cloudData = new CloudData(csvRecord.getDataOrdine());
+            stringRecordList.add(buildCloudRecord(csvRecord, cloudData).toString());
+        }
+        return stringRecordList;
+    }
+
+    private static StringBuilder buildCloudRecord(CSVRecord record, CloudData cloudData) throws ParseException {
         StringBuilder bigQueryRecord = new StringBuilder();
         bigQueryRecord.append(record.getIdOrdine());
         bigQueryRecord.append(",");
@@ -98,7 +115,7 @@ public class Transforming {
         bigQueryRecord.append(",");
         bigQueryRecord.append(record.getQuantita());
         bigQueryRecord.append(",");
-        bigQueryRecord.append(String.format(Locale.ROOT, "%.2f", record.getPrezzoPagato()));
+        bigQueryRecord.append(String.format(Locale.ROOT, "%.1f", record.getPrezzoPagato()));
         bigQueryRecord.append(",");
         bigQueryRecord.append(record.getSconto());
         bigQueryRecord.append(",");
@@ -119,11 +136,11 @@ public class Transforming {
         bigQueryRecord.append(record.getCategoria().toUpperCase());
         bigQueryRecord.append(",");
         bigQueryRecord.append(record.getMacroCategoria().toUpperCase());
-        csvFile.println(bigQueryRecord.toString());
+        return bigQueryRecord;
     }
 
-    private String checkColor(String color) throws ParseException {
-        if(COLOR.contains(color))
+    private static String checkColor(String color) throws ParseException {
+        if(COLOR.contains(color.toUpperCase()))
             return color.toUpperCase();
         else
             throw new ParseException("Colore " + color + " non ammesso", color.length());
