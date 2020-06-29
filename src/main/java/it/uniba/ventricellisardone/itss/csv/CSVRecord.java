@@ -182,6 +182,11 @@ public class CSVRecord {
             return false;
     }
 
+    @Override
+    public int hashCode() {
+        return (int) this.getIdOrder();
+    }
+
     /**
      * Questo metodo permette di passare da un record gestito dal programma ad una stringa .csv che potrà essere utilizzata
      * in seguito, questo metodo è specifico per la parte di tool che fa l'analisi degli archivi.

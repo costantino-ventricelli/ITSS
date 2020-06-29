@@ -22,7 +22,7 @@ import java.util.Locale;
 public class Transforming {
     private static final String CSV_EXTENSION = ".csv";
     // Il nuovo header che i file .csv avranno per essere caricati nel cloud.
-    private static final String header = "ordine_id_carrello,ordine_data,ordine_giorno_nome,ordine_giorno_dell_anno," +
+    private static final String HEADER = "ordine_id_carrello,ordine_data,ordine_giorno_nome,ordine_giorno_dell_anno," +
             "ordine_mese_nome,ordine_anno_valore,ordine_mese_valore,ordine_trimestre,ordine_periodo," +
             "ordine_trimestre_anno,ordine_mese_anno,ordine_feriale_non,ordine_festivo_non,ordine_codice_stato," +
             "ordine_stato_nome,ordine_sesso_acquirente,ordine_quantita,ordine_prezzo_pagato,ordine_sconto," +
@@ -56,22 +56,23 @@ public class Transforming {
      * Questo metodo seleziona record per record i valori ottenuti da Extraction e avvia così la trasformazione sui dati e la
      * aggiunta dei record necessari alle analisi successive.
      * Contemporaneamente genera i file .csv dopo la trasformazione e tiene il conto dei file generati.
-     * @param CSVRecordList contiene la lista dei record da trasformare.
+     * @param csvRecordList contiene la lista dei record da trasformare.
      * @throws ParseException viene sollevata se si cerca di trasformare un record non trasformabile.
      * @throws IOException viene sollevata se il sistema ha problemi ad accedere alla memoria del calcolatore.
      */
-    public void transformData(List<CSVRecord> CSVRecordList) throws ParseException, IOException {
+    public void transformData(List<CSVRecord> csvRecordList) throws ParseException, IOException {
         PrintWriter csvFile = new PrintWriter(new FileOutputStream(savingPath + "/load_data_" + lastFileCreated
                 + CSV_EXTENSION), true, StandardCharsets.UTF_8);
-        csvFile.println(header);
-        for (int i = 0; i < CSVRecordList.size(); i++) {
+        csvFile.println(HEADER);
+        int i = 0;
+        while(i < csvRecordList.size()){
             try {
-                System.out.println("Scrivo su file record: " + i + " ne rimangono: " + (CSVRecordList.size() - (i + 1)));
-                writeOnFile(csvFile, CSVRecordList.get(i));
+                System.out.println("Scrivo su file record: " + i + " ne rimangono: " + (csvRecordList.size() - (i + 1)));
+                writeOnFile(csvFile, csvRecordList.get(i));
+                i++;
             }catch (NullPointerException ex){
                 Log.e(TAG, "Eccezione in transforming", ex);
                 System.err.println("Riprovo richiesta per record: " + i);
-                i--;
             }
         }
         csvFile.close();

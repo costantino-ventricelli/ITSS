@@ -73,12 +73,12 @@ public class MatchBigQueryData {
      */
     public boolean isMatching() {
         try {
-            Date bigQueryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            Date parseGoogleDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                     .parse(this.bigQueryDate);
             Date recordDate = recordList.get(0).getOrderDate();
-            return bigQueryDate.before(recordDate) || bigQueryDate.equals(recordDate);
+            return parseGoogleDate.before(recordDate) || parseGoogleDate.equals(recordDate);
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Eccezione sollevata: ", e);
             return true;
         }
     }
@@ -97,9 +97,9 @@ public class MatchBigQueryData {
             QueryJobConfiguration jobConfiguration = QueryJobConfiguration
                     .newBuilder("SELECT * FROM `biproject-itss.dataset."
                             + this.targetTable +"` WHERE ordine_data = '" + this.bigQueryDate + "'").build();
-            List<String> recordList = Transforming.getTransformedRecord(this.recordList);
+            List<String> transformedRecord = Transforming.getTransformedRecord(this.recordList);
             for(FieldValueList row : BIG_QUERY.query(jobConfiguration).iterateAll()){
-                for(String record : recordList){
+                for(String record : transformedRecord){
                     if(record.equals(buildStringFromFieldValueList(row)))
                         rowCounter++;
                 }

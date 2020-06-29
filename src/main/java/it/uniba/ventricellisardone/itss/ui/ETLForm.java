@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class ETLForm {
+    private static final String TAG = "ETLForm.java";
+    private static final String TABLE_NAME = "datawarehouse";
+
     private JPanel etlPanel;
     private JButton chooseButton;
     private JTextArea console;
@@ -43,8 +46,8 @@ public class ETLForm {
             if (filePath == JFileChooser.APPROVE_OPTION) {
                 try {
                     approvedOption(chooser);
-                } catch (IOException | CSVParsingException ioException) {
-                    ioException.printStackTrace();
+                } catch (IOException | CSVParsingException ex) {
+                    Log.e(TAG, "Eccezione sollevata: ", ex);
                 }
             } else {
                 System.out.println("Non è stato selezionato alcun file");
@@ -67,7 +70,7 @@ public class ETLForm {
 
     private void transformMethod(JFileChooser destinationChooser, JFileChooser sourceChooser) throws IOException, CSVParsingException {
         System.out.println("Hai selezionato il file: " + sourceChooser.getSelectedFile().getPath());
-        String destinationPath = destinationChooser.getSelectedFile().getPath() + "/"
+        String destinationPath = destinationChooser.getSelectedFile().getPath() + File.separator
                 + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime())
                 + "/Transformed";
         System.out.println("Carico i dati in: " + destinationPath);
@@ -81,7 +84,7 @@ public class ETLForm {
         MatchBigQueryData matchBigQueryData = null;
         try {
             System.out.println("Verifico eventuali duplicati");
-            matchBigQueryData = new MatchBigQueryData(csvRecordList, "datawarehouse");
+            matchBigQueryData = new MatchBigQueryData(csvRecordList, TABLE_NAME);
             if(matchBigQueryData.isMatching()) {
                 System.out.println("Non ho trovato possibili duplicati");
                 ExecuteTransform executeTransform = new ExecuteTransform(csvRecordList, destinationPath);
@@ -91,7 +94,8 @@ public class ETLForm {
                         "Si stanno cercando di caricare dati già inseriti nel Data ware house\n" +
                         "Il processo termina senza apportare modifiche.");
         } catch (InterruptedException | SQLException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Eccezione sollevata: ", e);
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -101,7 +105,6 @@ public class ETLForm {
 
     private class ExecuteTransform extends SwingWorker<Boolean, Integer>{
 
-        private static final String TABLE_NAME = "datawarehouse";
         private final List<CSVRecord> csvRecordList;
         private final String destinationPath;
 
@@ -112,7 +115,7 @@ public class ETLForm {
         }
 
         @Override
-        protected Boolean doInBackground() throws Exception {
+        protected Boolean doInBackground() {
             int transformedBlock = 0;
             ArrayList<CSVRecord> subList = new ArrayList<>();
             try {
@@ -173,9 +176,11 @@ public class ETLForm {
             if(fileToLoad != -1) {
                 try {
                     loadingInstance.startLoad(fileToLoad, (fileToLoad + 1));
+                    Thread.currentThread().interrupt();
                 } catch (IOException | InterruptedException e) {
                     Log.e(TAG, "Eccezione nel thread di caricamento", e);
                     System.err.println("Eccezione nel caricamento, verifica file di log");
+                    Thread.currentThread().interrupt();
                 }
             }
         }

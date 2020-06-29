@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 public class CloudDataTest {
 
     @Test
-    public void festivo() throws ParseException {
+    public void holidayTest() throws ParseException {
         CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("01/05/20"));
         assert (cloudData.getDateString().equals("2020-05-01")) : "Errore data string: " + cloudData.getDateString();
         assert (cloudData.getGoogleData().equals(
@@ -29,7 +29,7 @@ public class CloudDataTest {
     }
 
     @Test
-    public void nonFestivo() throws ParseException{
+    public void notHolidayTest() throws ParseException{
         CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("02/05/20"));
         assert (cloudData.getDateString().equals("2020-05-02")) : "Errore data string: " + cloudData.getDateString();
         assert (cloudData.getGoogleData().equals(
@@ -48,7 +48,7 @@ public class CloudDataTest {
     }
 
     @Test
-    public void domenica() throws ParseException{
+    public void sundayTest() throws ParseException{
         CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("03/05/20"));
         assert (cloudData.getDateString().equals("2020-05-03")) : "Errore data string: " + cloudData.getDateString();
         assert (cloudData.getGoogleData().equals(

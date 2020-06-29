@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -32,6 +31,7 @@ import java.util.Locale;
 public class CloudData{
 
     private static final String TAG = "Cloud data";
+    private static final String NOTHING = "NESSUNO";
 
     private final Date googleData;
 
@@ -48,7 +48,7 @@ public class CloudData{
     private final String holiday;
     private final String dateString;
 
-    public CloudData(java.util.Date date) throws ParseException {
+    public CloudData(java.util.Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         this.dateString = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(date);
@@ -59,9 +59,9 @@ public class CloudData{
         this.yearValue = calendar.get(Calendar.YEAR);
         //calendar numera i mesi da 0, aggiungo 1 per evitare ambiguità
         this.monthValue = calendar.get(Calendar.MONTH) + 1;
-        this.quarter = setTrimestre();
+        this.quarter = setQuarter();
         this.season = setSeason(date);
-        this.seasonYear = setTrimestre() + "-" + this.yearValue;
+        this.seasonYear = setQuarter() + "-" + this.yearValue;
         this.monthYear = this.monthValue + "-" + this.yearValue;
         this.weekday = setWeekday();
         this.holiday = setHoliday();
@@ -119,7 +119,7 @@ public class CloudData{
         return holiday;
     }
 
-    private String setTrimestre() {
+    private String setQuarter() {
         if (this.monthValue >= 1 && this.monthValue <= 3)
             return "T1";
         else if (this.monthValue >= 4 && this.monthValue <= 6)
@@ -138,7 +138,7 @@ public class CloudData{
      *                     NOME_FESTIVITA: se la data ricade in una festività;
      */
     private String setSeason(java.util.Date date) {
-        String stringResponse = "NESSUNO";
+        String stringResponse = NOTHING;
         try {
             CloseableHttpClient client = HttpClients.custom().build();
             HttpUriRequest request = RequestBuilder.get()
@@ -152,17 +152,8 @@ public class CloudData{
             Gson gson = new Gson();
             Type listType = new TypeToken<List<HolidaysDate>>() {}.getType();
             List<HolidaysDate> holidaysDateList = gson.fromJson(stringResponse, listType);
-            stringResponse = "NESSUNO";
-            try {
-                for (HolidaysDate holidaysDate : holidaysDateList) {
-                    if (holidaysDate.getDate().equals(date))
-                        stringResponse = holidaysDate.getLocalName().toUpperCase();
-                }
-            }catch (NullPointerException ex) {
-                System.err.println("Eccezione in CloudDate, vedi log file");
-                Log.e(TAG, "Eccezione in CloudDate, richesta API: " + this.yearValue, ex);
-                throw ex;
-            }
+            stringResponse = NOTHING;
+            stringResponse = matchDate(date, stringResponse, holidaysDateList);
             response.close();
             request.abort();
         } catch (IOException e) {
@@ -171,15 +162,29 @@ public class CloudData{
         return stringResponse;
     }
 
+    private String matchDate(java.util.Date date, String stringResponse, List<HolidaysDate> holidaysDateList) {
+        try {
+            for (HolidaysDate holidaysDate : holidaysDateList) {
+                if (holidaysDate.getDate().equals(date))
+                    stringResponse = holidaysDate.getLocalName().toUpperCase();
+            }
+        }catch (NullPointerException ex) {
+            System.err.println("Eccezione in CloudDate, vedi log file");
+            Log.e(TAG, "Eccezione in CloudDate, richesta API: " + this.yearValue, ex);
+            throw ex;
+        }
+        return stringResponse;
+    }
+
     private String setWeekday() {
-        if (this.season.equals("NESSUNO") && !this.dayName.equals("DOMENICA"))
+        if (this.season.equals(NOTHING) && !this.dayName.equals("DOMENICA"))
             return "FERIALE";
         else
             return "NON FERIALE";
     }
 
     private String setHoliday() {
-        if (this.season.equals("NESSUNO"))
+        if (this.season.equals(NOTHING))
             return "NON FESTIVO";
         else
             return "FESTIVO";
@@ -190,6 +195,8 @@ public class CloudData{
         private String localName;
 
         public HolidaysDate() {
+            // Empty method required
+            // necessario per deserializzazione JSON.
         }
 
         public java.util.Date getDate() {

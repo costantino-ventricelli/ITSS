@@ -20,9 +20,9 @@ import java.util.Locale;
 
 public class Loading {
 
-    private final static String TAG = "LoadData.class";
-    private final static String DATASET = "dataset";
-    private final static String LOCATION = "eu";
+    private static final  String TAG = "LoadData.class";
+    private static final String DATASET = "dataset";
+    private static final String LOCATION = "eu";
 
     private final String dataDirectory;
     private int actualLoad;
@@ -35,8 +35,9 @@ public class Loading {
      * accesso al cloud, setta in maniera appropiata le impostazioni di progetto, imposta la tabella di riferimento, crea
      * il canale per l'invio dei file in scrittura e crea un macro lavoro con il quale verranno avviati i caricamenti dei
      * file.
+     *
      * @param dataDirectory contiene la cartella all'interno della quale sono presenti i file da caricare.
-     * @param tableName contiene il nome della tabella del dataset nella quale caricare i dati.
+     * @param tableName     contiene il nome della tabella del dataset nella quale caricare i dati.
      * @throws IOException può essere sollevata in caso di errore nell'accesso alla memoria della macchina.
      */
     public Loading(String dataDirectory, String tableName) throws IOException {
@@ -58,9 +59,10 @@ public class Loading {
      * Questo metodo imposta il thread per il caricamento del file nel cloud, leggendo il file da caricare dalla memoria,
      * inviando al canale di scrittura una copia del file e salvando in un file a parte il punto in cui il caricamento è
      * arrivato.
+     *
      * @param startFrom contiene il valore intero che contraddistingue il file da caricare da cui iniziare.
-     * @param endTo contiene il valore intero che contraddistingue il file da caricare con cui ultimare
-     * @throws IOException può essere sollevata in caso di problemi con l'accesso alla memoria dell'elaboratore.
+     * @param endTo     contiene il valore intero che contraddistingue il file da caricare con cui ultimare
+     * @throws IOException          può essere sollevata in caso di problemi con l'accesso alla memoria dell'elaboratore.
      * @throws InterruptedException maneggiando thread separati il metodo potrebbe dover gestire interruzioni inaspettate
      *                              del thread di caricamento.
      */
@@ -77,7 +79,7 @@ public class Loading {
                 System.out.println("[EXECUTING] Eccezione path: " + e.getMessage());
                 Log.e(TAG, "ERRORE OUTPUT STREAM", e);
             }
-            if(thread != null)
+            if (thread != null)
                 thread.join();
             thread = new Thread(new UploadCSVFile(writer));
             thread.start();
@@ -89,27 +91,30 @@ public class Loading {
     /**
      * Questo metodo permette di salvare su di un file in numero dell'ultimo file caricato, così in caso di interruzione
      * imprevista potranno essere effettuate delle operazioni preliminari sui dati per ripristinare l'esecuzione.
+     *
      * @throws IOException può essere sollevata in caso di problemi con l'accesso alla memoria del calcolatore.
      */
     private void saveOperation() throws IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                .format(Calendar.getInstance().getTime())));
-        outputStream.writeInt(actualLoad);
-        outputStream.close();
+        try (ObjectOutputStream outputStream =
+                     new ObjectOutputStream(new FileOutputStream(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                             .format(Calendar.getInstance().getTime())))) {
+            outputStream.writeInt(actualLoad);
+        }
     }
 
     /**
      * Questo metodo permette di leggere il file di salvataggio di cui prima.
+     *
      * @param date essezialmente il nome del file di salvataggio.
      * @return il numero di file caricati.
      * @throws IOException può essere sollevata in caso di problemi con l'accesso alla memoria del calcolatore.
      */
     public int getLastLoad(Date date) throws IOException {
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                .format(date)));
-        int readInt = inputStream.readInt();
-        inputStream.close();
-        return readInt;
+        try (ObjectInputStream inputStream =
+                     new ObjectInputStream(new FileInputStream(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                             .format(date)))) {
+            return inputStream.readInt();
+        }
     }
 
     /**
@@ -118,7 +123,7 @@ public class Loading {
      * la lettura del file e il suo caricamento, parallelizzando questi due processi mentre un file viene caricato sul cloud,
      * il successivo viene copiato nel canale di scrittura, massimizzando l'efficienza dei due processi.
      */
-    private static class UploadCSVFile implements Runnable{
+    private static class UploadCSVFile implements Runnable {
 
         private final TableDataWriteChannel writer;
 
@@ -139,6 +144,7 @@ public class Loading {
             } catch (InterruptedException e) {
                 Log.e(TAG, "ERRORE IN RUNNABLE", e);
                 System.err.println("[EXECUTING] ERRORE IN RUNNABLE: " + e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
     }

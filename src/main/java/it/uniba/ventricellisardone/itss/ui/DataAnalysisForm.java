@@ -6,6 +6,7 @@ import it.uniba.ventricellisardone.itss.etl.Extraction;
 import it.uniba.ventricellisardone.itss.log.Log;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
@@ -21,11 +22,11 @@ public class DataAnalysisForm {
     private JPanel dataAnalysisPanel;
 
     public DataAnalysisForm(){
-        
+
         JTextAreaOutputStream out = new JTextAreaOutputStream (console);
         System.setOut (new PrintStream(out));
         System.setErr(new PrintStream(out));
-        
+
         chooseButton.addActionListener(e -> {
             console.setText("");
             JFileChooser chooser = new JFileChooser();
@@ -65,7 +66,7 @@ public class DataAnalysisForm {
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int savingPath = chooser.showOpenDialog(dataAnalysisPanel);
         if (savingPath == JFileChooser.APPROVE_OPTION) {
-            String pathDirectory = chooser.getSelectedFile().getPath() + "/" + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime());
+            String pathDirectory = chooser.getSelectedFile().getPath() + File.separator + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime());
             System.out.println("Cartella selezionata: " + pathDirectory);
             csvDataAnalysis.logDataAnalysis(dataMap, pathDirectory,"Data analysis");
             extraction.logNullRecord(pathDirectory, "Null record");

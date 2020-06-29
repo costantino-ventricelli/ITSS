@@ -19,7 +19,7 @@ import java.util.*;
 
 public class Extraction {
 
-    public static final Map<String, Integer> HEADER_FILE;
+    protected static final Map<String, Integer> HEADER_FILE;
     private static final String TAG = "CSVFile.class";
     private static final String CSV_EXTENSION = ".csv";
     private static final String RESULTS_DIR = "/Results/";
@@ -62,7 +62,6 @@ public class Extraction {
                 setCsvRecordList();
         } catch (FileNotFoundException e) {
             Log.e(TAG, "Constructor exception: ", e);
-            e.printStackTrace();
         }
     }
 

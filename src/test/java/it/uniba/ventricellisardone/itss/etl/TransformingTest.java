@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class TransformingTest {
 
     @Test
-    public void firstTest() throws IOException, ParseException {
+    public void correctTest() throws IOException, ParseException {
         Extraction extraction = new Extraction(Objects.requireNonNull(TransformingTest.class.getClassLoader().getResource("etl/transforming/transform_data.csv")).getPath());
         Transforming transforming = new Transforming(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Desktop/TEST");
         transforming.transformData(extraction.getCsvRecordList());
@@ -27,14 +27,14 @@ public class TransformingTest {
     }
 
     @Test
-    public void secondTest() throws IOException, CSVParsingException {
+    public void parseErrorTest() throws IOException, CSVParsingException {
         Extraction extraction = new Extraction(Objects.requireNonNull(TransformingTest.class.getClassLoader().getResource("etl/transforming/transform_data_error.csv")).getPath());
         Transforming transforming = new Transforming(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Desktop/TEST");
         Assertions.assertThrows(ParseException.class, () -> transforming.transformData(extraction.getCsvRecordList()), "Eccezione non sollevata");
     }
 
     @Test
-    public void thirdTest() throws IOException, ParseException {
+    public void chooseFileTest() throws IOException, ParseException {
         Extraction extraction = new Extraction(Objects.requireNonNull(TransformingTest.class.getClassLoader().getResource("etl/transforming/transform_data.csv")).getPath());
         Transforming transforming = new Transforming(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Desktop/TEST");
         transforming.transformData(extraction.getCsvRecordList());

@@ -10,11 +10,15 @@ public class Log {
 
     private static PrintWriter logFile;
 
-    public static void e(String TAG, String message, Exception ex) {
+    private Log(){
+        //required to hide the public implicit constructor
+    }
+
+    public static void e(String tag, String message, Exception ex) {
         try {
             logFile = new PrintWriter(new FileOutputStream("log.txt", true));
             Calendar calendar = Calendar.getInstance();
-            logFile.println(TAG + " [EXCEPTION LOG] " + SimpleDateFormat.getInstance().format(calendar.getTime()));
+            logFile.println(tag + " [EXCEPTION LOG] " + SimpleDateFormat.getInstance().format(calendar.getTime()));
             logFile.println("\t" + message);
             logFile.println("\t" + ex.getMessage());
             logFile.println();
@@ -24,11 +28,11 @@ public class Log {
         }
     }
 
-    public static void i(String TAG, String message) {
+    public static void i(String tag, String message) {
         try {
             logFile = new PrintWriter(new FileOutputStream("log.txt", true));
             Calendar calendar = Calendar.getInstance();
-            logFile.println(TAG + " [INFO LOG] " + SimpleDateFormat.getInstance().format(calendar.getTime()));
+            logFile.println(tag + " [INFO LOG] " + SimpleDateFormat.getInstance().format(calendar.getTime()));
             logFile.println("\t" + message);
             logFile.println();
             logFile.close();
