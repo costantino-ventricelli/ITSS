@@ -85,13 +85,8 @@ public class Transforming {
                     datePackage.add(csvRecordList.get(i));
                 checkingDate = csvRecordList.get(i).getOrderDate();
                 i++;
-            } catch (NullPointerException ex) {
-                Log.e(TAG, "NullPointer in transforming", ex);
-                System.err.println("Riprovo richiesta per record: " + i);
-            } catch (SQLException ex) {
-                Log.e(TAG, "SQL Exception in transforming", ex);
-            } catch (InterruptedException ex) {
-                Log.e(TAG, "Interrupted in transforming", ex);
+            } catch (NullPointerException | SQLException | InterruptedException ex) {
+                Log.e(TAG, "Exception in transforming", ex);
             }
         }
         csvFile.close();

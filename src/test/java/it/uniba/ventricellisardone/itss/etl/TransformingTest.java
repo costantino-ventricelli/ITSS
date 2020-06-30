@@ -20,7 +20,7 @@ public class TransformingTest {
     private static final String TABLE_NAME = "test_tabella";
 
     @Test
-    public void correctTest() throws IOException, ParseException, InterruptedException {
+    public void correctTest() throws IOException, ParseException {
         System.out.println("[INFO] CorrectTest");
         Extraction extraction = new Extraction(Objects.requireNonNull(TransformingTest.class.getClassLoader().getResource("etl" + File.separator + "transforming" + File.separator + "transform_data.csv")).getPath());
         Transforming transforming = new Transforming(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + File.separator + "Desktop" + File.separator + "TEST", TABLE_NAME);

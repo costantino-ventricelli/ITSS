@@ -78,6 +78,7 @@ public class MatchBigQueryData {
      * @return true quando coincidono, false altrimenti.
      */
     public boolean isDateMatching() {
+        System.out.println("Data matching: " + this.bigQueryDate);
         if(this.bigQueryDate != null)
             try {
                 Date parseGoogleDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
