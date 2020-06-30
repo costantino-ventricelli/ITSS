@@ -16,15 +16,15 @@ public class CSVDataAnalysisTest {
     @Test
     public void analysisTest() throws IOException, CSVParsingException {
         System.out.println("[INFO] AnalysisTest");
-        Extraction extraction = new Extraction(Objects.requireNonNull(CSVDataAnalysisTest.class.getClassLoader().getResource("data_analysis/right_data.csv")).getPath());
+        Extraction extraction = new Extraction(Objects.requireNonNull(CSVDataAnalysisTest.class.getClassLoader().getResource("data_analysis" + File.separator + "right_data.csv")).getPath());
         CSVDataAnalysis CSVDataAnalysis = new CSVDataAnalysis(extraction.getCsvRecordList());
 
         Map<String, Map<String, Integer>> map = CSVDataAnalysis.performDataAnalysis();
         assert (map.equals(CSVStaticTestModel.getTestMap())) : "[ERROR] Incorrect data analysis";
-        CSVDataAnalysis.logDataAnalysis(map, javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Desktop/TEST", "test_result_analysis.xml");
+        CSVDataAnalysis.logDataAnalysis(map, javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + File.separator + "Desktop" + File.separator + "TEST", "test_result_analysis.xml");
 
-        Scanner testFile = new Scanner(new File(Objects.requireNonNull(ExtractionTest.class.getClassLoader().getResource("data_analysis/data_analysis_test.xml")).getPath()));
-        String resultPath =  javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Desktop/TEST/Analysis/test_result_analysis.xml";
+        Scanner testFile = new Scanner(new File(Objects.requireNonNull(ExtractionTest.class.getClassLoader().getResource("data_analysis" + File.separator + "data_analysis_test.xml")).getPath()));
+        String resultPath =  javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + File.separator + "Desktop" + File.separator + "TEST" + File.separator + "Analysis" + File.separator + "test_result_analysis.xml";
         Scanner resultFile = new Scanner(new File(resultPath));
         int i = 0;
         while (resultFile.hasNextLine()){

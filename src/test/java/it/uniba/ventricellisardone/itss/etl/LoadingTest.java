@@ -9,6 +9,7 @@ import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -56,7 +57,7 @@ public class LoadingTest {
     @Test
     public void rightConstructorTest() throws IOException {
         System.out.println("[INFO] RightConstructorTest");
-        new Loading(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl/loading/load_data_0.csv")).getPath(), "test_tabella");
+        new Loading(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl" + File.separator + "loading" + File.separator + "load_data_0.csv")).getPath(), "test_tabella");
     }
 
     @Test
@@ -68,7 +69,7 @@ public class LoadingTest {
     @Test
     public void completeLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
         System.out.println("[INFO] CompleteLoadDataOnDWH");
-        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Documents/etl-authentication.json"))
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + File.separator + "Documents" + File.separator + "etl-authentication.json"))
                 .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
         BigQuery bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
         QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("DELETE FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
@@ -76,7 +77,7 @@ public class LoadingTest {
         Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
         job.waitFor();
 
-        Loading loading = new Loading(Paths.get(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl/loading")).toURI()).toString(), "test_tabella");
+        Loading loading = new Loading(Paths.get(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl" + File.separator + "loading")).toURI()).toString(), "test_tabella");
         loading.startLoad(0, 2);
         jobConfiguration = QueryJobConfiguration.newBuilder("SELECT * FROM `biproject-itss.dataset.test_tabella` ORDER BY(ordine_id_carrello);").build();
         jobId = JobId.of(UUID.randomUUID().toString());
@@ -90,7 +91,7 @@ public class LoadingTest {
         TableResult result = job.getQueryResults();
         //QUI IL TEST DEVE ESSERE MENO FISCALE, IN QUANTO PER IL MULTI THREADING QUESTO TEST POTREBBE ESSERE RICHIAMATO PRIMA CHE L'UPLOAD SIA ULTIMATO
         assert (result.getTotalRows() == 8 || result.getTotalRows() == 4) : "NUMERO RIGHE RESTITUITO NON CORRETTO: " + result.getTotalRows();
-        String fileJSON = Files.readString(Paths.get(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl/loading/data_result.json")).toURI()));
+        String fileJSON = Files.readString(Paths.get(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl" + File.separator + "loading" + File.separator + "data_result.json")).toURI()));
         JsonParser jsonParser = new JsonParser();
         JsonObject object = (JsonObject) jsonParser.parse(fileJSON);
         JsonArray array = (JsonArray) object.get("result");
@@ -109,14 +110,14 @@ public class LoadingTest {
     @Test
     public void interruptedLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
         System.out.println("[INFO] InterruptedLoadDataOnDWH");
-        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Documents/etl-authentication.json"))
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + File.separator + "Documents" + File.separator + "etl-authentication.json"))
                 .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
         BigQuery bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
         QueryJobConfiguration jobConfiguration = QueryJobConfiguration.newBuilder("DELETE FROM `biproject-itss.dataset.test_tabella` WHERE TRUE;").build();
         JobId jobId = JobId.of(UUID.randomUUID().toString());
         Job job = bigQuery.create(JobInfo.newBuilder(jobConfiguration).setJobId(jobId).build());
         job.waitFor();
-        Loading loading = new Loading(Paths.get(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl/loading")).toURI()).toString(), "test_tabella");
+        Loading loading = new Loading(Paths.get(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl" + File.separator + "loading")).toURI()).toString(), "test_tabella");
         loading.startLoad(0, 1);
         assert (loading.getLastLoad(Calendar.getInstance().getTime()) == 0) : "ERRORE NEL SALVATAGGIO DEL JOB: " + loading.getLastLoad(Calendar.getInstance().getTime());
     }

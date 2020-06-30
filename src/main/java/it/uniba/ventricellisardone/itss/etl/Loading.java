@@ -46,7 +46,7 @@ public class Loading {
             throw new IOException("Directory not found");
         else {
             this.dataDirectory = dataDirectory;
-            GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Documents/etl-authentication.json"))
+            GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + File.separator + "Documents" + File.separator + "etl-authentication.json"))
                     .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
             bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
             TableId tableId = TableId.of(DATASET, tableName);
@@ -71,7 +71,7 @@ public class Loading {
         saveOperation();
         Thread thread = null;
         for (int i = startFrom; i < endTo; i++) {
-            String file = dataDirectory + "/load_data_" + i + ".csv";
+            String file = dataDirectory + File.separator + "load_data_" + i + ".csv";
             TableDataWriteChannel writer = bigQuery.writer(jobId, writeChannelConfiguration);
             try (OutputStream stream = Channels.newOutputStream(writer)) {
                 Files.copy(Paths.get(file), stream);

@@ -22,7 +22,7 @@ public class Extraction {
     protected static final Map<String, Integer> HEADER_FILE;
     private static final String TAG = "CSVFile.class";
     private static final String CSV_EXTENSION = ".csv";
-    private static final String RESULTS_DIR = "/Results/";
+    private static final String RESULTS_DIR = "" + File.separator + "Results" + File.separator + "";
 
     //  L'header file che i file in input devono avere per essere ritenuti idonei.
     static {
@@ -182,7 +182,7 @@ public class Extraction {
      * @throws FileNotFoundException solleva questa eccezione quando ci sono problemi ad accedere alla memoria dell'elaboratore.
      */
     private static void writeLog(String pathDirectory, String fileName, List<String> recordList) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new FileOutputStream(pathDirectory + "/" + fileName, false));
+        PrintWriter writer = new PrintWriter(new FileOutputStream(pathDirectory + File.separator + fileName, false));
         Log.i(TAG, "List size: " + recordList.size());
         for (String string : recordList) {
             writer.println(string);

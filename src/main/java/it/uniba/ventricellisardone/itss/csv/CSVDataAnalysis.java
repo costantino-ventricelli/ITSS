@@ -57,11 +57,11 @@ public class CSVDataAnalysis {
     }
 
     public void logDataAnalysis(Map<String, Map<String, Integer>> analysisReport, String pathDirectory, String fileName) throws IOException {
-        pathDirectory += "/Analysis/";
+        pathDirectory += "" + File.separator + "Analysis" + File.separator + "";
         pathDirectory = Paths.get(pathDirectory).toString();
         fileName = checkDirectoryAndFileName(pathDirectory, fileName);
         try {
-            PrintWriter writer = new PrintWriter(new FileOutputStream(pathDirectory + "/" + fileName, false));
+            PrintWriter writer = new PrintWriter(new FileOutputStream(pathDirectory + File.separator + fileName, false));
             writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             if(fileName.contains("test"))
                 writer.println("<data type=\"test\">");

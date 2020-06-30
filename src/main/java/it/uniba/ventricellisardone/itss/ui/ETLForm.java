@@ -72,7 +72,7 @@ public class ETLForm {
         System.out.println("Hai selezionato il file: " + sourceChooser.getSelectedFile().getPath());
         String destinationPath = destinationChooser.getSelectedFile().getPath() + File.separator
                 + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime())
-                + "/Transformed";
+                + File.separator + "Transformed";
         System.out.println("Carico i dati in: " + destinationPath);
         File destinationFile = new File(destinationPath);
         if (!destinationFile.exists())
@@ -135,7 +135,7 @@ public class ETLForm {
         @Override
         protected void process(List<Integer> chunks) {
             uploadProgress.setValue(chunks.get(chunks.size() - 1));
-            progressValue.setText((chunks.get(chunks.size() - 1) + "/" + csvRecordList.size() / 1000));
+            progressValue.setText((chunks.get(chunks.size() - 1) + File.separator + csvRecordList.size() / 1000));
         }
 
         @Override

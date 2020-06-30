@@ -29,11 +29,7 @@ public class TransformingTest {
         Scanner testFile = new Scanner(new File(Objects.requireNonNull(TransformingTest.class.getClassLoader().getResource("etl" + File.separator + "transforming" + File.separator + "transformed_data.csv")).getPath()));
         int i = 0;
         while (transformedFile.hasNextLine()) {
-            String testLine = testFile.nextLine().trim();
-            String transformedLine = transformedFile.nextLine().trim();
-            System.out.println("TEST LINE: " + testLine);
-            System.out.println("TRANSFORMED LINE: " + transformedLine);
-            assert (testLine.equals(transformedLine)) : "Errore alla linea: " + i;
+            assert (testFile.nextLine().trim().equals(transformedFile.nextLine().trim())) : "Errore alla linea: " + i;
             i++;
         }
     }

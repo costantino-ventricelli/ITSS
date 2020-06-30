@@ -11,6 +11,7 @@ import com.google.common.collect.Lists;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
 import it.uniba.ventricellisardone.itss.log.Log;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,7 +35,9 @@ public class MatchBigQueryData {
         GoogleCredentials googleCredentials;
         BigQuery bigQuery = null;
         try {
-            googleCredentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Documents/etl-authentication.json"))
+            googleCredentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser
+                    .FileSystemView.getFileSystemView().getHomeDirectory() + File.separator + "Documents"
+                    + File.separator + "etl-authentication.json"))
                     .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
             bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(googleCredentials).build().getService();
         } catch (IOException e) {
