@@ -55,16 +55,19 @@ public class LoadingTest {
 
     @Test
     public void rightConstructorTest() throws IOException {
+        System.out.println("[INFO] RightConstructorTest");
         new Loading(Objects.requireNonNull(LoadingTest.class.getClassLoader().getResource("etl/loading/load_data_0.csv")).getPath(), "test_tabella");
     }
 
     @Test
     public void wrongConstructorTest(){
+        System.out.println("[INFO] WrongConstructorTest");
         Assertions.assertThrows(IOException.class, () -> new Loading("file_not_found.csv", "test_tabella"), "File trovato inspiegabilmente");
     }
 
     @Test
     public void completeLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
+        System.out.println("[INFO] CompleteLoadDataOnDWH");
         GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Documents/etl-authentication.json"))
                 .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
         BigQuery bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();
@@ -105,6 +108,7 @@ public class LoadingTest {
 
     @Test
     public void interruptedLoadDataOnDWH() throws IOException, InterruptedException, URISyntaxException {
+        System.out.println("[INFO] InterruptedLoadDataOnDWH");
         GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/Documents/etl-authentication.json"))
                 .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
         BigQuery bigQuery = BigQueryOptions.newBuilder().setProjectId("biproject-itss").setCredentials(credentials).build().getService();

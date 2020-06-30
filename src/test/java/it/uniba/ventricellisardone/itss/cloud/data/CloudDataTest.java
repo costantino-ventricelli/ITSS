@@ -11,6 +11,7 @@ public class CloudDataTest {
 
     @Test
     public void holidayTest() throws ParseException {
+        System.out.println("[INFO] HolidayTest");
         CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("01/05/20"));
         assert (cloudData.getDateString().equals("2020-05-01")) : "Errore data string: " + cloudData.getDateString();
         assert (cloudData.getGoogleData().equals(
@@ -30,6 +31,7 @@ public class CloudDataTest {
 
     @Test
     public void notHolidayTest() throws ParseException{
+        System.out.println("[INFO] NotHolidayTest");
         CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("02/05/20"));
         assert (cloudData.getDateString().equals("2020-05-02")) : "Errore data string: " + cloudData.getDateString();
         assert (cloudData.getGoogleData().equals(
@@ -49,6 +51,7 @@ public class CloudDataTest {
 
     @Test
     public void sundayTest() throws ParseException{
+        System.out.println("[INFO] SundayTest");
         CloudData cloudData = new CloudData(new SimpleDateFormat("dd/MM/yy").parse("03/05/20"));
         assert (cloudData.getDateString().equals("2020-05-03")) : "Errore data string: " + cloudData.getDateString();
         assert (cloudData.getGoogleData().equals(
@@ -68,6 +71,7 @@ public class CloudDataTest {
 
     @Test
     public void wrongConstructorTest(){
+        System.out.println("[INFO] WrongConstructorTest");
         Assertions.assertThrows(ParseException.class, () -> new CloudData(new SimpleDateFormat("dd/MM/yy").parse("ciccio/05/20")));
     }
 }

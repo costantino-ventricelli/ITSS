@@ -15,6 +15,7 @@ public class ExtractionTest {
 
     @Test
     public void correctTest() throws CSVParsingException {
+        System.out.println("[INFO] CorrectTest");
         Extraction extraction = new Extraction(Objects.requireNonNull(ExtractionTest.class.getClassLoader().getResource("etl/extraction/right_data.csv")).getPath());
         assert (extraction.getHeaderFile().equals(Extraction.HEADER_FILE)) : "[ERROR] Incorrect header file";
         assert (extraction.getCsvRecordList().equals(ETLStaticTestModel.getTestList())) : "[ERROR] Incorrect list of record";
@@ -22,6 +23,7 @@ public class ExtractionTest {
 
     @Test
     public void missingFieldTest() throws IOException, CSVParsingException {
+        System.out.println("[INFO] MissingFieldTest");
         Extraction extraction = new Extraction(Objects.requireNonNull(ExtractionTest.class.getClassLoader().getResource("etl/extraction/missing_fields_data.csv")).getPath());
         assert (extraction.getNullRecordList().equals(ETLStaticTestModel.getNullFieldsList())) : "[ERROR] Null list record incorrect";
         extraction.logNullRecord(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/TEST", "test_result_null_fields.csv");
@@ -36,6 +38,7 @@ public class ExtractionTest {
 
     @Test
     public void parsingErrorData() throws IOException, CSVParsingException {
+        System.out.println("[INFO] ParsingErrorData");
         Extraction extraction = new Extraction(Objects.requireNonNull(ExtractionTest.class.getClassLoader().getResource("etl/extraction/parsing_error_data.csv")).getPath());
         assert (extraction.getParseErrorList().equals(ETLStaticTestModel.getParsingErrorList())) : "[ERROR] Parsing error list incorrect";
         extraction.logParseErrorRecord(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() + "/TEST", "parsing_error_result.csv");
@@ -50,6 +53,7 @@ public class ExtractionTest {
 
     @Test
     public void headerErrorTest(){
+        System.out.println("[INFO] HeaderErrorTest");
         Assertions.assertThrows(CSVParsingException.class,
                 () -> new Extraction(Objects.requireNonNull(ExtractionTest.class.getClassLoader()
                         .getResource("etl/extraction/header_error_data.csv")).getPath()), "Eccezione non sollevata");

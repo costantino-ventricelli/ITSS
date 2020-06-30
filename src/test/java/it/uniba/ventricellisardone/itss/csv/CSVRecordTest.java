@@ -13,6 +13,7 @@ public class CSVRecordTest {
 
     @Test
     public void rightConstructorTest() throws ParseException, CSVNullFieldsException {
+        System.out.println("[INFO] RightConstructorTest");
         String[] strings = {"11", "07/09/10", "IT", "M", "1", "89", "0", "0","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi", "Gioielli Moda"};
         CSVRecord csvRecord = new CSVRecord(strings);
@@ -37,6 +38,7 @@ public class CSVRecordTest {
 
     @Test
     public void orderIdErrorTest(){
+        System.out.println("[INFO] OrderIdErrorTest");
         String[] strings = {"ciccio", "07/09/10", "IT", "M", "1", "89", "0", "0","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi", "Gioielli Moda"};
         Assertions.assertThrows(NumberFormatException.class, () -> new CSVRecord(strings));
@@ -44,6 +46,7 @@ public class CSVRecordTest {
 
     @Test
     public void dateErrorTest(){
+        System.out.println("[INFO] RightConstructorTest");
         String[] strings = {"11", "ciccio", "IT", "M", "1", "89", "0", "0","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi", "Gioielli Moda"};
         Assertions.assertThrows(ParseException.class, () -> new CSVRecord(strings));
@@ -51,6 +54,7 @@ public class CSVRecordTest {
 
     @Test
     public void customerGenderErrorTest(){
+        System.out.println("[INFO] CustomerGenderErrorTest");
         String[] strings = {"11", "07/09/10", "IT", "G", "1", "89", "0", "0","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi", "Gioielli Moda"};
         Assertions.assertThrows(CSVParsingException.class, () -> new CSVRecord(strings));
@@ -58,6 +62,7 @@ public class CSVRecordTest {
 
     @Test
     public void payedPriceParseTest(){
+        System.out.println("[INFO] PayedPriceTest");
         String[] strings = {"11", "07/09/10", "IT", "M", "1", "ciccio", "0", "0","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi", "Gioielli Moda"};
         Assertions.assertThrows(NumberFormatException.class, () -> new  CSVRecord(strings));
@@ -65,6 +70,7 @@ public class CSVRecordTest {
 
     @Test
     public void payedPriceNegativeTest(){
+        System.out.println("[INFO] PayedPriceNegativeTest");
         String[] strings = {"11", "07/09/10", "IT", "M", "1", "-89", "0", "0","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi", "Gioielli Moda"};
         Assertions.assertThrows(IllegalArgumentException.class, () -> new CSVRecord(strings));
@@ -72,6 +78,7 @@ public class CSVRecordTest {
 
     @Test
     public void outletParseErrorTest(){
+        System.out.println("[INFO] OutletParseErrorTest");
         String[] strings = {"11", "07/09/10", "IT", "M", "1", "89", "0", "ciccio","FRECCE TRICOLORI", "Primavera - Estate 2011",
                 "Celeste", "Uomo", "PayPal", "UNICA", "Orologi"};
         Assertions.assertThrows(CSVNullFieldsException.class, () -> new CSVRecord(strings));

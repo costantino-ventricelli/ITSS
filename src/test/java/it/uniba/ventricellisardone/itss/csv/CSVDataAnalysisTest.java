@@ -15,6 +15,7 @@ public class CSVDataAnalysisTest {
 
     @Test
     public void analysisTest() throws IOException, CSVParsingException {
+        System.out.println("[INFO] AnalysisTest");
         Extraction extraction = new Extraction(Objects.requireNonNull(CSVDataAnalysisTest.class.getClassLoader().getResource("data_analysis/right_data.csv")).getPath());
         CSVDataAnalysis CSVDataAnalysis = new CSVDataAnalysis(extraction.getCsvRecordList());
 

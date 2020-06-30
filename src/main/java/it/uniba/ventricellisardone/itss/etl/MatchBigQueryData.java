@@ -6,10 +6,7 @@
 package it.uniba.ventricellisardone.itss.etl;
 
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.bigquery.BigQuery;
-import com.google.cloud.bigquery.BigQueryOptions;
-import com.google.cloud.bigquery.FieldValueList;
-import com.google.cloud.bigquery.QueryJobConfiguration;
+import com.google.cloud.bigquery.*;
 import com.google.common.collect.Lists;
 import it.uniba.ventricellisardone.itss.csv.CSVRecord;
 import it.uniba.ventricellisardone.itss.log.Log;
@@ -20,6 +17,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -59,11 +57,16 @@ public class MatchBigQueryData {
         QueryJobConfiguration jobConfiguration = QueryJobConfiguration
                 .newBuilder("SELECT MAX(ordine_data) AS ordine_ultima_data FROM `biproject-itss.dataset."
                         + this.targetTable +"`").build();
-        for (FieldValueList row : BIG_QUERY.query(jobConfiguration).iterateAll()) {
-            if(row.size() > 1)
-                throw new SQLException("Errore nel selezionare il massimo dalla tabella.");
-            else
-                this.bigQueryDate = row.get(0).getStringValue();
+        try {
+            for (FieldValueList row : BIG_QUERY.query(jobConfiguration).iterateAll()) {
+                if (row.size() > 1)
+                    throw new SQLException("Errore nel selezionare il massimo dalla tabella.");
+                else
+                    this.bigQueryDate = row.get(0).getStringValue();
+            }
+        }catch (NullPointerException ex){
+            Log.e(TAG, "Eccezione sollevata, provo a non interrompere il programma", ex);
+            this.bigQueryDate = null;
         }
     }
 
@@ -71,16 +74,19 @@ public class MatchBigQueryData {
      * Questo metodo verifica che le date del cloud e dei dati di refresh coincidano.
      * @return true quando coincidono, false altrimenti.
      */
-    public boolean isMatching() {
-        try {
-            Date parseGoogleDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                    .parse(this.bigQueryDate);
-            Date recordDate = recordList.get(0).getOrderDate();
-            return parseGoogleDate.before(recordDate) || parseGoogleDate.equals(recordDate);
-        } catch (ParseException e) {
-            Log.e(TAG, "Eccezione sollevata: ", e);
-            return true;
-        }
+    public boolean isDateMatching() {
+        if(this.bigQueryDate != null)
+            try {
+                Date parseGoogleDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .parse(this.bigQueryDate);
+                Date recordDate = recordList.get(0).getOrderDate();
+                return parseGoogleDate.before(recordDate) || parseGoogleDate.equals(recordDate);
+            } catch (ParseException e) {
+                Log.e(TAG, "Eccezione sollevata: ", e);
+                return true;
+            }
+        else
+            return false;
     }
 
     /**
@@ -93,7 +99,7 @@ public class MatchBigQueryData {
      */
     public int getConflictRowNumber() throws ParseException, InterruptedException {
         int rowCounter = 0;
-        if(isMatching()){
+        if(isDateMatching()){
             QueryJobConfiguration jobConfiguration = QueryJobConfiguration
                     .newBuilder("SELECT * FROM `biproject-itss.dataset."
                             + this.targetTable +"` WHERE ordine_data = '" + this.bigQueryDate + "'").build();
@@ -106,6 +112,34 @@ public class MatchBigQueryData {
             }
         }
         return rowCounter;
+    }
+
+    /**
+     * Questo metodo al contrario del precedente non restituisce il numero di conflitti, ma verifica che la lista di
+     * record che si vuole caricare non sia già presente in BigQuery.
+     * @return restituisce true se viene trovata una corrispondenza tra il record da inserire e il datawarehouse in cloud.
+     *         restituisce false se non viene trovata corrispondenza tra il record da inserire e il datawarehouse in cloud.
+     * @throws ParseException può essere sollevata se il record che stiamo verificando non può essere trasformato.
+     * @throws InterruptedException può essere sollevata se durante l'esecuzione della query il thread viene interrotto
+     *                              inaspettatamente.
+     */
+    public boolean isRecordMatching() throws ParseException, InterruptedException {
+        boolean match = false;
+        if(isDateMatching()){
+            QueryJobConfiguration jobConfiguration = QueryJobConfiguration
+                    .newBuilder("SELECT * FROM `biproject-itss.dataset."
+                            + this.targetTable +"` WHERE ordine_data = '" + this.bigQueryDate + "'").build();
+            Iterator<FieldValueList> resultSet = BIG_QUERY.query(jobConfiguration).iterateAll().iterator();
+            while(resultSet.hasNext() && !match){
+                Iterator<String> transformedRecord = Transforming.getTransformedRecord(this.recordList).iterator();
+                String cloudRecord = buildStringFromFieldValueList(resultSet.next());
+                while(transformedRecord.hasNext() && !match){
+                    if(transformedRecord.next().equals(cloudRecord))
+                        match = true;
+                }
+            }
+        }
+        return match;
     }
 
     public String getBigQueryDate() {

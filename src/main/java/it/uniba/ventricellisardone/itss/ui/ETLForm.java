@@ -33,7 +33,7 @@ public class ETLForm {
 
     public ETLForm() {
         JTextAreaOutputStream outputStream = new JTextAreaOutputStream(console);
-        DefaultCaret caret = (DefaultCaret)console.getCaret();
+        DefaultCaret caret = (DefaultCaret) console.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         System.setOut(new PrintStream(outputStream));
         System.setErr(new PrintStream(outputStream));
@@ -75,35 +75,23 @@ public class ETLForm {
                 + "/Transformed";
         System.out.println("Carico i dati in: " + destinationPath);
         File destinationFile = new File(destinationPath);
-        if(!destinationFile.exists())
+        if (!destinationFile.exists())
             FileUtils.forceMkdir(destinationFile);
         Extraction extraction = new Extraction(sourceChooser.getSelectedFile().getPath());
         List<CSVRecord> csvRecordList = extraction.getCsvRecordList();
         extraction.logParseErrorRecord(destinationPath, "parsing_error.csv");
         extraction.logNullRecord(destinationPath, "field_error.csv");
         MatchBigQueryData matchBigQueryData = null;
-        try {
-            System.out.println("Verifico eventuali duplicati");
-            matchBigQueryData = new MatchBigQueryData(csvRecordList, TABLE_NAME);
-            if(matchBigQueryData.isMatching()) {
-                System.out.println("Non ho trovato possibili duplicati");
-                ExecuteTransform executeTransform = new ExecuteTransform(csvRecordList, destinationPath);
-                executeTransform.execute();
-            }else
-                System.out.println("Contattare responsabile estrazione dati DB\n" +
-                        "Si stanno cercando di caricare dati già inseriti nel Data ware house\n" +
-                        "Il processo termina senza apportare modifiche.");
-        } catch (InterruptedException | SQLException e) {
-            Log.e(TAG, "Eccezione sollevata: ", e);
-            Thread.currentThread().interrupt();
-        }
+        System.out.println("Non ho trovato possibili duplicati");
+        ExecuteTransform executeTransform = new ExecuteTransform(csvRecordList, destinationPath);
+        executeTransform.execute();
     }
 
     public JPanel getEtlPanel() {
         return etlPanel;
     }
 
-    private class ExecuteTransform extends SwingWorker<Boolean, Integer>{
+    private class ExecuteTransform extends SwingWorker<Boolean, Integer> {
 
         private final List<CSVRecord> csvRecordList;
         private final String destinationPath;
@@ -122,12 +110,13 @@ public class ETLForm {
                 Loading loading = new Loading(this.destinationPath, TABLE_NAME);
                 LoadData loadData = new LoadData(loading);
                 Thread threadLoadData = new Thread(loadData);
-                Transforming transforming = new Transforming(destinationPath);
+                Transforming transforming = new Transforming(destinationPath, TABLE_NAME);
                 for (int i = 0; i < csvRecordList.size(); i++) {
                     subList.add(csvRecordList.get(i));
-                    if ((i % 1000) == 0 && (i != 0)) {
+                    System.out.println("I: " + i);
+                    if (((i % 1000) == 0 || (i == (csvRecordList.size() - 1))) && (i != 0)) {
                         transforming.transformData(subList);
-                        if(threadLoadData.isAlive())
+                        if (threadLoadData.isAlive())
                             threadLoadData.join();
                         loadData.setFileToLoad(transformedBlock);
                         threadLoadData = new Thread(loadData);
@@ -156,7 +145,7 @@ public class ETLForm {
         }
     }
 
-    private static class LoadData implements Runnable{
+    private static class LoadData implements Runnable {
 
         private int fileToLoad;
         private final Loading loadingInstance;
@@ -173,7 +162,7 @@ public class ETLForm {
 
         @Override
         public void run() {
-            if(fileToLoad != -1) {
+            if (fileToLoad != -1) {
                 try {
                     loadingInstance.startLoad(fileToLoad, (fileToLoad + 1));
                     Thread.currentThread().interrupt();
