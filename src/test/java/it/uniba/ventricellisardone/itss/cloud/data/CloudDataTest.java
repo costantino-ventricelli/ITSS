@@ -16,11 +16,11 @@ public class CloudDataTest {
         assert (cloudData.getDateString().equals("2020-05-01")) : "Errore data string: " + cloudData.getDateString();
         assert (cloudData.getGoogleData().equals(
                 Date.fromYearMonthDay(2020, 5, 1))) : "Data errata: " + cloudData.getGoogleData().toString();
-        char[] chars = cloudData.getDayName().toCharArray();
-        char[] chars1 = "VENERDÌ".toCharArray();
-        for(int i = 0; i < chars.length; i++){
-           assert (Character.getNumericValue(chars[i]) == Character.getNumericValue(chars1[i]));
-        }
+        //Questo scempio è stato aggiunto perché Windows non riesce a fare un confronto come si deve per colpa della 'Ì'
+        char[] systemChar = cloudData.getDayName().toCharArray();
+        char[] handWroteChar = "VENERDÌ".toCharArray();
+        for(int i = 0; i < systemChar.length; i++)
+           assert (Character.getNumericValue(systemChar[i]) == Character.getNumericValue(handWroteChar[i]));
         assert (cloudData.getDayNumber() == 122) : "Errato giorno dell'anno: " + cloudData.getDayNumber();
         assert (cloudData.getMonthName().equals("MAGGIO")) : "Errato nome mese: " + cloudData.getMonthName();
         assert (cloudData.getYearValue() == 2020) : "Errato anno: " + cloudData.getYearValue();
